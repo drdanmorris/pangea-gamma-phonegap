@@ -1,0 +1,928 @@
+.reset {
+    margin:0;
+    padding:0;
+}
+
+body {
+    .reset;
+    font-family: Arial, helvetica, sans-serif;
+    font-size:12px;
+    margin-left:2px;
+}
+
+h1 {
+    .reset;
+}
+ul {
+    .reset;
+}
+
+
+/* 
+==================================================================================
+Constants
+==================================================================================
+*/
+
+
+// App colors
+@sellColor: #c83933;
+@buyColor: #00838b;
+@redColor: @sellColor;
+@greenColor: @buyColor;
+
+
+// General colors
+@bgColor: #000;
+@bgColorView: #f9f9f9;
+@bgColorPanel: #ffffff;
+@borderColor: #a5a5a5;
+@tableCellTextColor: #000;
+
+@toolBarBgColor: #f7f7f7;
+@toolBarButtonColor: @greenColor;
+
+@textColor: #121212;
+@linkColor: @greenColor; //#007aff;
+
+@textBoxColor: #f0f0f0;
+@buttonColor: #a0a0a0;
+@disabledButtonColor: #d0d0d0;
+@switchBgColorOn: #41d86c;
+@switchButtonColorOn: #fff;
+@switchBgColorOff: #fff;
+@switchButtonColorOff: #fff;
+@tabBarTextColor:#b0b0b0;
+@tabBarActiveTextColor:#007aff;
+
+
+
+
+// Dimensions
+@screenHeight: 450px;
+@screenWidth: 320px;
+@tableRowHeight: 42px;
+@toolBarHeight: 50px;
+@tabBarHeight: 50px;
+@mainHeight: @screenHeight - @toolBarHeight - @tabBarHeight;
+@tabWidth: @screenWidth / 5;
+
+
+
+
+/* 
+==================================================================================
+Master View Sections
+==================================================================================
+*/
+section#app {
+    height:@screenHeight;
+    width:@screenWidth;
+    background-color:@bgColor;
+
+    section#main {
+        height:@mainHeight;
+    }
+
+}
+
+
+/* 
+==================================================================================
+User Summary
+==================================================================================
+*/
+div#topbanner {
+    height:40px;
+    overflow:hidden;
+    position: relative;
+    div.inner {
+        position: absolute;
+        // top: 0;
+        // left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all 0.25s linear!important;
+        transition: all 0.25s linear!important;
+        div#summary {
+            // height:60px;
+            background-color: @greenColor;
+            color:white;
+            > div {
+                height:20px;
+                line-height: 20px;
+                label{
+                    font-weight:bold;
+                    display: inline-block;
+                    text-align: right;
+                }
+                label.col1{
+                    width:70px;
+                }
+                label.col2{
+                    width:50px;
+                }
+                span{
+                    min-width:60px;
+                    display: inline-block;
+                    text-align: right;
+                }
+            }
+            #btnViewSearch{
+                height:30px;
+                width:30px;
+                background-color: white;
+                position:absolute;
+                top:4px;
+                left:284px;
+                background: darken(@greenColor, 2%) url(images/search.svg) no-repeat 65% 50%;
+                .border(darken(@greenColor, 5%));
+                .roundCorners(4px);
+            }
+        }
+        div#search {
+            // height:60px;
+            background-color: @greenColor;
+            color:white;
+            height:40px;
+            .borderT;
+        }
+    }
+    div.inner.summary{
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    div.inner.search{
+        -webkit-transform: translate3d(0,-40px,0);
+        transform: translate3d(0,-40px,0);
+    }
+
+}
+
+
+
+
+
+
+/* 
+==================================================================================
+Prevent Default
+==================================================================================
+*/
+.noselect {
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+}
+
+
+/* 
+==================================================================================
+Alignment
+==================================================================================
+*/
+.flex {
+   display: -webkit-box; 
+   display: -moz-box;    
+   display: -ms-flexbox;  
+   /*display: -webkit-flex; */
+   display: flex;
+}
+
+
+.flexRatio(@ratio: 1) {
+   -moz-box-flex: @ratio; 
+   -webkit-box-flex: @ratio; 
+   -ms-flex: @ratio;
+   /*box-flex: @ratio;*/
+   flex: @ratio;
+}
+
+
+/* box-align: start|end|center|baseline|stretch; */
+.centerV {
+   -webkit-box-align: center;  
+   -moz-box-align: center;
+   -ms-flex-align: center; 
+   -webkit-align-items: center;
+   align-items: center;
+}
+
+.bottomV {
+   -webkit-box-align: end;  
+   -moz-box-align: end;
+   -ms-flex-align: end; 
+   -webkit-align-items: end;
+   align-items: end;
+}
+
+/* box-pack: start|end|center|justify; */
+.alignH(@pos: center) {
+   -webkit-box-pack: @pos; 
+   -moz-box-pack: @pos; 
+   -ms-flex-pack: @pos; 
+   -webkit-justify-content: @pos;
+   justify-content: @pos;
+}
+
+.centerH {
+  .alignH(center);
+}
+
+.rightH {
+  .alignH(end);
+}
+
+.leftH {
+  .alignH(flex-start);
+}
+
+.center {
+    .flex;
+    .centerH;
+    .centerV;
+}
+
+
+/* 
+==================================================================================
+Borders
+==================================================================================
+*/
+.border(@col: #aaa) {
+    border:solid 1px @col;
+}
+
+.borderT(@col: #aaa) {
+    .border(@col);
+    border-left:none;
+    border-right:none;
+    border-bottom:none;
+}
+.borderB(@col: #aaa) {
+    .border(@col);
+    border-left:none;
+    border-right:none;
+    border-top:none;
+}
+.borderTB(@col: #aaa) {
+    .border(@col);
+    border-left:none;
+    border-right:none;
+}
+
+/* 
+==================================================================================
+Grads
+==================================================================================
+*/
+
+@toobarGradFromColor: #666;
+@toobarGradToColor: #000;
+
+.toolbarGrad {
+    background: -webkit-linear-gradient(@toobarGradFromColor, @toobarGradToColor 50%, @toobarGradToColor);
+    background: -o-linear-gradient(@toobarGradFromColor, @toobarGradToColor 50%, @toobarGradToColor); 
+    background: -moz-linear-gradient(@toobarGradFromColor, @toobarGradToColor 50%, @toobarGradToColor); 
+    background: linear-gradient(@toobarGradFromColor, @toobarGradToColor 50%, @toobarGradToColor); 
+}
+
+/* 
+==================================================================================
+Common Text
+==================================================================================
+*/
+span.sell {
+    color: @sellColor;
+}
+span.buy {
+    color: @buyColor;
+}
+
+
+/* 
+==================================================================================
+Common List
+==================================================================================
+*/
+ul > li {
+    list-style-image:none;
+    display:inline-block;
+}
+
+
+
+
+/* 
+==================================================================================
+Page Slider
+==================================================================================
+*/
+.stageRight {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+.stageLeft {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+.stageCenter {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+// .stageRight {
+//     left:100%;
+// }
+// .stageLeft {
+//     left:-100%
+// }
+// .stageCenter {
+//     left:0;
+// }
+
+.slidecontainer {
+    position: relative;
+    .slide {}
+    // angular animation extensibility
+    .slide.ng-enter, .slide.ng-leave {
+            position: absolute;
+            top: 0;
+            //left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: 0.25s linear all;
+            transition: 0.25s linear all;
+        }
+}
+
+#app.forward {
+    .slide.ng-enter {
+        .stageRight;
+    }
+    .slide.ng-enter.ng-enter-active {
+        .stageCenter;
+    }
+    .slide.ng-leave {}
+    .slide.ng-leave.ng-leave-active {
+        .stageLeft;
+    }
+}
+#app.back {
+    .slide.ng-enter { 
+        .stageLeft;
+    }    
+    .slide.ng-enter.ng-enter-active {
+    .stageCenter;
+    } 
+    .slide.ng-leave { }       
+    .slide.ng-leave.ng-leave-active {
+        .stageRight;
+    } 
+}
+#app.tab {
+    .slide.ng-enter {
+        opacity: 0;
+    }
+    .slide.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+    .slide.ng-leave {}
+    .slide.ng-leave.ng-leave-active {
+        opacity: 0;
+    }
+}
+
+
+
+div.loading {
+    display:block;
+}
+div.loaded {
+    display:none;
+}
+.hide {
+    visibility:hidden;
+}
+
+
+
+/* 
+==================================================================================
+Round Corners
+==================================================================================
+*/
+.roundTopLeft(@radius: 6px) {
+    border-top-left-radius: @radius;
+}
+.roundTopRight(@radius: 6px) {
+    border-top-right-radius: @radius;
+}
+.roundBottomLeft(@radius: 6px) {
+    border-bottom-left-radius: @radius;
+}
+.roundBottomRight(@radius: 6px) {
+    border-bottom-right-radius: @radius;
+}
+.roundCorners(@radius: 6px) {
+    border-radius: @radius;
+}
+
+
+/* 
+==================================================================================
+User Controls
+==================================================================================
+*/
+
+/*--Trade View Banner--------------------------------------------------------*/
+.tradeBanner {
+    padding:0;
+    margin:5px;
+    margin-bottom:0;
+    div.icon {
+        height:40px;
+        width:40px;
+        .border(@borderColor);
+        background-color: white;
+    }
+    div.icon.left {
+        .roundTopLeft;
+        float:left;
+    }
+    div.icon.right {
+        .roundTopRight;
+        float:right;
+        position:relative;
+        top:-42px;
+        margin-bottom:-42px;
+    }
+    div.title {
+        height:40px;
+        line-height: 40px;
+        margin:0 5px 0 5px;
+        // width:226px;
+        // float:left;
+        text-align: center;
+        .borderTB(@borderColor);
+        background-color: white;
+    }
+}
+
+.viewBody {
+    padding:5px;
+    .border;
+    border-top:none;
+    margin:5px;
+    margin-top:0;
+    background-color:@bgColorView;
+}
+
+.panel {
+    padding:5px;
+    margin:5px;
+    .border;
+    .roundCorners;
+    background-color:@bgColorPanel; 
+}
+
+
+/*--Sell Buy Button--------------------------------------------------------*/
+.sellBuyBtn {
+    margin-top:10px;
+    margin-bottom:20px;
+    .inner {
+        // width:280px; 
+        margin:0 8px 0 8px;  
+        .btn.trade {
+            height:55px;
+            width:130px;
+            font-weight:bold;
+            color:white;
+            background-color:black;
+            .roundCorners(8px);
+            .btnLabel {
+                position:relative;
+                width:46px;
+                text-align: center;
+                height:17px;
+                .roundBottomLeft;
+                .roundBottomRight;
+            }
+            .price {
+                .center;
+                position:relative;
+                top:5px;
+                span {
+                    text-shadow: 1px -1px #000;
+                }
+                span.major {
+                    font-size:2.0em;
+                }
+                span.minor {
+                    font-size:1.2em;
+                }
+            }
+            h3 {
+                position:relative;
+                top:-18px;
+                font-size:0.8em;
+                font-weight: normal;
+            }  
+        }
+        .btn.trade.sell {
+            background-color: #c83933;
+            float:left;
+            .btnLabel {
+                left:25px;
+                background-color: lighten(@sellColor, 5%);
+            }
+        }
+        .btn.trade.buy {
+            background-color: #00838b;
+            float:right;
+            .btnLabel {
+                left:65px;
+                background-color: lighten(@buyColor, 5%);
+            }
+        }
+    }
+}
+
+
+.clear {
+    clear:both;
+}
+
+
+/*--Numeric Up/Down control--------------------------------------------------------*/
+.numericUpDown {
+    /*display:inline-block;*/
+    margin-right:5px;
+
+    /*.border;*/
+    > div {
+        float:left;
+    }
+
+    .title {
+        width:45px;
+        height:20px;
+        text-align: right;
+        font-size: 1.2em;
+        padding-right:5px;
+        /*.border;*/
+        padding-top:10px;
+
+    }
+    .ctrl {
+        .border;
+        width:120px;
+        padding:0;
+        white-space: nowrap;
+
+        > div {
+            margin:0;
+            height:30px;
+            float:left;
+        }
+
+        input {
+            width:60px;
+            height:30px;
+            margin:0;
+            padding:0;
+            border:none;
+            background-color: @textBoxColor;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .up,.down {
+            width:30px;
+            background-color: @buttonColor;
+            font-size: 2.0em;
+            font-weight: bold;
+            color:white;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            .noselect;
+        }
+        .up.false,.down.false {
+            background-color: @disabledButtonColor;
+        }
+    }
+}
+
+/*--Form row--------------------------------------------------------*/
+.row {
+    min-height:30px;
+    margin:0 0 10px 0;
+    /*.border;*/
+
+    > div {
+        float:left;
+
+    }
+
+    .note {
+        font-size:0.8em;
+    }
+    .heading {
+        font-size:1.2em;
+    }
+    .forNumericUpDownCtrl {
+        margin-left:48px;
+    }
+    .col2 {
+        margin-left:10px;
+    }
+
+}
+
+/*--On/off switch--------------------------------------------------------*/
+.switch {
+    height:30px;
+    width:50px;
+    .border;
+    .roundCorners(20px);
+
+    .button {
+        height:28px;
+        width:28px;
+        .border;
+        .roundCorners(15px);
+    }
+}
+.switch.on {
+    background-color: @greenColor; //@switchBgColorOn;
+    .button {
+        background-color: @switchButtonColorOn;
+        float:right;
+    }
+}
+.switch.off {
+    background-color: @switchBgColorOff;
+    .button {
+        background-color: @switchButtonColorOff;
+        box-shadow: 1px 1px 1px #999;
+    }
+}
+
+
+
+/* 
+==================================================================================
+Views
+==================================================================================
+*/
+
+.numericUpDownCtrlDetail {
+    font-size: 0.8em;
+    height:30px;
+    /*.border;*/
+
+    > label {
+        line-height: 38px;
+    }
+}
+
+
+
+/* 
+==================================================================================
+Trade Icons
+==================================================================================
+*/
+
+.trade.icon{
+    background: url(images/trade-icons.jpg) no-repeat -5px 0;
+}
+.trade.icon.icon1 {
+    background-position: -5px 0;
+}
+.trade.icon.icon2 {
+    background-position: -47px 0;
+}
+.trade.icon.icon3 {
+    background-position: -88px 0;
+}
+.trade.icon.icon4 {
+    background-position: -130px 0;
+}
+
+
+
+/* 
+==================================================================================
+Android
+==================================================================================
+*/
+
+
+
+
+/* 
+==================================================================================
+WP8
+==================================================================================
+*/
+
+
+
+
+/* 
+==================================================================================
+iOS
+==================================================================================
+*/
+
+
+
+html.ios {
+    color: @textColor;
+    font-family: -apple-system-font;
+    font-size: 17px/21px;
+
+    section#main {
+        overflow: auto;
+    }
+
+    /*--Tool Bar--------------------------------------------------------*/
+    .toolbar-item {
+        background-color: darken(@toolBarBgColor, 15%);
+        .flexRatio;
+        height: @toolBarHeight - 8;
+        line-height: @toolBarHeight - 8;
+
+        a:link, a:visited, a:hover {
+            text-decoration: none;
+            color: @toolBarButtonColor;
+        }
+    }
+
+    section#toolbar {
+        height: @toolBarHeight;
+        margin:20px 0 0 0;
+        // background-color: @toolBarBgColor;
+        .toolbarGrad;
+        .flex;
+        .centerV;
+        .borderB;
+
+        #toolbar-left-item {
+            .toolbar-item;
+            padding-left: 18px;
+            background: url(images/ios/left-green.svg) no-repeat 5% 50%;
+            font-size: 1.0em;
+            white-space: nowrap;
+            color:@linkColor;
+
+        }
+        h1 {
+            font-size: 1.5em;
+            .flexRatio(3);
+            text-align: center;
+            color:white;
+            // line-height:70px;
+        }
+        #toolbar-right-item {
+            .toolbar-item;
+            text-align: center;
+            padding-right: 3px;
+            visibility: hidden;
+        }
+    }
+
+    /*--Tab Bar--------------------------------------------------------*/
+    section#tabbar {
+        margin:0;
+        padding:0;
+        
+        div {
+            width: @tabWidth;
+            font-size: 0.8em;
+            height: @tabBarHeight;
+            margin:0 0 0 0;
+            padding:0;
+            float:left;
+            text-align: center;
+            line-height: 85px;
+            color:@tabBarTextColor;
+        }
+        div.icon1 {
+            background: #fff url(images/tab-bar-icons.png) no-repeat -12px -35px;
+        }
+        div.icon1.selected {
+            background: #fff url(images/tab-bar-icons-active.png) no-repeat -12px -35px;
+        }
+
+        div.icon2 {
+            background: #fff url(images/tab-bar-icons.png) no-repeat -370px -125px;
+        }
+        div.icon2.selected {
+            background: #fff url(images/tab-bar-icons-active.png) no-repeat -370px -125px;
+        }
+
+        div.icon3 {
+            background: #fff url(images/tab-bar-icons.png) no-repeat -12px -125px;
+        }
+        div.icon3.selected {
+            background: #fff url(images/tab-bar-icons-active.png) no-repeat -12px -125px;
+        }
+
+        div.icon4 {
+            background: #fff url(images/tab-bar-icons.png) no-repeat -460px -35px;
+        }
+        div.icon4.selected {
+            background: #fff url(images/tab-bar-icons-active.png) no-repeat -460px -35px;
+        }
+
+        div.icon5 {
+            background: #fff url(images/tab-bar-icons.png) no-repeat -550px -305px;
+        }
+        div.icon5.selected {
+            background: #fff url(images/tab-bar-icons-active.png) no-repeat -550px -305px;
+        }
+
+
+
+        div.selected {
+            color:@tabBarActiveTextColor;
+        }
+    }
+
+    /*--Menu--------------------------------------------------------*/
+    div.priceinfoheader {
+        display: none;
+        padding:2px 0 0 40px;
+        height:18px;
+        .toolbarGrad;
+        color:white;
+        .borderB;
+        > span {
+            display:inline-block;
+            width:62px;
+            font-size: 0.9em;
+        }
+    }
+    div.priceinfoheader.menupr {
+        display:block;
+    }
+
+    div.menu {
+        article {
+            height: @tableRowHeight;
+            .borderB;
+            background-color: #fff;
+            padding:4px 0 0 4px;
+            > div {
+                height: @tableRowHeight;
+                padding:0 0 0 5px;
+            }
+            > div.nav {
+                background: #fff url(images/ios/right.svg) no-repeat right 50%;
+                padding:0
+            }
+        }
+    }
+
+    div.main.menu {
+        article {
+            > div {
+                padding:0 0 0 5px;
+                line-height: @tableRowHeight;
+            }
+        }
+    }
+
+    div.price.menu {
+        article {
+            background: #fff url(images/settings.png) no-repeat 3px 50%;
+            padding:4px 0 0 40px;
+            .priceinfo {
+                margin:4px 0 0 0;
+                .title {
+                    font-weight: bold;
+                }
+                > span {
+                    display:inline-block;
+                    width:62px;
+                    font-size: 0.9em;
+                }
+                .price {
+                }
+                .price.plus {
+                    color: @greenColor;
+                }
+                .price.minus {
+                    color: @redColor;
+                }
+            }
+        }
+    }
+}
+
+
+
