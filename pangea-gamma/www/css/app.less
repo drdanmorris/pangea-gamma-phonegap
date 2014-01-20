@@ -59,11 +59,14 @@ Constants
 
 
 // Dimensions
+@marginTopHeight: 0; //20px;
 @screenHeight: 450px;
 @screenWidth: 320px;
 @tableRowHeight: 42px;
 @toolBarHeight: 50px;
 @tabBarHeight: 50px;
+@topBannerHeight: 40px;
+
 @mainHeight: @screenHeight - @toolBarHeight - @tabBarHeight;
 @tabWidth: @screenWidth / 5;
 
@@ -76,12 +79,14 @@ Master View Sections
 ==================================================================================
 */
 section#app {
-    height:@screenHeight;
-    width:@screenWidth;
-    background-color:@bgColor;
+    height:100%; //@screenHeight;
+    width:100%;
 
     section#main {
-        height:@mainHeight;
+        // height:350px; //100%;
+        //margin-bottom:@tabBarHeight;
+        overflow:auto;
+        background-color:@bgColor;
     }
 
 }
@@ -93,60 +98,61 @@ User Summary
 ==================================================================================
 */
 div#topbanner {
-    height:40px;
+    height:@topBannerHeight;
+    background-color: @greenColor;
+    color:white;
     overflow:hidden;
     position: relative;
     div.inner {
         position: absolute;
-        // top: 0;
-        // left: 0;
         width: 100%;
         height: 100%;
         -webkit-transition: all 0.25s linear!important;
         transition: all 0.25s linear!important;
+        > div {
+            height:@topBannerHeight;
+        }
         div#summary {
-            // height:60px;
-            background-color: @greenColor;
-            color:white;
-            > div {
-                height:20px;
-                line-height: 20px;
-                label{
-                    font-weight:bold;
-                    display: inline-block;
-                    text-align: right;
-                }
-                label.col1{
-                    width:70px;
-                }
-                label.col2{
-                    width:50px;
-                }
-                span{
-                    min-width:60px;
-                    display: inline-block;
-                    text-align: right;
+            .flex;
+            div.flx {
+                .flexRatio;
+                > div{
+                    padding-top:3px;
+                    label{
+                        display:inline-block;
+                        text-align: right;
+                    }
+                    label.col1{
+                        width:60px;
+                    }
+                    label.col2{
+                        width:40px;
+                    }
+                    span {
+                        display:inline-block;
+                        text-align: right;
+                        min-width:65px;
+                    }
                 }
             }
+
             #btnViewSearch{
                 height:30px;
                 width:30px;
-                background-color: white;
-                position:absolute;
+                position:relative;
                 top:4px;
-                left:284px;
+                left:-6px;
                 background: darken(@greenColor, 2%) url(images/search.svg) no-repeat 65% 50%;
                 .border(darken(@greenColor, 5%));
                 .roundCorners(4px);
             }
         }
-        div#search {
-            // height:60px;
-            background-color: @greenColor;
-            color:white;
-            height:40px;
-            .borderT;
-        }
+        
+
+        
+            
+        
+        
     }
     div.inner.summary{
         -webkit-transform: translate3d(0,0,0);
@@ -764,7 +770,7 @@ html.ios {
 
     section#toolbar {
         height: @toolBarHeight;
-        margin:20px 0 0 0;
+        margin:0;
         // background-color: @toolBarBgColor;
         .toolbarGrad;
         .flex;
@@ -799,6 +805,13 @@ html.ios {
     section#tabbar {
         margin:0;
         padding:0;
+        position:absolute;
+        bottom:0;
+        width:99%;
+        height:@tabBarHeight;
+        white-space: nowrap;
+        .flex;
+        overflow:hidden;
         
         div {
             width: @tabWidth;
@@ -806,44 +819,45 @@ html.ios {
             height: @tabBarHeight;
             margin:0 0 0 0;
             padding:0;
-            float:left;
+            // float:left;
+            .flexRatio;  // allow tabs to distribute equally in available space
             text-align: center;
             line-height: 85px;
             color:@tabBarTextColor;
         }
-        div.icon1 {
-            background: #fff url(images/tab-bar-icons.png) no-repeat -12px -35px;
+        div.watchlist {
+            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% 5px;
         }
-        div.icon1.selected {
-            background: #fff url(images/tab-bar-icons-active.png) no-repeat -12px -35px;
-        }
-
-        div.icon2 {
-            background: #fff url(images/tab-bar-icons.png) no-repeat -370px -125px;
-        }
-        div.icon2.selected {
-            background: #fff url(images/tab-bar-icons-active.png) no-repeat -370px -125px;
+        div.watchlist.selectedoff {
+            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% 5px;
         }
 
-        div.icon3 {
-            background: #fff url(images/tab-bar-icons.png) no-repeat -12px -125px;
+        div.browse {
+            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -50px;
         }
-        div.icon3.selected {
-            background: #fff url(images/tab-bar-icons-active.png) no-repeat -12px -125px;
-        }
-
-        div.icon4 {
-            background: #fff url(images/tab-bar-icons.png) no-repeat -460px -35px;
-        }
-        div.icon4.selected {
-            background: #fff url(images/tab-bar-icons-active.png) no-repeat -460px -35px;
+        div.browse.selected {
+            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -50px;
         }
 
-        div.icon5 {
-            background: #fff url(images/tab-bar-icons.png) no-repeat -550px -305px;
+        div.position {
+            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -105px;
         }
-        div.icon5.selected {
-            background: #fff url(images/tab-bar-icons-active.png) no-repeat -550px -305px;
+        div.position.selected {
+            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -105px;
+        }
+
+        div.account {
+            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -160px;
+        }
+        div.account.selected {
+            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -160px;
+        }
+
+        div.help {
+            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -215px;
+        }
+        div.help.selected {
+            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -215px;
         }
 
 

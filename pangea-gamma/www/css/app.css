@@ -29,12 +29,12 @@ Master View Sections
 */
 
 section#app {
-  height: 450px;
-  width: 320px;
-  background-color: black;
+  height: 100%;
+  width: 100%;
 }
 section#app section#main {
-  height: 350px;
+  overflow: auto;
+  background-color: black;
 }
 /* 
 ==================================================================================
@@ -44,6 +44,8 @@ User Summary
 
 div#topbanner {
   height: 40px;
+  background-color: #00838b;
+  color: white;
   overflow: hidden;
   position: relative;
 }
@@ -54,49 +56,50 @@ div#topbanner div.inner {
   -webkit-transition: all 0.25s linear!important;
   transition: all 0.25s linear!important;
 }
+div#topbanner div.inner > div {
+  height: 40px;
+}
 div#topbanner div.inner div#summary {
-  background-color: #00838b;
-  color: white;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  /*display: -webkit-flex; */
+  display: flex;
 }
-div#topbanner div.inner div#summary > div {
-  height: 20px;
-  line-height: 20px;
+div#topbanner div.inner div#summary div.flx {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
 }
-div#topbanner div.inner div#summary > div label {
-  font-weight: bold;
+div#topbanner div.inner div#summary div.flx > div {
+  padding-top: 3px;
+}
+div#topbanner div.inner div#summary div.flx > div label {
   display: inline-block;
   text-align: right;
 }
-div#topbanner div.inner div#summary > div label.col1 {
-  width: 70px;
+div#topbanner div.inner div#summary div.flx > div label.col1 {
+  width: 60px;
 }
-div#topbanner div.inner div#summary > div label.col2 {
-  width: 50px;
+div#topbanner div.inner div#summary div.flx > div label.col2 {
+  width: 40px;
 }
-div#topbanner div.inner div#summary > div span {
-  min-width: 60px;
+div#topbanner div.inner div#summary div.flx > div span {
   display: inline-block;
   text-align: right;
+  min-width: 65px;
 }
 div#topbanner div.inner div#summary #btnViewSearch {
   height: 30px;
   width: 30px;
-  background-color: white;
-  position: absolute;
+  position: relative;
   top: 4px;
-  left: 284px;
+  left: -6px;
   background: #007981 url(images/search.svg) no-repeat 65% 50%;
   border: solid 1px #006b72;
   border-radius: 4px;
-}
-div#topbanner div.inner div#search {
-  background-color: #00838b;
-  color: white;
-  height: 40px;
-  border: solid 1px #aaaaaa;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
 }
 div#topbanner div.inner.summary {
   -webkit-transform: translate3d(0, 0, 0);
@@ -629,7 +632,7 @@ html.ios .toolbar-item a:hover {
 }
 html.ios section#toolbar {
   height: 50px;
-  margin: 20px 0 0 0;
+  margin: 0;
   background: -webkit-linear-gradient(#666666, black 50%, black);
   background: -o-linear-gradient(#666666, black 50%, black);
   background: -moz-linear-gradient(#666666, black 50%, black);
@@ -702,6 +705,17 @@ html.ios section#toolbar #toolbar-right-item a:hover {
 html.ios section#tabbar {
   margin: 0;
   padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 99%;
+  height: 50px;
+  white-space: nowrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  /*display: -webkit-flex; */
+  display: flex;
+  overflow: hidden;
 }
 html.ios section#tabbar div {
   width: 64px;
@@ -709,40 +723,44 @@ html.ios section#tabbar div {
   height: 50px;
   margin: 0 0 0 0;
   padding: 0;
-  float: left;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
   text-align: center;
   line-height: 85px;
   color: #b0b0b0;
 }
-html.ios section#tabbar div.icon1 {
-  background: white url(images/tab-bar-icons.png) no-repeat -12px -35px;
+html.ios section#tabbar div.watchlist {
+  background: white url(images/tab-bar-icons2.png) no-repeat 50% 5px;
 }
-html.ios section#tabbar div.icon1.selected {
-  background: white url(images/tab-bar-icons-active.png) no-repeat -12px -35px;
+html.ios section#tabbar div.watchlist.selectedoff {
+  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% 5px;
 }
-html.ios section#tabbar div.icon2 {
-  background: white url(images/tab-bar-icons.png) no-repeat -370px -125px;
+html.ios section#tabbar div.browse {
+  background: white url(images/tab-bar-icons2.png) no-repeat 50% -50px;
 }
-html.ios section#tabbar div.icon2.selected {
-  background: white url(images/tab-bar-icons-active.png) no-repeat -370px -125px;
+html.ios section#tabbar div.browse.selected {
+  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -50px;
 }
-html.ios section#tabbar div.icon3 {
-  background: white url(images/tab-bar-icons.png) no-repeat -12px -125px;
+html.ios section#tabbar div.position {
+  background: white url(images/tab-bar-icons2.png) no-repeat 50% -105px;
 }
-html.ios section#tabbar div.icon3.selected {
-  background: white url(images/tab-bar-icons-active.png) no-repeat -12px -125px;
+html.ios section#tabbar div.position.selected {
+  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -105px;
 }
-html.ios section#tabbar div.icon4 {
-  background: white url(images/tab-bar-icons.png) no-repeat -460px -35px;
+html.ios section#tabbar div.account {
+  background: white url(images/tab-bar-icons2.png) no-repeat 50% -160px;
 }
-html.ios section#tabbar div.icon4.selected {
-  background: white url(images/tab-bar-icons-active.png) no-repeat -460px -35px;
+html.ios section#tabbar div.account.selected {
+  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -160px;
 }
-html.ios section#tabbar div.icon5 {
-  background: white url(images/tab-bar-icons.png) no-repeat -550px -305px;
+html.ios section#tabbar div.help {
+  background: white url(images/tab-bar-icons2.png) no-repeat 50% -215px;
 }
-html.ios section#tabbar div.icon5.selected {
-  background: white url(images/tab-bar-icons-active.png) no-repeat -550px -305px;
+html.ios section#tabbar div.help.selected {
+  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -215px;
 }
 html.ios section#tabbar div.selected {
   color: #007aff;

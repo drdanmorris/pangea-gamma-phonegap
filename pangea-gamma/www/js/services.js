@@ -8,7 +8,7 @@ services.value('version', '0.1');
 services.factory('Config', function () {
     return {
         websocket: {
-            url: 'ws://192.168.2.2:8081/',
+            url: 'ws://192.168.2.7:8081/',
             reconnectDelayMs: 5000
         }
     };
@@ -238,11 +238,11 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         vref: null,
         tabIndex: 0,
         tabs: [
-            new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'icon1' }),
-            new Tab({ id: 1, title: 'Browse', vref: '1/menu/home/0', icon: 'icon2' }),
-            new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'icon3' }),
-            new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'icon4' }),
-            new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'icon5' })
+            new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'watchlist' }),
+            new Tab({ id: 1, title: 'Browse', vref: '1/menu/home/0', icon: 'browse' }),
+            new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'account' }),
+            new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'position' }),
+            new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'help' })
         ],
         tab: null,
         backVref: null,

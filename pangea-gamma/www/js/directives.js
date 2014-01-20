@@ -105,7 +105,7 @@ directives.directive('myTabBar', function() {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'partials/ios/myTabBar.html'
+		templateUrl: 'partials/myTabBar.html'
 	};
 });
 
@@ -113,7 +113,7 @@ directives.directive('myToolBar', function() {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'partials/ios/myToolBar.html'
+		templateUrl: 'partials/myToolBar.html'
 	};
 });
 
