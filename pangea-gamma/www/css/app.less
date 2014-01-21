@@ -146,6 +146,24 @@ div#topbanner {
                 .roundCorners(4px);
             }
         }
+        div#search {
+            span{
+                display: inline-block;
+                height:30px;
+                width:60px;
+                line-height: 30px;
+                margin:4px 0 0 10px;
+                text-align: center;
+                .border(darken(@greenColor, 5%));
+                .roundCorners(3px);
+                background-color: darken(@greenColor, 2%);
+                font-size: 0.9em;
+            }
+            input {
+                margin-left:10px;
+                .border;
+            }
+        }
         
 
         
@@ -774,7 +792,7 @@ html.ios {
         .toolbarGrad;
         .flex;
         .centerV;
-        .borderB;
+        // .borderB;
 
         #toolbar-left-item {
             .toolbar-item;
@@ -812,17 +830,36 @@ html.ios {
         .flex;
         overflow:hidden;
         
-        div {
-            width: @tabWidth;
-            font-size: 0.8em;
-            height: @tabBarHeight;
-            margin:0 0 0 0;
-            padding:0;
-            // float:left;
+        > div {
             .flexRatio;  // allow tabs to distribute equally in available space
-            text-align: center;
-            line-height: 85px;
-            color:@tabBarTextColor;
+            div.inner {
+                position:relative;
+                width:100%;
+                div.title {
+                    font-size: 0.8em;
+                    height: @tabBarHeight;
+                    margin:0 0 0 0;
+                    padding:0;
+                    text-align: center;
+                    line-height: 85px;
+                    color:@tabBarTextColor;
+                }
+                div.notify {
+                    height:15px;
+                    width:15px;
+                    .border(#fff);
+                    background-color: red;
+                    margin:0 auto 0 auto;
+                    position:relative;
+                    top: -48px;
+                    left: 15px;
+                    font-weight: bold;
+                    text-align: center;
+                    color:white;
+                    .roundCorners(6px);
+                    font-size: 0.9em;
+                }
+            }
         }
         div.watchlist {
             background: #fff url(images/tab-bar-icons2.png) no-repeat 50% 5px;
@@ -868,7 +905,6 @@ html.ios {
 
     /*--Menu--------------------------------------------------------*/
     div.priceinfoheader {
-        display: none;
         padding:2px 0 0 40px;
         height:18px;
         .toolbarGrad;
@@ -879,9 +915,6 @@ html.ios {
             width:62px;
             font-size: 0.9em;
         }
-    }
-    div.priceinfoheader.menupr {
-        display:block;
     }
 
     div.menu {

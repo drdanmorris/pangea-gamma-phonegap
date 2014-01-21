@@ -227,6 +227,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         this.title = options.title;
         this.vref = new Vref(options.vref);
         this.icon = options.icon;
+        this.notifyCount = options.notifyCount;
     };
     Tab.prototype.getVref = function() {
         if (this.history.length > 0) return this.history[this.history.length - 1];
@@ -237,8 +238,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         marginTop: 20,
         toolBarHeight: 50,
         summaryBannerHeight: 40,
-        tabBarHeight: 50,
-        priceMenuHeadingRowHeight: 20
+        tabBarHeight: 50
     };
     var dimensionsAll = 0;
     for(var prop in dimension)
@@ -250,11 +250,11 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         vref: null,
         tabIndex: 0,
         tabs: [
-            new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'watchlist' }),
-            new Tab({ id: 1, title: 'Browse', vref: '1/menu/home/0', icon: 'browse' }),
-            new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'account' }),
-            new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'position' }),
-            new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'help' })
+            new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'watchlist', notifyCount: 3 }),
+            new Tab({ id: 1, title: 'Browse', vref: '1/menu/home/0', icon: 'browse', notifyCount: 0 }),
+            new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'account', notifyCount: 0 }),
+            new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'position', notifyCount: 99 }),
+            new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'help', notifyCount: 0 })
         ],
         tab: null,
         backVref: null,
@@ -269,7 +269,6 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         // },
         setMainHeight: function() {
             this.mainHeight = window.innerHeight - dimensionsAll; 
-            if(!this.vref || (this.vref.type !== 'menupr')) this.mainHeight += dimension.priceMenuHeadingRowHeight;
         },
         navigateTab: function(idx) {
             this.tabIndex = idx;
@@ -298,7 +297,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
             }
             this.tab.vref = vref;
             $location.path(vref.raw);
-            this.setMainHeight();
+            //this.setMainHeight();
         }
     };
     viewsvc.tab = viewsvc.tabs[0];

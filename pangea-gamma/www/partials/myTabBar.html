@@ -1,3 +1,8 @@
 <section id="tabbar">
-		<div ng-repeat="tab in navigation.tabs" ng-class="(navigation.tabIndex == $index) ? 'selected {{tab.icon}}' : '{{tab.icon}}'" ng-click="onTabSelected($index)">{{tab.title}}</div>
+		<div ng-repeat="tab in navigation.tabs" ng-class="(navigation.tabIndex == $index) ? 'selected {{tab.icon}}' : '{{tab.icon}}'" ng-click="onTabSelected($index)">		
+			<div class="inner">
+				<div class="title">{{tab.title}}</div>
+				<div ng-class="tab.notifyCount > 0 ? 'notify show' : 'notify hide'" style="width:{{(tab.notifyCount + '').length * 10 + 4}}px">{{tab.notifyCount}}</div>
+			</div>
+		</div>
 </section>
