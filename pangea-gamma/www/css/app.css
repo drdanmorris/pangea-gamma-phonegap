@@ -24,6 +24,26 @@ Constants
 */
 /* 
 ==================================================================================
+Dev
+==================================================================================
+*/
+
+div#dev {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 200px;
+}
+div#dev span {
+  margin-left: 20px;
+}
+div#dev span.selected {
+  font-weight: bold;
+  color: #c83933;
+}
+/* 
+==================================================================================
 Master View Sections
 ==================================================================================
 */
@@ -39,92 +59,217 @@ section#app section#main {
 }
 /* 
 ==================================================================================
+Tool Bar
+==================================================================================
+*/
+
+.toolbar-item {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
+  height: 42px;
+  line-height: 42px;
+}
+.toolbar-item a:link,
+.toolbar-item a:visited,
+.toolbar-item a:hover {
+  text-decoration: none;
+  color: #00838b;
+}
+section#toolbar {
+  height: 50px;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  /*display: -webkit-flex; */
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  color: white;
+}
+section#toolbar #toolbar-left-item {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
+  height: 42px;
+  line-height: 42px;
+  white-space: nowrap;
+  color: #00838b;
+}
+section#toolbar #toolbar-left-item a:link,
+section#toolbar #toolbar-left-item a:visited,
+section#toolbar #toolbar-left-item a:hover {
+  text-decoration: none;
+  color: #00838b;
+}
+section#toolbar h1 {
+  font-size: 1.5em;
+  -moz-box-flex: 3;
+  -webkit-box-flex: 3;
+  -ms-flex: 3;
+  /*box-flex: @ratio;*/
+  flex: 3;
+  text-align: center;
+}
+section#toolbar #toolbar-right-item {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  padding-right: 3px;
+  visibility: hidden;
+}
+section#toolbar #toolbar-right-item a:link,
+section#toolbar #toolbar-right-item a:visited,
+section#toolbar #toolbar-right-item a:hover {
+  text-decoration: none;
+  color: #00838b;
+}
+/* 
+==================================================================================
 User Summary
 ==================================================================================
 */
 
-div#topbanner {
+div#summaryBanner {
   height: 40px;
   background-color: #00838b;
   color: white;
   overflow: hidden;
   position: relative;
 }
-div#topbanner div.inner {
+div#summaryBanner div.inner {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-transition: all 0.25s linear!important;
   transition: all 0.25s linear!important;
 }
-div#topbanner div.inner > div {
+div#summaryBanner div.inner > div {
   height: 40px;
 }
-div#topbanner div.inner div#summary {
+div#summaryBanner div.inner div#summary {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   /*display: -webkit-flex; */
   display: flex;
 }
-div#topbanner div.inner div#summary div.flx {
+div#summaryBanner div.inner div#summary div.flx {
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   /*box-flex: @ratio;*/
   flex: 1;
 }
-div#topbanner div.inner div#summary div.flx > div {
+div#summaryBanner div.inner div#summary div.flx > div {
   padding-top: 3px;
 }
-div#topbanner div.inner div#summary div.flx > div label {
+div#summaryBanner div.inner div#summary div.flx > div label {
   display: inline-block;
   text-align: right;
 }
-div#topbanner div.inner div#summary div.flx > div label.col1 {
+div#summaryBanner div.inner div#summary div.flx > div label.col1 {
   width: 60px;
 }
-div#topbanner div.inner div#summary div.flx > div label.col2 {
+div#summaryBanner div.inner div#summary div.flx > div label.col2 {
   width: 40px;
 }
-div#topbanner div.inner div#summary div.flx > div span {
+div#summaryBanner div.inner div#summary div.flx > div span {
   display: inline-block;
   text-align: right;
   min-width: 65px;
 }
-div#topbanner div.inner div#summary #btnViewSearch {
+div#summaryBanner div.inner div#summary #btnViewSearch {
   height: 30px;
   width: 30px;
   position: relative;
   top: 4px;
   left: -6px;
-  background: #007981 url(images/search.svg) no-repeat 65% 50%;
-  border: solid 1px #006b72;
   border-radius: 4px;
 }
-div#topbanner div.inner div#search span {
+div#summaryBanner div.inner div#search span {
   display: inline-block;
   height: 30px;
   width: 60px;
   line-height: 30px;
   margin: 4px 0 0 10px;
   text-align: center;
-  border: solid 1px #006b72;
   border-radius: 3px;
-  background-color: #007981;
   font-size: 0.9em;
 }
-div#topbanner div.inner div#search input {
+div#summaryBanner div.inner div#search input {
   margin-left: 10px;
   border: solid 1px #aaaaaa;
 }
-div#topbanner div.inner.summary {
+div#summaryBanner div.inner.summary {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
-div#topbanner div.inner.search {
+div#summaryBanner div.inner.search {
   -webkit-transform: translate3d(0, -40px, 0);
   transform: translate3d(0, -40px, 0);
+}
+/* 
+==================================================================================
+Tab Bar
+==================================================================================
+*/
+
+section#tabbar {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  /*display: -webkit-flex; */
+  display: flex;
+}
+section#tabbar div.tab {
+  height: 50px;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  /*box-flex: @ratio;*/
+  flex: 1;
+}
+section#tabbar div.tab div.inner {
+  position: relative;
+  width: 100%;
+}
+section#tabbar div.tab div.inner div.title {
+  font-size: 0.8em;
+  height: 50px;
+  margin: 0 0 0 0;
+  padding: 0;
+  text-align: center;
+  line-height: 85px;
+  color: #b0b0b0;
+}
+section#tabbar div.tab div.inner div.notify {
+  height: 15px;
+  width: 15px;
+  margin: -17px auto 0 auto;
+  position: relative;
+  top: -32px;
+  left: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  font-size: 0.9em;
 }
 /* 
 ==================================================================================
@@ -456,10 +601,7 @@ User Controls
 /*--Numeric Up/Down control--------------------------------------------------------*/
 
 .numericUpDown {
-  /*display:inline-block;*/
   margin-right: 5px;
-  /*.border;*/
-
 }
 .numericUpDown > div {
   float: left;
@@ -511,6 +653,13 @@ User Controls
 .numericUpDown .ctrl .up.false,
 .numericUpDown .ctrl .down.false {
   background-color: #d0d0d0;
+}
+.numericUpDownCtrlDetail {
+  font-size: 0.8em;
+  height: 30px;
+}
+.numericUpDownCtrlDetail > label {
+  line-height: 38px;
 }
 /*--Form row--------------------------------------------------------*/
 
@@ -569,14 +718,56 @@ Views
 ==================================================================================
 */
 
-.numericUpDownCtrlDetail {
-  font-size: 0.8em;
-  height: 30px;
-  /*.border;*/
+/*--Menu--------------------------------------------------------*/
 
+div.priceinfoheader {
+  padding: 2px 0 0 40px;
+  height: 18px;
+  background-color: #909090;
 }
-.numericUpDownCtrlDetail > label {
-  line-height: 38px;
+div.priceinfoheader > span {
+  display: inline-block;
+  width: 62px;
+  font-size: 0.9em;
+}
+div.menu article {
+  height: 42px;
+  border: solid 1px #aaaaaa;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 4px 0 0 4px;
+}
+div.menu article > div {
+  height: 42px;
+  padding: 0 0 0 5px;
+}
+div.menu article > div.nav {
+  padding: 0;
+}
+div.main.menu article > div {
+  padding: 0 0 0 5px;
+  line-height: 42px;
+}
+div.price.menu article {
+  padding: 4px 0 0 40px;
+}
+div.price.menu article .priceinfo {
+  margin: 4px 0 0 0;
+}
+div.price.menu article .priceinfo .title {
+  font-weight: bold;
+}
+div.price.menu article .priceinfo > span {
+  display: inline-block;
+  width: 62px;
+  font-size: 0.9em;
+}
+div.price.menu article .priceinfo .price.plus {
+  color: #00838b;
+}
+div.price.menu article .priceinfo .price.minus {
+  color: #c83933;
 }
 /* 
 ==================================================================================
@@ -604,23 +795,24 @@ Trade Icons
 Android
 ==================================================================================
 */
-
-/* 
-==================================================================================
-WP8
-==================================================================================
-*/
-
-/* 
-==================================================================================
-iOS
-==================================================================================
-*/
-
-html.ios {
+.androidTabBarGrad {
+  background: -webkit-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: -o-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: -moz-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: linear-gradient(#5a595a, #202420 50%, #202420);
+}
+.androidSummaryBannerGrad {
+  background: -webkit-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: -o-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: -moz-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: linear-gradient(#303b43, #0e1417 50%, #0e1417);
+}
+html.android {
   color: #121212;
   font-family: -apple-system-font;
   font-size: 0.80952381;
+  /*--Summary Banner--------------------------------------------------------*/
+
   /*--Tool Bar--------------------------------------------------------*/
 
   /*--Tab Bar--------------------------------------------------------*/
@@ -628,179 +820,189 @@ html.ios {
   /*--Menu--------------------------------------------------------*/
 
 }
-html.ios section#main {
-  overflow: auto;
+html.android div#summaryBanner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #bbbcbb;
+  border: solid 1px black;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background: -webkit-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: -o-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: -moz-linear-gradient(#303b43, #0e1417 50%, #0e1417);
+  background: linear-gradient(#303b43, #0e1417 50%, #0e1417);
 }
-html.ios .toolbar-item {
-  background-color: #d1d1d1;
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  /*box-flex: @ratio;*/
-  flex: 1;
-  height: 42px;
-  line-height: 42px;
+html.android div#summaryBanner div.inner div#summary #btnViewSearch {
+  background: #303030 url(images/search.svg) no-repeat 65% 50%;
+  border: solid 1px #101010;
 }
-html.ios .toolbar-item a:link,
-html.ios .toolbar-item a:visited,
-html.ios .toolbar-item a:hover {
-  text-decoration: none;
-  color: #00838b;
+html.android div#summaryBanner div.inner div#search span {
+  background-color: #303030;
+  border: solid 1px #101010;
 }
-html.ios section#toolbar {
-  height: 50px;
-  margin: 0;
+html.android section#toolbar {
   background: -webkit-linear-gradient(#666666, black 50%, black);
   background: -o-linear-gradient(#666666, black 50%, black);
   background: -moz-linear-gradient(#666666, black 50%, black);
   background: linear-gradient(#666666, black 50%, black);
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  /*display: -webkit-flex; */
-  display: flex;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
 }
-html.ios section#toolbar #toolbar-left-item {
-  background-color: #d1d1d1;
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  /*box-flex: @ratio;*/
-  flex: 1;
-  height: 42px;
-  line-height: 42px;
-  padding-left: 18px;
-  background: url(images/ios/left-green.svg) no-repeat 5% 50%;
-  font-size: 1.0em;
-  white-space: nowrap;
-  color: #00838b;
+html.android section#tabbar {
+  border: solid 4px #6a696a;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }
-html.ios section#toolbar #toolbar-left-item a:link,
-html.ios section#toolbar #toolbar-left-item a:visited,
-html.ios section#toolbar #toolbar-left-item a:hover {
-  text-decoration: none;
-  color: #00838b;
+html.android section#tabbar div.tab {
+  background: -webkit-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: -o-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: -moz-linear-gradient(#5a595a, #202420 50%, #202420);
+  background: linear-gradient(#5a595a, #202420 50%, #202420);
+  border: solid 1px black;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
 }
-html.ios section#toolbar h1 {
-  font-size: 1.5em;
-  -moz-box-flex: 3;
-  -webkit-box-flex: 3;
-  -ms-flex: 3;
-  /*box-flex: @ratio;*/
-  flex: 3;
-  text-align: center;
-  color: white;
-}
-html.ios section#toolbar #toolbar-right-item {
-  background-color: #d1d1d1;
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  /*box-flex: @ratio;*/
-  flex: 1;
-  height: 42px;
-  line-height: 42px;
-  text-align: center;
-  padding-right: 3px;
-  visibility: hidden;
-}
-html.ios section#toolbar #toolbar-right-item a:link,
-html.ios section#toolbar #toolbar-right-item a:visited,
-html.ios section#toolbar #toolbar-right-item a:hover {
-  text-decoration: none;
-  color: #00838b;
-}
-html.ios section#tabbar {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: 0;
-  width: 99%;
-  height: 50px;
-  white-space: nowrap;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  /*display: -webkit-flex; */
-  display: flex;
-  overflow: hidden;
-}
-html.ios section#tabbar > div {
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  /*box-flex: @ratio;*/
-  flex: 1;
-}
-html.ios section#tabbar > div div.inner {
+html.android section#tabbar div.tab div.inner {
   position: relative;
   width: 100%;
 }
-html.ios section#tabbar > div div.inner div.title {
-  font-size: 0.8em;
-  height: 50px;
-  margin: 0 0 0 0;
-  padding: 0;
-  text-align: center;
-  line-height: 85px;
-  color: #b0b0b0;
+html.android section#tabbar div.tab div.inner div.title {
+  line-height: 70px;
+  color: white;
 }
-html.ios section#tabbar > div div.inner div.notify {
+html.android section#tabbar div.tab div.inner div.notify {
+  height: 15px;
+  width: 15px;
+  top: -30px;
+  left: 0;
+  border: solid 1px white;
+  background-color: #606060;
+  border-radius: 4px;
+}
+html.android section#tabbar div.tab:last-child {
+  border: none;
+}
+html.android section#tabbar div.tab.selected {
+  background: none;
+  background-color: #6a696a;
+}
+html.android div.priceinfoheader {
+  background-color: black;
+}
+html.android div.menu {
+  background-color: #1e1e1e;
+  color: #bbbcbb;
+}
+html.android div.menu article {
+  border: solid 1px #333734;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+html.android div.menu article > div.nav {
+  padding: 0;
+}
+/* 
+==================================================================================
+WP8
+==================================================================================
+*/
+/* 
+==================================================================================
+iOS
+==================================================================================
+*/
+html.ios {
+  color: #121212;
+  font-family: -apple-system-font;
+  font-size: 0.80952381;
+  /*--Tool Bar--------------------------------------------------------*/
+
+  /*--Summary Banner--------------------------------------------------------*/
+
+  /*--Tab Bar--------------------------------------------------------*/
+
+  /*--Menu--------------------------------------------------------*/
+
+}
+html.ios section#toolbar {
+  background: -webkit-linear-gradient(#666666, black 50%, black);
+  background: -o-linear-gradient(#666666, black 50%, black);
+  background: -moz-linear-gradient(#666666, black 50%, black);
+  background: linear-gradient(#666666, black 50%, black);
+}
+html.ios section#toolbar #toolbar-left-item {
+  padding-left: 18px;
+  background: url(images/ios/left-green.svg) no-repeat 5% 50%;
+}
+html.ios section#toolbar h1 {
+  color: white;
+}
+html.ios section#toolbar #toolbar-right-item {
+  padding-right: 3px;
+}
+html.ios div#summaryBanner div.inner div#summary #btnViewSearch {
+  background: #006b72 url(images/search.svg) no-repeat 65% 50%;
+  border: solid 1px #005358;
+}
+html.ios div#summaryBanner div.inner div#search span {
+  background-color: #006b72;
+  border: solid 1px #005358;
+}
+html.ios section#tabbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+html.ios section#tabbar div.tab div.inner {
+  position: relative;
+  width: 100%;
+}
+html.ios section#tabbar div.tab div.inner div.notify {
   height: 15px;
   width: 15px;
   border: solid 1px white;
   background-color: red;
-  margin: 0 auto 0 auto;
-  position: relative;
-  top: -48px;
-  left: 15px;
-  font-weight: bold;
-  text-align: center;
-  color: white;
   border-radius: 6px;
-  font-size: 0.9em;
 }
 html.ios section#tabbar div.watchlist {
-  background: white url(images/tab-bar-icons2.png) no-repeat 50% 5px;
+  background: white url(images/ios/tab-bar-icons2.png) no-repeat 50% 5px;
 }
 html.ios section#tabbar div.watchlist.selectedoff {
-  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% 5px;
+  background: white url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% 5px;
 }
 html.ios section#tabbar div.browse {
-  background: white url(images/tab-bar-icons2.png) no-repeat 50% -50px;
+  background: white url(images/ios/tab-bar-icons2.png) no-repeat 50% -50px;
 }
 html.ios section#tabbar div.browse.selected {
-  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -50px;
+  background: white url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -50px;
 }
 html.ios section#tabbar div.position {
-  background: white url(images/tab-bar-icons2.png) no-repeat 50% -105px;
+  background: white url(images/ios/tab-bar-icons2.png) no-repeat 50% -105px;
 }
 html.ios section#tabbar div.position.selected {
-  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -105px;
+  background: white url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -105px;
 }
 html.ios section#tabbar div.account {
-  background: white url(images/tab-bar-icons2.png) no-repeat 50% -160px;
+  background: white url(images/ios/tab-bar-icons2.png) no-repeat 50% -160px;
 }
 html.ios section#tabbar div.account.selected {
-  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -160px;
+  background: white url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -160px;
 }
 html.ios section#tabbar div.help {
-  background: white url(images/tab-bar-icons2.png) no-repeat 50% -215px;
+  background: white url(images/ios/tab-bar-icons2.png) no-repeat 50% -215px;
 }
 html.ios section#tabbar div.help.selected {
-  background: white url(images/tab-bar-icons2-sel.png) no-repeat 50% -215px;
+  background: white url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -215px;
 }
 html.ios section#tabbar div.selected {
   color: #007aff;
 }
 html.ios div.priceinfoheader {
-  padding: 2px 0 0 40px;
-  height: 18px;
   background: -webkit-linear-gradient(#666666, black 50%, black);
   background: -o-linear-gradient(#666666, black 50%, black);
   background: -moz-linear-gradient(#666666, black 50%, black);
@@ -811,50 +1013,13 @@ html.ios div.priceinfoheader {
   border-right: none;
   border-top: none;
 }
-html.ios div.priceinfoheader > span {
-  display: inline-block;
-  width: 62px;
-  font-size: 0.9em;
-}
-html.ios div.menu article {
-  height: 42px;
-  border: solid 1px #aaaaaa;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+html.ios div.menu {
   background-color: white;
-  padding: 4px 0 0 4px;
-}
-html.ios div.menu article > div {
-  height: 42px;
-  padding: 0 0 0 5px;
 }
 html.ios div.menu article > div.nav {
-  background: white url(images/ios/right.svg) no-repeat right 50%;
+  background: url(images/ios/right.svg) no-repeat right 50%;
   padding: 0;
 }
-html.ios div.main.menu article > div {
-  padding: 0 0 0 5px;
-  line-height: 42px;
-}
 html.ios div.price.menu article {
-  background: white url(images/settings.png) no-repeat 3px 50%;
-  padding: 4px 0 0 40px;
-}
-html.ios div.price.menu article .priceinfo {
-  margin: 4px 0 0 0;
-}
-html.ios div.price.menu article .priceinfo .title {
-  font-weight: bold;
-}
-html.ios div.price.menu article .priceinfo > span {
-  display: inline-block;
-  width: 62px;
-  font-size: 0.9em;
-}
-html.ios div.price.menu article .priceinfo .price.plus {
-  color: #00838b;
-}
-html.ios div.price.menu article .priceinfo .price.minus {
-  color: #c83933;
+  background: url(images/settings.png) no-repeat 3px 50%;
 }

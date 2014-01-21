@@ -18,6 +18,8 @@ ul {
 }
 
 
+
+
 /* 
 ==================================================================================
 Constants
@@ -65,12 +67,31 @@ Constants
 @tableRowHeight: 42px;
 @toolBarHeight: 50px;
 @tabBarHeight: 50px;
-@topBannerHeight: 40px;
+@summaryBannerHeight: 40px;
 
 @mainHeight: @screenHeight - @toolBarHeight - @tabBarHeight;
 @tabWidth: @screenWidth / 5;
 
 
+/* 
+==================================================================================
+Dev
+==================================================================================
+*/
+div#dev {
+    position:absolute;
+    top:0;
+    left:0;
+    height:20px;
+    width:200px;
+    span {
+        margin-left:20px;
+    }
+    span.selected {
+        font-weight:bold;
+        color: @redColor;
+    }
+}
 
 
 /* 
@@ -82,6 +103,7 @@ section#app {
     height:100%; 
     width:100%;
     margin-top:@marginTopHeight;
+    // overflow:hidden;
 
     section#main {
         overflow:auto;
@@ -93,11 +115,51 @@ section#app {
 
 /* 
 ==================================================================================
+Tool Bar
+==================================================================================
+*/
+.toolbar-item {
+    .flexRatio;
+    height: @toolBarHeight - 8;
+    line-height: @toolBarHeight - 8;
+    a:link, a:visited, a:hover {
+        text-decoration: none;
+        color: @toolBarButtonColor;
+    }
+}
+section#toolbar {
+    height: @toolBarHeight;
+    margin:0;
+    .flex;
+    .centerV;
+    color:white;
+    #toolbar-left-item {
+        .toolbar-item;
+        white-space: nowrap;
+        color:@linkColor;
+    }
+    h1 {
+        font-size: 1.5em;
+        .flexRatio(3);
+        text-align: center;
+    }
+    #toolbar-right-item {
+        .toolbar-item;
+        text-align: center;
+        padding-right: 3px;
+        visibility: hidden;
+    }
+}
+
+
+
+/* 
+==================================================================================
 User Summary
 ==================================================================================
 */
-div#topbanner {
-    height:@topBannerHeight;
+div#summaryBanner {
+    height:@summaryBannerHeight;
     background-color: @greenColor;
     color:white;
     overflow:hidden;
@@ -109,7 +171,7 @@ div#topbanner {
         -webkit-transition: all 0.25s linear!important;
         transition: all 0.25s linear!important;
         > div {
-            height:@topBannerHeight;
+            height:@summaryBannerHeight;
         }
         div#summary {
             .flex;
@@ -134,15 +196,12 @@ div#topbanner {
                     }
                 }
             }
-
             #btnViewSearch{
                 height:30px;
                 width:30px;
                 position:relative;
                 top:4px;
                 left:-6px;
-                background: darken(@greenColor, 2%) url(images/search.svg) no-repeat 65% 50%;
-                .border(darken(@greenColor, 5%));
                 .roundCorners(4px);
             }
         }
@@ -154,9 +213,7 @@ div#topbanner {
                 line-height: 30px;
                 margin:4px 0 0 10px;
                 text-align: center;
-                .border(darken(@greenColor, 5%));
                 .roundCorners(3px);
-                background-color: darken(@greenColor, 2%);
                 font-size: 0.9em;
             }
             input {
@@ -164,12 +221,6 @@ div#topbanner {
                 .border;
             }
         }
-        
-
-        
-            
-        
-        
     }
     div.inner.summary{
         -webkit-transform: translate3d(0,0,0);
@@ -179,12 +230,52 @@ div#topbanner {
         -webkit-transform: translate3d(0,-40px,0);
         transform: translate3d(0,-40px,0);
     }
-
 }
 
 
 
 
+/* 
+==================================================================================
+Tab Bar
+==================================================================================
+*/
+section#tabbar {
+    margin:0;
+    padding:0;
+    height:@tabBarHeight;
+    .flex;
+    
+    div.tab {
+        height:@tabBarHeight;
+        .flexRatio;  // allow tabs to distribute equally in available space
+        div.inner {
+            position:relative;
+            width:100%;
+            div.title {
+                font-size: 0.8em;
+                height: @tabBarHeight;
+                margin:0 0 0 0;
+                padding:0;
+                text-align: center;
+                line-height: 85px;
+                color:@tabBarTextColor;
+            }
+            div.notify {
+                height:15px;
+                width:15px;
+                margin:-17px auto 0 auto;
+                position:relative;
+                top: -32px;
+                left: 15px;
+                font-weight: bold;
+                text-align: center;
+                color:white;
+                font-size: 0.9em;
+            }
+        }
+    }
+}
 
 
 /* 
@@ -272,26 +363,32 @@ Alignment
 Borders
 ==================================================================================
 */
-.border(@col: #aaa) {
-    border:solid 1px @col;
+.border(@col: #aaa, @width: 1px) {
+    border:solid @width @col;
 }
 
-.borderT(@col: #aaa) {
-    .border(@col);
+.borderT(@col: #aaa, @width: 1px) {
+    .border(@col, @width);
     border-left:none;
     border-right:none;
     border-bottom:none;
 }
-.borderB(@col: #aaa) {
-    .border(@col);
+.borderB(@col: #aaa, @width: 1px) {
+    .border(@col, @width);
     border-left:none;
     border-right:none;
     border-top:none;
 }
-.borderTB(@col: #aaa) {
-    .border(@col);
+.borderTB(@col: #aaa, @width: 1px) {
+    .border(@col, @width);
     border-left:none;
     border-right:none;
+}
+.borderR(@col: #aaa, @width: 1px) {
+    .border(@col, @width);
+    border-left:none;
+    border-top:none;
+    border-bottom:none;
 }
 
 /* 
@@ -580,14 +677,10 @@ User Controls
 
 /*--Numeric Up/Down control--------------------------------------------------------*/
 .numericUpDown {
-    /*display:inline-block;*/
     margin-right:5px;
-
-    /*.border;*/
     > div {
         float:left;
     }
-
     .title {
         width:45px;
         height:20px;
@@ -603,13 +696,11 @@ User Controls
         width:120px;
         padding:0;
         white-space: nowrap;
-
         > div {
             margin:0;
             height:30px;
             float:left;
         }
-
         input {
             width:60px;
             height:30px;
@@ -620,7 +711,6 @@ User Controls
             font-size: 1.5em;
             text-align: center;
         }
-
         .up,.down {
             width:30px;
             background-color: @buttonColor;
@@ -637,6 +727,14 @@ User Controls
         }
     }
 }
+.numericUpDownCtrlDetail {
+    font-size: 0.8em;
+    height:30px;
+    > label {
+        line-height: 38px;
+    }
+}
+
 
 /*--Form row--------------------------------------------------------*/
 .row {
@@ -663,6 +761,7 @@ User Controls
     }
 
 }
+
 
 /*--On/off switch--------------------------------------------------------*/
 .switch {
@@ -701,13 +800,62 @@ Views
 ==================================================================================
 */
 
-.numericUpDownCtrlDetail {
-    font-size: 0.8em;
-    height:30px;
-    /*.border;*/
 
-    > label {
-        line-height: 38px;
+/*--Menu--------------------------------------------------------*/
+div.priceinfoheader {
+    padding:2px 0 0 40px;
+    height:18px;
+    background-color: #909090;
+    > span {
+        display:inline-block;
+        width:62px;
+        font-size: 0.9em;
+    }
+}
+div.menu {
+    article {
+        height: @tableRowHeight;
+        .borderB;
+        padding:4px 0 0 4px;
+        > div {
+            height: @tableRowHeight;
+            padding:0 0 0 5px;
+        }
+        > div.nav {
+            padding:0
+        }
+    }
+}
+div.main.menu {
+    article {
+        > div {
+            padding:0 0 0 5px;
+            line-height: @tableRowHeight;
+        }
+    }
+}
+div.price.menu {
+    article {
+        padding:4px 0 0 40px;
+        .priceinfo {
+            margin:4px 0 0 0;
+            .title {
+                font-weight: bold;
+            }
+            > span {
+                display:inline-block;
+                width:62px;
+                font-size: 0.9em;
+            }
+            .price {
+            }
+            .price.plus {
+                color: @greenColor;
+            }
+            .price.minus {
+                color: @redColor;
+            }
+        }
     }
 }
 
@@ -742,6 +890,117 @@ Trade Icons
 Android
 ==================================================================================
 */
+@androidTabBarGradColorFrom: #5a595a;
+@androidTabBarGradColorTo: #202420;
+@androidTabBarBottomBorderColor: #6a696a;
+.androidTabBarGrad {
+    background: -webkit-linear-gradient(@androidTabBarGradColorFrom, @androidTabBarGradColorTo 50%, @androidTabBarGradColorTo);
+    background: -o-linear-gradient(@androidTabBarGradColorFrom, @androidTabBarGradColorTo 50%, @androidTabBarGradColorTo); 
+    background: -moz-linear-gradient(@androidTabBarGradColorFrom, @androidTabBarGradColorTo 50%, @androidTabBarGradColorTo); 
+    background: linear-gradient(@androidTabBarGradColorFrom, @androidTabBarGradColorTo 50%, @androidTabBarGradColorTo); 
+}
+
+@androidSummaryBannerGradColorFrom: #303b43;
+@androidSummaryBannerGradColorTo: #0e1417;
+.androidSummaryBannerGrad {
+    background: -webkit-linear-gradient(@androidSummaryBannerGradColorFrom, @androidSummaryBannerGradColorTo 50%, @androidSummaryBannerGradColorTo);
+    background: -o-linear-gradient(@androidSummaryBannerGradColorFrom, @androidSummaryBannerGradColorTo 50%, @androidSummaryBannerGradColorTo); 
+    background: -moz-linear-gradient(@androidSummaryBannerGradColorFrom, @androidSummaryBannerGradColorTo 50%, @androidSummaryBannerGradColorTo); 
+    background: linear-gradient(@androidSummaryBannerGradColorFrom, @androidSummaryBannerGradColorTo 50%, @androidSummaryBannerGradColorTo); 
+}
+
+
+@androidSummaryBannerButtonColor: #303030;
+@androidSummaryBannerButtonBorderColor: #101010;
+@androidTextColorOnDark: #bbbcbb;
+
+html.android {
+    color: @textColor;
+    font-family: -apple-system-font;
+    font-size: 17px/21px;
+
+    /*--Summary Banner--------------------------------------------------------*/
+    div#summaryBanner {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        color:@androidTextColorOnDark;
+        .borderT(#000);
+        .androidSummaryBannerGrad;
+        div.inner {
+            div#summary {
+                #btnViewSearch{
+                    background: @androidSummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%;
+                    .border(@androidSummaryBannerButtonBorderColor);
+                }
+            }
+            div#search {
+                span{
+                    background-color: @androidSummaryBannerButtonColor;
+                    .border(@androidSummaryBannerButtonBorderColor);
+                }
+            }
+        }
+    }
+
+    /*--Tool Bar--------------------------------------------------------*/
+    section#toolbar {
+        .toolbarGrad;
+    }
+
+    /*--Tab Bar--------------------------------------------------------*/
+    section#tabbar {
+        .borderB(@androidTabBarBottomBorderColor, 4px);
+        div.tab {
+            .androidTabBarGrad;
+            .borderR(#000);
+            div.inner {
+                position:relative;
+                width:100%;
+                div.title {
+                    line-height: 70px;
+                    color:white;
+                }
+                div.notify {
+                    height:15px;
+                    width:15px;
+                    top:-30px;
+                    left:0;
+                    .border(#fff);
+                    background-color: #606060;
+                    .roundCorners(4px);
+                }
+            }
+        }
+        div.tab:last-child{
+            border:none;
+        }
+        div.tab.selected {
+            background: none;
+            background-color: @androidTabBarBottomBorderColor;
+        }
+    }
+
+    /*--Menu--------------------------------------------------------*/
+    div.priceinfoheader {
+        background-color: #000;
+    }
+    div.menu {
+        background-color: #1e1e1e;
+        color:@androidTextColorOnDark;
+        article {
+            .borderB(#333734);
+            > div.nav {
+                padding:0
+            }
+        }
+    }
+
+}
+
+
+
 
 
 
@@ -760,7 +1019,8 @@ WP8
 iOS
 ==================================================================================
 */
-
+@iosSummaryBannerButtonColor: darken(@greenColor, 5%);
+@iosSummaryBannerButtonBorderColor: darken(@greenColor, 10%);
 
 
 html.ios {
@@ -768,136 +1028,92 @@ html.ios {
     font-family: -apple-system-font;
     font-size: 17px/21px;
 
-    section#main {
-        overflow: auto;
-    }
 
     /*--Tool Bar--------------------------------------------------------*/
     .toolbar-item {
-        background-color: darken(@toolBarBgColor, 15%);
-        .flexRatio;
-        height: @toolBarHeight - 8;
-        line-height: @toolBarHeight - 8;
-
-        a:link, a:visited, a:hover {
-            text-decoration: none;
-            color: @toolBarButtonColor;
+    }
+    section#toolbar {
+        .toolbarGrad;
+        #toolbar-left-item {
+            padding-left: 18px;
+            background: url(images/ios/left-green.svg) no-repeat 5% 50%;
+        }
+        h1 {
+            color:white;
+        }
+        #toolbar-right-item {
+            padding-right: 3px;
         }
     }
 
-    section#toolbar {
-        height: @toolBarHeight;
-        margin:0;
-        // background-color: @toolBarBgColor;
-        .toolbarGrad;
-        .flex;
-        .centerV;
-        // .borderB;
-
-        #toolbar-left-item {
-            .toolbar-item;
-            padding-left: 18px;
-            background: url(images/ios/left-green.svg) no-repeat 5% 50%;
-            font-size: 1.0em;
-            white-space: nowrap;
-            color:@linkColor;
-
-        }
-        h1 {
-            font-size: 1.5em;
-            .flexRatio(3);
-            text-align: center;
-            color:white;
-            // line-height:70px;
-        }
-        #toolbar-right-item {
-            .toolbar-item;
-            text-align: center;
-            padding-right: 3px;
-            visibility: hidden;
+    /*--Summary Banner--------------------------------------------------------*/
+   
+    div#summaryBanner {
+        div.inner {
+            div#summary {
+                #btnViewSearch{
+                    background: @iosSummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%;
+                    .border(@iosSummaryBannerButtonBorderColor);
+                }
+            }
+            div#search {
+                span{
+                    background-color: @iosSummaryBannerButtonColor;
+                    .border(@iosSummaryBannerButtonBorderColor);
+                }
+            }
         }
     }
 
     /*--Tab Bar--------------------------------------------------------*/
     section#tabbar {
-        margin:0;
-        padding:0;
         position:absolute;
         bottom:0;
-        width:99%;
-        height:@tabBarHeight;
-        white-space: nowrap;
-        .flex;
-        overflow:hidden;
-        
-        > div {
-            .flexRatio;  // allow tabs to distribute equally in available space
+        left:0;
+        width:100%;
+        div.tab {
             div.inner {
                 position:relative;
                 width:100%;
-                div.title {
-                    font-size: 0.8em;
-                    height: @tabBarHeight;
-                    margin:0 0 0 0;
-                    padding:0;
-                    text-align: center;
-                    line-height: 85px;
-                    color:@tabBarTextColor;
-                }
                 div.notify {
                     height:15px;
                     width:15px;
                     .border(#fff);
                     background-color: red;
-                    margin:0 auto 0 auto;
-                    position:relative;
-                    top: -48px;
-                    left: 15px;
-                    font-weight: bold;
-                    text-align: center;
-                    color:white;
                     .roundCorners(6px);
-                    font-size: 0.9em;
                 }
             }
         }
         div.watchlist {
-            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% 5px;
+            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% 5px;
         }
         div.watchlist.selectedoff {
-            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% 5px;
+            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% 5px;
         }
-
         div.browse {
-            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -50px;
+            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -50px;
         }
         div.browse.selected {
-            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -50px;
+            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -50px;
         }
-
         div.position {
-            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -105px;
+            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -105px;
         }
         div.position.selected {
-            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -105px;
+            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -105px;
         }
-
         div.account {
-            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -160px;
+            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -160px;
         }
         div.account.selected {
-            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -160px;
+            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -160px;
         }
-
         div.help {
-            background: #fff url(images/tab-bar-icons2.png) no-repeat 50% -215px;
+            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -215px;
         }
         div.help.selected {
-            background: #fff url(images/tab-bar-icons2-sel.png) no-repeat 50% -215px;
+            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -215px;
         }
-
-
-
         div.selected {
             color:@tabBarActiveTextColor;
         }
@@ -905,69 +1121,25 @@ html.ios {
 
     /*--Menu--------------------------------------------------------*/
     div.priceinfoheader {
-        padding:2px 0 0 40px;
-        height:18px;
         .toolbarGrad;
         color:white;
         .borderB;
-        > span {
-            display:inline-block;
-            width:62px;
-            font-size: 0.9em;
-        }
     }
-
     div.menu {
+        background-color: #fff;
         article {
-            height: @tableRowHeight;
-            .borderB;
-            background-color: #fff;
-            padding:4px 0 0 4px;
-            > div {
-                height: @tableRowHeight;
-                padding:0 0 0 5px;
-            }
             > div.nav {
-                background: #fff url(images/ios/right.svg) no-repeat right 50%;
+                background: url(images/ios/right.svg) no-repeat right 50%;
                 padding:0
             }
         }
     }
-
-    div.main.menu {
-        article {
-            > div {
-                padding:0 0 0 5px;
-                line-height: @tableRowHeight;
-            }
-        }
-    }
-
     div.price.menu {
         article {
-            background: #fff url(images/settings.png) no-repeat 3px 50%;
-            padding:4px 0 0 40px;
-            .priceinfo {
-                margin:4px 0 0 0;
-                .title {
-                    font-weight: bold;
-                }
-                > span {
-                    display:inline-block;
-                    width:62px;
-                    font-size: 0.9em;
-                }
-                .price {
-                }
-                .price.plus {
-                    color: @greenColor;
-                }
-                .price.minus {
-                    color: @redColor;
-                }
-            }
+            background: url(images/settings.png) no-repeat 3px 50%;
         }
     }
+
 }
 
 

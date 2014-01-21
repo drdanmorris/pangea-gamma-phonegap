@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en" ng-app="myApp" class="ios">
+<html lang="en" ng-app="myApp" class="{{navigation.platform}}" ng-controller="AppController" >
 <head>
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
@@ -20,13 +20,15 @@
 
 </head>
 <body>
-    <section id="app" ng-controller="AppController" class="{{navigation.appClass}}">
+    <div id="dev">
+        <span ng-click="platform('ios')" ng-class="navigation.platform === 'ios' ? 'selected' : ''">iOS</span>
+        <span ng-click="platform('android')" ng-class="navigation.platform === 'android' ? 'selected' : ''">Android</span>
+    </div>
+    <section id="app" class="{{navigation.appClass}}">
         <my-tool-bar></my-tool-bar>
-        
         <!-- Summary Banner -->
-        <div id="topbanner">
+        <div id="summaryBanner">
             <div class="inner {{navigation.bannerClass}}">
-                
                 <div id="summary">
                     <div class="flx col1">
                         <div>
@@ -46,17 +48,15 @@
                     </div>
                     <div id="btnViewSearch" ng-click="showSearch()"></div>
                 </div>
-
                 <div id="search">
                     <input type="text" model="search" /><span id="btnDoSearch" ng-click="doSearch()">Search</span><span id="btn" ng-click="showSummary()">Cancel</span>
                 </div>
-
             </div>
         </div>
+        <my-tab-bar></my-tab-bar>
         <section id="main" class="slidecontainer" style="height:{{navigation.mainHeight}}px">
             <div ng-view class="slide"></div>
         </section>
-        <my-tab-bar></my-tab-bar>
     </section>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" src="js/index.js"></script>

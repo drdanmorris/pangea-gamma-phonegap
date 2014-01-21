@@ -238,7 +238,8 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         marginTop: 20,
         toolBarHeight: 50,
         summaryBannerHeight: 40,
-        tabBarHeight: 50
+        tabBarHeight: 50,
+        android: 5
     };
     var dimensionsAll = 0;
     for(var prop in dimension)
@@ -261,6 +262,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         back: '',
         appClass: '',
         bannerClass: 'summary',
+        platform: 'ios',
         mainHeight: 0,
 
         // getVrefForTab: function (tabIndex) {
