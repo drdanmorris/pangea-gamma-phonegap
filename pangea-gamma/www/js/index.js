@@ -21,7 +21,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
         var screenHeight = window.innerHeight;
-        document.querySelector('#main').style.height = (screenHeight - 162) + 'px';
+        //document.querySelector('#main').style.height = (screenHeight - 162) + 'px';
     },
     // Bind Event Listeners
     //

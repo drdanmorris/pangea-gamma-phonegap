@@ -21,6 +21,9 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
         $scope.showSummary = function() {
             viewsvc.bannerClass = 'summary';
         };
+        viewsvc.setMainHeight();
+
+
     }
 
 ]);

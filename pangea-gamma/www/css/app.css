@@ -31,6 +31,7 @@ Master View Sections
 section#app {
   height: 100%;
   width: 100%;
+  margin-top: 20px;
 }
 section#app section#main {
   overflow: auto;
@@ -361,8 +362,8 @@ User Controls
 /*--Sell Buy Button--------------------------------------------------------*/
 
 .sellBuyBtn {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 8px;
+  margin-bottom: 12px;
 }
 .sellBuyBtn .inner {
   margin: 0 8px 0 8px;

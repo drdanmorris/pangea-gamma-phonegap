@@ -233,6 +233,18 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         return this.vref;
     };
 
+    var dimension = {
+        marginTop: 20,
+        toolBarHeight: 50,
+        summaryBannerHeight: 40,
+        tabBarHeight: 50,
+        priceMenuHeadingRowHeight: 20
+    };
+    var dimensionsAll = 0;
+    for(var prop in dimension)
+        if(dimension.hasOwnProperty(prop))
+            dimensionsAll += dimension[prop];
+
     var viewsvc = {
         title: 'title from Svc',
         vref: null,
@@ -249,10 +261,16 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
         back: '',
         appClass: '',
         bannerClass: 'summary',
+        mainHeight: 0,
+
         // getVrefForTab: function (tabIndex) {
         //     this.tabIndex = tabIndex;
         //     this.tab = this.tabs[this.tabIndex];
         // },
+        setMainHeight: function() {
+            this.mainHeight = window.innerHeight - dimensionsAll; 
+            if(!this.vref || (this.vref.type !== 'menupr')) this.mainHeight += dimension.priceMenuHeadingRowHeight;
+        },
         navigateTab: function(idx) {
             this.tabIndex = idx;
             this.tab = this.tabs[idx];
@@ -280,6 +298,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
             }
             this.tab.vref = vref;
             $location.path(vref.raw);
+            this.setMainHeight();
         }
     };
     viewsvc.tab = viewsvc.tabs[0];

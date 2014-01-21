@@ -59,7 +59,7 @@ Constants
 
 
 // Dimensions
-@marginTopHeight: 0; //20px;
+@marginTopHeight: 20px;
 @screenHeight: 450px;
 @screenWidth: 320px;
 @tableRowHeight: 42px;
@@ -79,12 +79,11 @@ Master View Sections
 ==================================================================================
 */
 section#app {
-    height:100%; //@screenHeight;
+    height:100%; 
     width:100%;
+    margin-top:@marginTopHeight;
 
     section#main {
-        // height:350px; //100%;
-        //margin-bottom:@tabBarHeight;
         overflow:auto;
         background-color:@bgColor;
     }
@@ -495,8 +494,8 @@ User Controls
 
 /*--Sell Buy Button--------------------------------------------------------*/
 .sellBuyBtn {
-    margin-top:10px;
-    margin-bottom:20px;
+    margin-top:8px;
+    margin-bottom:12px;
     .inner {
         // width:280px; 
         margin:0 8px 0 8px;  
