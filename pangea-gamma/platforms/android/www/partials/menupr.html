@@ -1,0 +1,19 @@
+﻿<div class="price menu">
+    <div class="priceinfoheader">
+        <span>Sell</span>
+        <span>Buy</span>
+        <span>Change</span>
+        <span>% Change</span>
+    </div>
+    <article ng-repeat="item in menu" ng-click="navigation.navigate(item.navigateVref);">
+        <div class="nav">
+            <div class="title">{{item.title}}</div>
+            <div class="priceinfo">
+	            <span ng-class="item.chg === 0 ? 'price' : item.chg > 0 ? 'plus price' : 'minus price' ">{{item.sell}}</span>
+	            <span ng-class="item.chg === 0 ? 'price' : item.chg > 0 ? 'plus price' : 'minus price' ">{{item.buy}}</span>
+	            <span ng-class="item.cod > 0 ? 'plus price' : 'minus price' ">{{item.cod}}</span>
+	            <span ng-class="item.cod > 0 ? 'plus price' : 'minus price' ">%{{item.codp}}</span>
+	        </div>
+        </div>
+    </article>
+</div>

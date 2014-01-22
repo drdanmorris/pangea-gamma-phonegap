@@ -7,7 +7,6 @@ body {
     .reset;
     font-family: Arial, helvetica, sans-serif;
     font-size:12px;
-    margin-left:2px;
 }
 
 h1 {
@@ -86,6 +85,7 @@ div#dev {
     width:200px;
     span {
         margin-left:20px;
+        color:#aaa;
     }
     span.selected {
         font-weight:bold;
@@ -102,12 +102,18 @@ Master View Sections
 section#app {
     height:100%; 
     width:100%;
+    padding:0;
+    margin:0;
     margin-top:@marginTopHeight;
+    // margin-left:-2px;
     // overflow:hidden;
 
     section#main {
         overflow:auto;
         background-color:@bgColor;
+        width:100%;
+        padding:0;
+        margin:0;
     }
 
 }
@@ -132,7 +138,6 @@ section#toolbar {
     margin:0;
     .flex;
     .centerV;
-    color:white;
     #toolbar-left-item {
         .toolbar-item;
         white-space: nowrap;
@@ -243,31 +248,23 @@ Tab Bar
 section#tabbar {
     margin:0;
     padding:0;
-    height:@tabBarHeight;
     .flex;
-    
     div.tab {
-        height:@tabBarHeight;
         .flexRatio;  // allow tabs to distribute equally in available space
         div.inner {
-            position:relative;
+            // position:relative;
             width:100%;
             div.title {
                 font-size: 0.8em;
-                height: @tabBarHeight;
                 margin:0 0 0 0;
                 padding:0;
                 text-align: center;
-                line-height: 85px;
-                color:@tabBarTextColor;
             }
             div.notify {
                 height:15px;
                 width:15px;
-                margin:-17px auto 0 auto;
+                margin:0 auto 0 auto;
                 position:relative;
-                top: -32px;
-                left: 15px;
                 font-weight: bold;
                 text-align: center;
                 color:white;
@@ -366,29 +363,18 @@ Borders
 .border(@col: #aaa, @width: 1px) {
     border:solid @width @col;
 }
-
 .borderT(@col: #aaa, @width: 1px) {
-    .border(@col, @width);
-    border-left:none;
-    border-right:none;
-    border-bottom:none;
+    border-top:solid @width @col;
 }
 .borderB(@col: #aaa, @width: 1px) {
-    .border(@col, @width);
-    border-left:none;
-    border-right:none;
-    border-top:none;
+    border-bottom:solid @width @col;
 }
 .borderTB(@col: #aaa, @width: 1px) {
-    .border(@col, @width);
-    border-left:none;
-    border-right:none;
+    border-top:solid @width @col;
+    border-bottom:solid @width @col;
 }
 .borderR(@col: #aaa, @width: 1px) {
-    .border(@col, @width);
-    border-left:none;
-    border-top:none;
-    border-bottom:none;
+    border-right:solid @width @col;
 }
 
 /* 
@@ -468,7 +454,7 @@ Page Slider
     .slide.ng-enter, .slide.ng-leave {
             position: absolute;
             top: 0;
-            //left: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             -webkit-transition: 0.25s linear all;
@@ -910,7 +896,7 @@ Android
 }
 
 
-@androidSummaryBannerButtonColor: #303030;
+@androidSummaryBannerButtonColor: #202020;
 @androidSummaryBannerButtonBorderColor: #101010;
 @androidTextColorOnDark: #bbbcbb;
 
@@ -927,7 +913,7 @@ html.android {
         width: 100%;
         color:@androidTextColorOnDark;
         .borderT(#000);
-        .androidSummaryBannerGrad;
+        .androidTabBarGrad;
         div.inner {
             div#summary {
                 #btnViewSearch{
@@ -947,6 +933,12 @@ html.android {
     /*--Tool Bar--------------------------------------------------------*/
     section#toolbar {
         .toolbarGrad;
+        #toolbar-left-item {
+            background: url(images/platform/hw-back.svg) no-repeat 50% 0;
+        }
+        h1 {
+            color:#fff;
+        }
     }
 
     /*--Tab Bar--------------------------------------------------------*/
@@ -955,17 +947,19 @@ html.android {
         div.tab {
             .androidTabBarGrad;
             .borderR(#000);
+            height:@tabBarHeight;
             div.inner {
                 position:relative;
+                height:@tabBarHeight;
                 width:100%;
                 div.title {
-                    line-height: 70px;
+                    margin-top:3px;
                     color:white;
                 }
                 div.notify {
                     height:15px;
                     width:15px;
-                    top:-30px;
+                    top: -3px;
                     left:0;
                     .border(#fff);
                     background-color: #606060;
@@ -984,7 +978,8 @@ html.android {
 
     /*--Menu--------------------------------------------------------*/
     div.priceinfoheader {
-        background-color: #000;
+        background-color: #202020;
+        box-shadow: 0 1px 6px #000;
     }
     div.menu {
         background-color: #1e1e1e;
@@ -993,6 +988,166 @@ html.android {
             .borderB(#333734);
             > div.nav {
                 padding:0
+            }
+        }
+    }
+
+}
+
+
+/* 
+==================================================================================
+Android 4
+==================================================================================
+*/
+@android4TabBarGradColorFrom: #5a595a;
+@android4TabBarGradColorTo: #202420;
+@android4TabBarBottomBorderColor: #6a696a;
+.android4TabBarGrad {
+    background: -webkit-linear-gradient(@android4TabBarGradColorFrom, @android4TabBarGradColorTo 50%, @android4TabBarGradColorTo);
+    background: -o-linear-gradient(@android4TabBarGradColorFrom, @android4TabBarGradColorTo 50%, @android4TabBarGradColorTo); 
+    background: -moz-linear-gradient(@android4TabBarGradColorFrom, @android4TabBarGradColorTo 50%, @android4TabBarGradColorTo); 
+    background: linear-gradient(@android4TabBarGradColorFrom, @android4TabBarGradColorTo 50%, @android4TabBarGradColorTo); 
+}
+
+@android4MainGradColorFrom: #08090a;
+@android4MainBannerGradColorTo: #21252a;
+.android4MainGrad {
+    background: -webkit-linear-gradient(@android4MainGradColorFrom, @android4MainBannerGradColorTo);
+    background: -o-linear-gradient(@android4MainGradColorFrom, @android4MainBannerGradColorTo); 
+    background: -moz-linear-gradient(@android4MainGradColorFrom, @android4MainBannerGradColorTo); 
+    background: linear-gradient(@android4MainGradColorFrom, @android4MainBannerGradColorTo); 
+}
+
+
+@android4SummaryBannerButtonColor: #172126;
+@android4SummaryBannerButtonBorderColor: #101010;
+@android4TextColorOnDark: #bbbcbb;
+@android4Black: #030303;
+@android4BrightBorderColor: #33b5e5;
+
+html.android4 {
+    color: @textColor;
+    font-size: 18px;
+
+    body {
+        background-color: black;
+        font-family: 'roboto';
+    }
+    section#app {
+        section#main {
+            .android4MainGrad;
+        }
+    }
+
+    /*--Summary Banner--------------------------------------------------------*/
+    div#summaryBanner {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width: 100%;
+        color:@android4TextColorOnDark;
+        .borderT(@android4BrightBorderColor);
+        background:none;
+        background-color: @android4Black;
+        div.inner {
+            div#summary {
+                #btnViewSearch{
+                    background: @android4SummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%;
+                    .border(@android4SummaryBannerButtonBorderColor);
+                }
+            }
+            div#search {
+                span{
+                    background-color: @android4SummaryBannerButtonColor;
+                    .border(@android4SummaryBannerButtonBorderColor);
+                }
+            }
+        }
+    }
+
+    /*--Tool Bar--------------------------------------------------------*/
+    section#toolbar {
+        .toolbarGrad;
+        #toolbar-left-item {
+            background: url(images/platform/hw-back.svg) no-repeat 50% 0;
+        }
+        h1 {
+            font-family: 'robotocondensedbold';
+            font-weight:normal;
+            color:#fff;
+        }
+    }
+    
+
+    /*--Tab Bar--------------------------------------------------------*/
+    section#tabbar {
+        border:none;
+        background-color: @android4Black;
+        .borderT(@android4BrightBorderColor, 1px);
+        padding-top:4px;
+        div.tab {
+            height:38px;
+            .borderB(@android4BrightBorderColor, 1px);
+            margin-right:1px;
+            div.inner {
+                position:relative;
+                width:100%;
+                height: 35px;
+                .borderR(#292a2b);
+                div.title {
+                    .flex;
+                    .centerV;
+                    .centerH;
+                    color:white;
+                    font-size: 0.9em;
+                }
+                div.notifyrow {
+                    height:15px;
+                    div.notify {
+                        height:15px;
+                        width:15px;
+                        margin:0 2px 0 0;
+                        float:right;
+                        top: -2px;
+                        background-color: #42b939;
+                        font-weight:normal;
+                        font-size:0.75em;
+                    }
+                }
+            }
+        }
+        div.tab:last-child{
+            // border:none;
+        }
+        div.tab.selected {
+            background: none;
+            background-color: #030303;
+            div.inner {
+                .borderB(@android4BrightBorderColor, 3px);
+                div.title {  
+                }
+            }
+        }
+    }
+
+    /*--Menu--------------------------------------------------------*/
+    div.priceinfoheader {
+        background-color: #202020;
+        box-shadow: 0 1px 6px #000;
+    }
+    div.menu {
+        background: none;
+        color:@android4TextColorOnDark;
+        article {
+            .borderB(#333734);
+            > div.nav {
+                padding:0;
+                div.title {
+                    // font-weight:bold;
+                    font-family: 'robotobold';
+                    color:#f0f0f0;
+                }
             }
         }
     }
@@ -1036,7 +1191,7 @@ html.ios {
         .toolbarGrad;
         #toolbar-left-item {
             padding-left: 18px;
-            background: url(images/ios/left-green.svg) no-repeat 5% 50%;
+            background: url(images/platform/left-green.svg) no-repeat 5% 50%;
         }
         h1 {
             color:white;
@@ -1071,13 +1226,24 @@ html.ios {
         bottom:0;
         left:0;
         width:100%;
+        background-color: #e0e0e0;
         div.tab {
             div.inner {
                 position:relative;
                 width:100%;
+                height:@tabBarHeight;
+                div.title {
+                    // height:@tabBarHeight;
+                    // line-height:@tabBarHeight + @tabBarHeight/2 + 5;
+                    font-size: 0.9em;
+                    margin-top:15px;
+                }
                 div.notify {
+                    // display:none;
                     height:15px;
                     width:15px;
+                    top: 1px;
+                    left: 10px;
                     .border(#fff);
                     background-color: red;
                     .roundCorners(6px);
@@ -1085,34 +1251,34 @@ html.ios {
             }
         }
         div.watchlist {
-            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% 5px;
+            background: url(images/platform/tab-bar-icons2.png) no-repeat 50% 5px;
         }
-        div.watchlist.selectedoff {
-            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% 5px;
+        div.watchlist.selected {
+            background: url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% 5px;
         }
         div.browse {
-            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -50px;
+            background: url(images/platform/tab-bar-icons2.png) no-repeat 50% -50px;
         }
         div.browse.selected {
-            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -50px;
+            background: url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -50px;
         }
         div.position {
-            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -105px;
+            background: url(images/platform/tab-bar-icons2.png) no-repeat 50% -105px;
         }
         div.position.selected {
-            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -105px;
+            background: url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -105px;
         }
         div.account {
-            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -160px;
+            background: url(images/platform/tab-bar-icons2.png) no-repeat 50% -160px;
         }
         div.account.selected {
-            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -160px;
+            background: url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -160px;
         }
         div.help {
-            background: #fff url(images/ios/tab-bar-icons2.png) no-repeat 50% -215px;
+            background: url(images/platform/tab-bar-icons2.png) no-repeat 50% -215px;
         }
         div.help.selected {
-            background: #fff url(images/ios/tab-bar-icons2-sel.png) no-repeat 50% -215px;
+            background: url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -215px;
         }
         div.selected {
             color:@tabBarActiveTextColor;
@@ -1129,7 +1295,7 @@ html.ios {
         background-color: #fff;
         article {
             > div.nav {
-                background: url(images/ios/right.svg) no-repeat right 50%;
+                background: url(images/platform/right.svg) no-repeat right 50%;
                 padding:0
             }
         }
