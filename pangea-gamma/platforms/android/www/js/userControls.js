@@ -13,16 +13,8 @@ var numericUpDownControl = function(options) {
 		upEnabled:true
 	}, options);
 
-	
 	angular.extend(this, options);
 
-	// this.title = options.title;
-	// this.increment = options.increment;
-	// this.value = options.value;
-	// this.downEnabled = options.downEnabled;
-	// this.upEnabled = options.upEnabled;
-	// this.onUp = options.onUp;
-	// this.onDown = options.onDown;
 }
 numericUpDownControl.prototype.up = function() {
 	this.value += this.increment;

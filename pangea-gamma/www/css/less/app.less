@@ -1,0 +1,600 @@
+
+
+
+/* 
+==================================================================================
+Constants
+==================================================================================
+*/
+
+
+// App colors
+$sellColor #c83933
+$buyColor #00838b
+$redColor $sellColor
+$greenColor $buyColor
+
+
+// General colors
+$bgColor #000
+$bgColorView #f9f9f9
+$bgColorPanel #ffffff
+$borderColor #a5a5a5
+$tableCellTextColor #000
+
+$toolBarBgColor #f7f7f7
+$toolBarButtonColor $greenColor
+
+$textColor #121212
+$linkColor $greenColor //#007aff
+
+$textBoxColor #f0f0f0
+$buttonColor #a0a0a0
+$disabledButtonColor #d0d0d0
+$switchBgColorOn #41d86c
+$switchButtonColorOn #fff
+$switchBgColorOff #fff
+$switchButtonColorOff #fff
+$tabBarTextColor#b0b0b0
+$tabBarActiveTextColor#007aff
+
+
+
+
+// Dimensions
+$marginTopHeight 20px
+//$screenHeight 450px
+//$screenWidth 320px
+$tableRowHeight 42px
+$toolBarHeight 50px
+$tabBarHeight 50px
+$summaryBannerHeight 40px
+
+//$mainHeight $screenHeight - $toolBarHeight - $tabBarHeight
+//$tabWidth $screenWidth / 5
+
+
+
+
+
+
+
+
+
+/* 
+==================================================================================
+Grads
+==================================================================================
+*/
+
+$toobarGradFromColor #666
+$toobarGradToColor #000
+
+
+/* 
+==================================================================================
+Common Text
+==================================================================================
+
+
+
+
+/* 
+==================================================================================
+Common List
+==================================================================================
+*/
+
+
+
+
+
+
+/* 
+==================================================================================
+Page Slider
+==================================================================================
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*--Sell Buy Button--------------------------------------------------------*/
+
+
+
+
+
+/*--Numeric Up/Down control--------------------------------------------------------*/
+
+
+
+
+/*--Form row--------------------------------------------------------*/
+
+
+
+
+
+/*--On/off switch--------------------------------------------------------*/
+
+
+
+/* 
+==================================================================================
+Views
+==================================================================================
+*/
+
+
+/*--Menu--------------------------------------------------------*/
+
+
+
+
+/* 
+==================================================================================
+Trade Icons
+==================================================================================
+*/
+
+
+
+
+/* 
+==================================================================================
+Android
+==================================================================================
+*/
+$androidTabBarGradColorFrom #5a595a
+$androidTabBarGradColorTo #202420
+$androidTabBarBottomBorderColor #6a696a
+.androidTabBarGrad 
+	background -webkit-linear-gradient($androidTabBarGradColorFrom, $androidTabBarGradColorTo 50%, $androidTabBarGradColorTo)
+	background -o-linear-gradient($androidTabBarGradColorFrom, $androidTabBarGradColorTo 50%, $androidTabBarGradColorTo) 
+	background -moz-linear-gradient($androidTabBarGradColorFrom, $androidTabBarGradColorTo 50%, $androidTabBarGradColorTo) 
+	background linear-gradient($androidTabBarGradColorFrom, $androidTabBarGradColorTo 50%, $androidTabBarGradColorTo) 
+
+
+$androidSummaryBannerGradColorFrom #303b43
+$androidSummaryBannerGradColorTo #0e1417
+.androidSummaryBannerGrad 
+	background -webkit-linear-gradient($androidSummaryBannerGradColorFrom, $androidSummaryBannerGradColorTo 50%, $androidSummaryBannerGradColorTo)
+	background -o-linear-gradient($androidSummaryBannerGradColorFrom, $androidSummaryBannerGradColorTo 50%, $androidSummaryBannerGradColorTo) 
+	background -moz-linear-gradient($androidSummaryBannerGradColorFrom, $androidSummaryBannerGradColorTo 50%, $androidSummaryBannerGradColorTo) 
+	background linear-gradient($androidSummaryBannerGradColorFrom, $androidSummaryBannerGradColorTo 50%, $androidSummaryBannerGradColorTo) 
+
+
+
+$androidSummaryBannerButtonColor #202020
+$androidSummaryBannerButtonBorderColor #101010
+$androidTextColorOnDark #bbbcbb
+
+html.android 
+	color $textColor
+	font-family -apple-system-font
+	font-size 17px/21px
+
+	/*--Summary Banner--------------------------------------------------------*/
+	div#summaryBanner 
+		positionabsolute
+		bottom0
+		left0
+		width 100%
+		color$androidTextColorOnDark
+		.borderT(#000)
+		.androidTabBarGrad
+		div.inner 
+			div#summary 
+				#btnViewSearch
+					background $androidSummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%
+					.border($androidSummaryBannerButtonBorderColor)
+				
+			
+			div#search 
+				span
+					background-color $androidSummaryBannerButtonColor
+					.border($androidSummaryBannerButtonBorderColor)
+				
+			
+		
+	
+
+	/*--Tool Bar--------------------------------------------------------*/
+	section#toolbar 
+		.toolbarGrad
+		#toolbar-left-item 
+			background url(images/platform/hw-back.svg) no-repeat 50% 0
+		
+		h1 
+			color#fff
+		
+	
+
+	/*--Tab Bar--------------------------------------------------------*/
+	section#tabbar 
+		.borderB($androidTabBarBottomBorderColor, 4px)
+		div.tab 
+			.androidTabBarGrad
+			.borderR(#000)
+			height$tabBarHeight
+			div.inner 
+				positionrelative
+				height$tabBarHeight
+				width100%
+				div.title 
+					margin-top3px
+					colorwhite
+				
+				div.notify 
+					height15px
+					width15px
+					top -3px
+					left0
+					.border(#fff)
+					background-color #606060
+					.roundCorners(4px)
+				
+			
+		
+		div.tablast-child
+			bordernone
+		
+		div.tab.selected 
+			background none
+			background-color $androidTabBarBottomBorderColor
+		
+	
+
+	/*--Menu--------------------------------------------------------*/
+	div.priceinfoheader 
+		background-color #202020
+		box-shadow 0 1px 6px #000
+	
+	div.menu 
+		background-color #1e1e1e
+		color$androidTextColorOnDark
+		article 
+			.borderB(#333734)
+			> div.nav 
+				padding0
+			
+		
+	
+	div.price.menu 
+		article 
+			background url(images/fe-mono.png) no-repeat 3px 50%
+		
+	
+
+
+
+
+/* 
+==================================================================================
+Android 4
+==================================================================================
+*/
+$android4TabBarGradColorFrom #5a595a
+$android4TabBarGradColorTo #202420
+$android4TabBarBottomBorderColor #6a696a
+.android4TabBarGrad 
+	background -webkit-linear-gradient($android4TabBarGradColorFrom, $android4TabBarGradColorTo 50%, $android4TabBarGradColorTo)
+	background -o-linear-gradient($android4TabBarGradColorFrom, $android4TabBarGradColorTo 50%, $android4TabBarGradColorTo) 
+	background -moz-linear-gradient($android4TabBarGradColorFrom, $android4TabBarGradColorTo 50%, $android4TabBarGradColorTo) 
+	background linear-gradient($android4TabBarGradColorFrom, $android4TabBarGradColorTo 50%, $android4TabBarGradColorTo) 
+
+
+$android4MainGradColorFrom #08090a
+$android4MainBannerGradColorTo #21252a
+.android4MainGrad 
+	background -webkit-linear-gradient($android4MainGradColorFrom, $android4MainBannerGradColorTo)
+	background -o-linear-gradient($android4MainGradColorFrom, $android4MainBannerGradColorTo) 
+	background -moz-linear-gradient($android4MainGradColorFrom, $android4MainBannerGradColorTo) 
+	background linear-gradient($android4MainGradColorFrom, $android4MainBannerGradColorTo) 
+
+
+
+$android4SummaryBannerButtonColor #172126
+$android4SummaryBannerButtonBorderColor #101010
+$android4TextColorOnDark #bbbcbb
+$android4Black #030303
+$android4BrightBorderColor #33b5e5
+
+html.android4 
+	color $textColor
+	font-size 18px
+
+	body 
+		background-color black
+		font-family 'roboto'
+	
+	section#app 
+		section#main 
+			.android4MainGrad
+		
+	
+
+	/*--Summary Banner--------------------------------------------------------*/
+	div#summaryBanner 
+		positionabsolute
+		bottom0
+		left0
+		width 100%
+		color$android4TextColorOnDark
+		.borderT($android4BrightBorderColor)
+		backgroundnone
+		background-color $android4Black
+		div.inner 
+			div#summary 
+				#btnViewSearch
+					background $android4SummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%
+					.border($android4SummaryBannerButtonBorderColor)
+				
+			
+			div#search 
+				span
+					background-color $android4SummaryBannerButtonColor
+					.border($android4SummaryBannerButtonBorderColor)
+				
+			
+		
+	
+
+	/*--Tool Bar--------------------------------------------------------*/
+	section#toolbar 
+		.toolbarGrad
+		#toolbar-left-item 
+			background url(images/platform/hw-back.svg) no-repeat 50% 0
+		
+		h1 
+			font-family 'robotocondensedbold'
+			font-weightnormal
+			color#fff
+		
+	
+	
+
+	/*--Tab Bar--------------------------------------------------------*/
+	section#tabbar 
+		bordernone
+		background-color $android4Black
+		.borderT($android4BrightBorderColor, 1px)
+		padding-top4px
+		div.tab 
+			height38px
+			.borderB($android4BrightBorderColor, 1px)
+			margin-right1px
+			div.inner 
+				positionrelative
+				width100%
+				height 35px
+				.borderR(#292a2b)
+				div.title 
+					.flex
+					.centerV
+					.centerH
+					colorwhite
+					font-size 0.9em
+				
+				div.notifyrow 
+					height15px
+					div.notify 
+						height15px
+						width15px
+						margin0 2px 0 0
+						floatright
+						top -2px
+						background-color #42b939
+						font-weightnormal
+						font-size0.75em
+					
+				
+			
+		
+		div.tablast-child
+			// bordernone
+		
+		div.tab.selected 
+			background none
+			background-color #030303
+			div.inner 
+				.borderB($android4BrightBorderColor, 3px)
+				div.title   
+				
+			
+		
+	
+
+	/*--Menu--------------------------------------------------------*/
+	div.priceinfoheader 
+		background-color #202020
+		box-shadow 0 1px 6px #000
+	
+	div.menu 
+		background none
+		color$android4TextColorOnDark
+		article 
+			.borderB(#333734)
+			> div.nav 
+				padding0
+				div.title 
+					// font-weightbold
+					font-family 'robotobold'
+					color#f0f0f0
+				
+			
+		
+	
+	div.price.menu 
+		article 
+			background url(images/fe-mono.png) no-repeat 3px 50%
+		
+	
+
+
+
+
+
+
+
+
+
+/* 
+==================================================================================
+WP8
+==================================================================================
+*/
+
+
+
+
+/* 
+==================================================================================
+iOS
+==================================================================================
+*/
+$iosSummaryBannerButtonColor darken($greenColor, 5%)
+$iosSummaryBannerButtonBorderColor darken($greenColor, 10%)
+
+
+html.ios 
+	color $textColor
+	font-family -apple-system-font
+	font-size 17px/21px
+
+
+	/*--Tool Bar--------------------------------------------------------*/
+	.toolbar-item 
+	
+	section#toolbar 
+		.toolbarGrad
+		#toolbar-left-item 
+			padding-left 18px
+			background url(images/platform/left-green.svg) no-repeat 5% 50%
+		
+		h1 
+			colorwhite
+		
+		#toolbar-right-item 
+			padding-right 3px
+		
+	
+
+	/*--Summary Banner--------------------------------------------------------*/
+   
+	div#summaryBanner 
+		div.inner 
+			div#summary 
+				#btnViewSearch
+					background $iosSummaryBannerButtonColor url(images/search.svg) no-repeat 65% 50%
+					.border($iosSummaryBannerButtonBorderColor)
+				
+			
+			div#search 
+				span
+					background-color $iosSummaryBannerButtonColor
+					.border($iosSummaryBannerButtonBorderColor)
+				
+			
+		
+	
+
+	/*--Tab Bar--------------------------------------------------------*/
+	section#tabbar 
+		positionabsolute
+		bottom0
+		left0
+		width100%
+		background-color #e0e0e0
+		div.tab 
+			div.inner 
+				positionrelative
+				width100%
+				height$tabBarHeight
+				div.title 
+					// height$tabBarHeight
+					// line-height$tabBarHeight + $tabBarHeight/2 + 5
+					font-size 0.9em
+					margin-top15px
+				
+				div.notify 
+					// displaynone
+					height15px
+					width15px
+					top 1px
+					left 10px
+					.border(#fff)
+					background-color red
+					.roundCorners(6px)
+				
+			
+		
+		div.watchlist 
+			background url(images/platform/tab-bar-icons2.png) no-repeat 50% 5px
+		
+		div.watchlist.selected 
+			background url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% 5px
+		
+		div.browse 
+			background url(images/platform/tab-bar-icons2.png) no-repeat 50% -50px
+		
+		div.browse.selected 
+			background url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -50px
+		
+		div.position 
+			background url(images/platform/tab-bar-icons2.png) no-repeat 50% -105px
+		
+		div.position.selected 
+			background url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -105px
+		
+		div.account 
+			background url(images/platform/tab-bar-icons2.png) no-repeat 50% -160px
+		
+		div.account.selected 
+			background url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -160px
+		
+		div.help 
+			background url(images/platform/tab-bar-icons2.png) no-repeat 50% -215px
+		
+		div.help.selected 
+			background url(images/platform/tab-bar-icons2-sel.png) no-repeat 50% -215px
+		
+		div.selected 
+			color$tabBarActiveTextColor
+		
+	
+
+	/*--Menu--------------------------------------------------------*/
+	div.priceinfoheader 
+		.toolbarGrad
+		colorwhite
+		.borderB
+	
+	div.menu 
+		background-color #fff
+		article 
+			> div.nav 
+				background url(images/platform/right.svg) no-repeat right 50%
+				padding0
+			
+		
+	
+	div.price.menu 
+		article 
+			background url(images/fe.png) no-repeat 3px 50%
+		
+	
+
+
+
+
+

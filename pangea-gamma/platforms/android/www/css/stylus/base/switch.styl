@@ -1,0 +1,30 @@
+@require('platform.styl')
+
+
+
+.switch
+	height 30px
+	width 50px
+	borders($inputBorderColor)
+	round-corners(20px)
+	no-select()
+
+	.button
+		square(28)
+		borders($inputBorderColor)
+		round-corners(15px)
+	
+
+.switch.on
+	background-color $spxGreenColor
+	.button 
+		background-color $switchButtonColorOn
+		float right
+
+.switch.off
+	background-color $switchBgColorOff
+	.button
+		background-color $switchButtonColorOff
+		box-shadow 1px 1px 1px #999
+	
+

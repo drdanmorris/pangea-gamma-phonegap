@@ -1,0 +1,60 @@
+@require('platform.styl')
+
+
+stage-right()
+	translate-x(100%)
+
+stage-left()
+	translate-x(-100%)
+
+stage-up()
+	translate-y(-100%)
+
+stage-down()
+	translate-y(100%)
+
+stage-center()
+	translate-reset()
+
+
+slide-container
+	position relative
+	.slide.ng-enter
+	.slide.ng-leave
+		transition-container()
+
+
+#app.forward
+	.slide.ng-enter
+		stage-right()
+	
+	.slide.ng-enter.ng-enter-active
+		stage-center()
+
+	.slide.ng-leave
+	.slide.ng-leave.ng-leave-active
+		stage-left()
+
+
+#app.back
+	.slide.ng-enter
+		stage-left()
+	
+	.slide.ng-enter.ng-enter-active
+		stage-center()
+	
+	.slide.ng-leave
+	.slide.ng-leave.ng-leave-active
+		stage-right()
+	
+
+#app.tab
+	.slide.ng-enter
+		opacity 0
+	
+	.slide.ng-enter.ng-enter-active
+		opacity 1
+	
+	.slide.ng-leave
+	.slide.ng-leave.ng-leave-active
+		opacity 0

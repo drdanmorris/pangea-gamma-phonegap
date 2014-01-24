@@ -47,6 +47,7 @@ controllers.controller('MenuController', ['$scope', '$routeParams', 'ViewService
     }
 ]);
 
+
 controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routeParams', 'ViewService', 'PushService',
     function ($scope, $rootScope, $routeParams, viewsvc, push) {
 

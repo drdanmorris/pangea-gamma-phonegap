@@ -1,0 +1,57 @@
+@require('platform.styl')
+
+iosMenuRowBottomBorderColor = #aaa;
+
+div.priceinfoheader
+	padding 2px 0 0 40px
+	height 18px
+	background-color #909090
+	> span
+		display inline-block
+		width 62px
+		font-size 0.9em
+	
+
+div.menu
+	article
+		height $tableRowHeight
+		borders(iosMenuRowBottomBorderColor, sides: bottom)
+		padding 4px 0 0 4px
+		> div
+			height $tableRowHeight
+			padding 0 0 0 5px
+		
+		> div.nav
+			padding 0
+		
+	
+
+div.main.menu
+	article
+		> div
+			padding 0 0 0 5px
+			line-height $tableRowHeight
+		
+	
+
+div.price.menu
+	article
+		padding 4px 0 0 40px
+		.priceinfo
+			margin 4px 0 0 0
+			.title
+				font-weight bold
+			
+			> span
+				display inline-block
+				width 62px
+				font-size 0.9em
+			
+			.price.plus
+				color $spxGreenColor
+			
+			.price.minus
+				color $spxRedColor
+			
+		
+	

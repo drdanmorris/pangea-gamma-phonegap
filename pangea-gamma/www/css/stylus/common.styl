@@ -1,0 +1,167 @@
+//============================================
+// Colors
+//============================================
+$spxRedColor = #c83933
+$spxGreenColor = #00838b
+$buyColor = $spxGreenColor
+$sellColor = $spxRedColor
+
+
+
+
+//============================================
+// Global Mixins
+//============================================
+
+//--------------------------------------------
+// Helper functions
+//--------------------------------------------
+vendor(prop, args)
+	-webkit-{prop} args
+	-moz-{prop} args
+	-ms-{prop} args
+	{prop} args
+
+
+//--------------------------------------------
+// Prevent Default
+//--------------------------------------------
+no-select()
+	vendor('user-select', none)
+
+
+
+//--------------------------------------------
+// Shapes
+//--------------------------------------------
+square(size)
+	size = unit(size, 'px')
+	height size
+	width size
+
+
+
+//--------------------------------------------
+// Position
+//--------------------------------------------
+relative(top left)
+	position relative
+	top unit(top, 'px')
+	left unit(left, 'px')
+
+
+//--------------------------------------------
+// Alignment & Layout
+//--------------------------------------------
+
+// flexibox layout 
+flexi()
+	display -webkit-box
+	display -moz-box
+	display -ms-flexbox
+	display -webkit-flex
+	display flex
+
+// distribution of child elements in a flexibox (dependent on ratio assigned to each element)
+flex-ratio(ratio = 1)
+	-moz-box-flex ratio
+	-webkit-box-flex ratio
+	-ms-flex ratio
+	flex ratio
+
+
+align-items(pos = center)
+	-webkit-box-align pos
+	-moz-box-align pos
+	-ms-flex-align pos
+	-webkit-align-items pos
+	align-items pos
+
+justify-content(pos = center)
+	-webkit-box-pack pos
+	-moz-box-pack pos
+	-ms-flex-pack pos
+	-webkit-justify-content pos
+	justify-content pos
+
+
+center-v()
+	align-items()
+
+
+//--------------------------------------------
+// Round Corners
+//--------------------------------------------
+round-corners(radius = 6, corners = top-left top-right bottom-left bottom-right)
+	radius = unit(radius, 'px')
+	if top-left in corners
+		border-top-left-radius radius
+	if top-right in corners
+		border-top-right-radius radius
+	if bottom-right in corners
+		border-bottom-right-radius radius
+	if bottom-left in corners
+		border-bottom-left-radius radius
+
+
+
+//--------------------------------------------
+// Borders
+//--------------------------------------------
+borders(color = black, width = 1px, sides = top right bottom left) 
+	width = unit(width, 'px')
+	if top in sides
+		border-top solid width color
+	if right in sides
+		border-right solid width color
+	if bottom in sides
+		border-bottom solid width color
+	if left in sides
+		border-left solid width color
+
+
+//--------------------------------------------
+// Gradients
+//--------------------------------------------
+
+linear-gradient-2-stops(stop1, stop2, startPoint = top)
+	background-image -webkit-linear-gradient(startPoint, stop1, stop2)
+	background-image -moz-linear-gradient(startPoint, stop1, stop2)
+	background-image -ms-linear-gradient(startPoint, stop1, stop2)
+	background-image -o-linear-gradient(startPoint, stop1, stop2)
+	background-image linear-gradient(startPoint, stop1, stop2)
+
+linear-gradient-3-stops(stop1, stop2, stop3, startPoint = top)
+	background-image -webkit-linear-gradient(startPoint, stop1, stop2, stop3)
+	background-image -moz-linear-gradient(startPoint, stop1, stop2, stop3)
+	background-image -ms-linear-gradient(startPoint, stop1, stop2, stop3)
+	background-image -o-linear-gradient(startPoint, stop1, stop2, stop3)
+	background-image linear-gradient(startPoint, stop1, stop2, stop3)
+
+
+
+//--------------------------------------------
+// Animation
+//--------------------------------------------
+transition-container()
+	position absolute
+	width 100%
+	height 100%
+	-webkit-transition all 0.25s linear !important
+	transition all 0.25s linear !important
+
+
+translate-reset()
+	-webkit-transform translate3d(0,0,0)
+	transform translate3d(0,0,0)
+
+translate-y(amount)
+	amount = unit(amount, '%')
+	-webkit-transform translate3d(0,amount,0)
+	transform translate3d(0,amount,0)
+
+translate-x(amount)
+	amount = unit(amount, '%')
+	-webkit-transform translate3d(amount,0,0)
+	transform translate3d(amount,0,0)
+

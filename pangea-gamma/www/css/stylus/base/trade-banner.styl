@@ -1,0 +1,30 @@
+@require('platform.styl')
+
+
+.tradeBanner
+	padding 0
+	margin 5px
+	margin-bottom 0
+	div.icon 
+		square(40)
+		borders($borderColor)
+		background-color white
+	
+	div.icon.left 
+		round-corners(corners: top-left)
+		float left
+	
+	div.icon.right 
+		round-corners(corners: top-right)
+		float right
+		position relative
+		top -42px
+		margin-bottom -42px
+	
+	div.title 
+		height 40px
+		line-height 40px
+		margin 0 5px 0 5px
+		text-align center
+		borders($borderColor, 1px, top bottom)
+		background-color white

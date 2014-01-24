@@ -1,0 +1,62 @@
+html,
+body,
+h1,
+h2,
+h3,
+ul,
+section {
+  padding: 0;
+  margin: 0;
+}
+section {
+  width: 100%;
+}
+html {
+  font-family: Arial, helvetica, sans-serif;
+  font-size: 12px;
+}
+a:link,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+ul > li {
+  list-style-image: none;
+  display: inline-block;
+}
+.hide {
+  visibility: hidden;
+}
+span.sell {
+  color: #c83933;
+}
+span.buy {
+  color: #00838b;
+}
+div.loading {
+  display: block;
+}
+div.loaded {
+  display: none;
+}
+.viewBody {
+  padding: 5px;
+  border-right: solid 1px #000;
+  border-bottom: solid 1px #000;
+  border-left: solid 1px #000;
+  margin: 5px;
+  margin-top: 0;
+  background-color: #f9f9f9;
+}
+.panel {
+  padding: 5px;
+  margin: 5px;
+  border-top: solid 1px #000;
+  border-right: solid 1px #000;
+  border-bottom: solid 1px #000;
+  border-left: solid 1px #000;
+  background-color: #fff;
+}
+.clear {
+  clear: both;
+}

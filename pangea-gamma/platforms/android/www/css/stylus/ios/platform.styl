@@ -1,0 +1,137 @@
+@require('../base/platform.styl');
+
+iosSummaryBannerButtonColor = darken($spxGreenColor, 5%)
+iosSummaryBannerButtonBorderColor = darken($spxGreenColor, 10%)
+mainSectionBgColor = black
+textColor = #303030
+
+tool-bar-grad()
+	linear-gradient-3-stops(#666, #000 50%, #000)
+
+html.ios
+	color textColor
+
+	section#app
+		margin-top 20px  //allow room for status bar
+		section#main
+			background-color mainSectionBgColor
+
+	section#toolbar
+		tool-bar-grad()
+		#toolbar-left-item
+			padding-left 18px
+			background url('images/platform/left-green.svg') no-repeat 5% 50%
+		
+		h1
+			color white
+		
+		#toolbar-right-item
+			padding-right 3px
+		
+	
+
+
+
+
+	div#summaryBanner
+		div.inner
+			div#summary
+				#btnViewSearch
+					background iosSummaryBannerButtonColor url('images/search.svg') no-repeat 65% 50%
+					borders(iosSummaryBannerButtonBorderColor)
+				
+			
+			div#search
+				span
+					background-color iosSummaryBannerButtonColor
+					borders(iosSummaryBannerButtonBorderColor)
+				
+			
+		
+	
+
+
+
+	section#tabbar
+		position absolute
+		bottom 0
+		left 0
+		width 100%
+		background-color #e0e0e0
+		div.tab
+			div.inner
+				position relative
+				width 100%
+				height $tabBarHeight
+				div.title
+					font-size 0.9em
+					margin-top 15px
+				
+				div.notify
+					top 1px
+					left 10px
+					borders(#fff)
+					background-color red
+					round-corners()
+
+		div.watchlist
+			background url('images/platform/tab-bar-icons2.png') no-repeat 50% 5px
+		
+		div.watchlist.selected
+			background url('images/platform/tab-bar-icons2-sel.png') no-repeat 50% 5px
+		
+		div.browse
+			background url('images/platform/tab-bar-icons2.png') no-repeat 50% -50px
+		
+		div.browse.selected
+			background url('images/platform/tab-bar-icons2-sel.png') no-repeat 50% -50px
+		
+		div.position
+			background url('images/platform/tab-bar-icons2.png') no-repeat 50% -105px
+		
+		div.position.selected
+			background url('images/platform/tab-bar-icons2-sel.png') no-repeat 50% -105px
+		
+		div.account
+			background url('images/platform/tab-bar-icons2.png') no-repeat 50% -160px
+		
+		div.account.selected
+			background url('images/platform/tab-bar-icons2-sel.png') no-repeat 50% -160px
+		
+		div.help
+			background url('images/platform/tab-bar-icons2.png') no-repeat 50% -215px
+		
+		div.help.selected
+			background url('images/platform/tab-bar-icons2-sel.png') no-repeat 50% -215px
+		
+		div.selected
+			color $tabBarActiveTextColor
+
+
+	div.priceinfoheader
+		tool-bar-grad()
+		color white
+		borders(sides: bottom)
+
+
+	div.menu
+		background-color #fff
+		article
+			> div.nav
+				background url('images/platform/right.svg') no-repeat right 50%
+				padding 0
+
+
+	div.price.menu
+		article
+			background url('images/fe.png') no-repeat 3px 50%
+
+@media only screen and (max-device-width: 480px)
+	html.ios
+		font-family -apple-system-font
+		font-size 17px/21px
+		section#main
+			overflow scroll
+			-webkit-overflow-scrolling touch
+
+

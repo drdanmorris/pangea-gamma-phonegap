@@ -1,0 +1,81 @@
+@require('platform.styl')
+
+//============================================
+// Basic elements
+//============================================
+html
+body
+h1
+h2
+h3
+ul
+section
+	padding 0
+	margin 0
+
+
+section
+	width 100%
+
+
+html
+	font-family Arial, helvetica, sans-serif
+	font-size 12px
+
+
+a:link
+a:visited
+a:hover
+	text-decoration none
+
+
+ul > li
+	list-style-image none
+	display inline-block
+
+
+//============================================
+// Basic styles
+//============================================
+.hide
+	visibility hidden
+
+
+
+//============================================
+// Branded elements
+//============================================
+span.sell
+	color $sellColor
+
+span.buy
+	color $buyColor
+
+
+
+
+div.loading
+	display block
+
+div.loaded
+	display none
+
+
+.viewBody
+	padding 5px
+	borders(sides: right bottom left)
+	margin 5px
+	margin-top 0
+	background-color $bgColorViewBody
+
+
+.panel
+	padding 5px
+	margin 5px
+	borders()
+	corners()
+	background-color $bgColorPanel 
+
+
+.clear
+	clear both
