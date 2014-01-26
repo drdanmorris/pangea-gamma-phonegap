@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'roboto';
+  src: url("../ttf-fonts/Roboto-Regular-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'robotobold';
+  src: url("../ttf-fonts/Roboto-Bold-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'robotothin';
+  src: url("../ttf-fonts/Roboto-Thin-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'robotocondensedbold';
+  src: url("../ttf-fonts/RobotoCondensed-Bold-webfont.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+html.android4 section#app section#main {
+  background-image: -webkit-linear-gradient(top, #08090a, #21252a);
+  background-image: -moz-linear-gradient(top, #08090a, #21252a);
+  background-image: -ms-linear-gradient(top, #08090a, #21252a);
+  background-image: -o-linear-gradient(top, #08090a, #21252a);
+  background-image: linear-gradient(top, #08090a, #21252a);
+}
+html.android4 div#summaryBanner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: solid 1px #33b5e5;
+  background: none;
+  background-color: #030303;
+}
+html.android4 section#toolbar {
+  background-image: -webkit-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -moz-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -ms-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -o-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: linear-gradient(top, #5a595a, #202420 50%, #202420);
+}
+html.android4 section#toolbar #toolbar-left-item {
+  background: url("images/platform/hw-back.svg") no-repeat 50% 0;
+}
+html.android4 section#toolbar h1 {
+  font-family: 'robotocondensedbold';
+  font-weight: normal;
+}
+html.android4 section#tabbar {
+  border: none;
+  background-color: #030303;
+  border-top: solid 1px #33b5e5;
+  padding-top: 4px;
+}
+html.android4 section#tabbar div.tab {
+height38px
+  border-bottom: solid 1px #33b5e5;
+  margin-right: 1px;
+}
+html.android4 section#tabbar div.tab div.inner {
+  height: 35px;
+  border-right: solid 1px #292a2b;
+}
+html.android4 section#tabbar div.tab div.inner div.title {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.9em;
+}
+html.android4 section#tabbar div.tab div.inner div.notifyrow {
+  height: 15px;
+}
+html.android4 section#tabbar div.tab div.inner div.notifyrow div.notify {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px 0 0;
+  float: right;
+  top: -2px;
+  background-color: #42b939;
+  font-weight: normal;
+  font-size: 0.75em;
+}
+html.android4 section#tabbar div.tab.selected {
+  background: none;
+  background-color: #030303;
+}
+html.android4 section#tabbar div.tab.selected div.inner {
+  border-bottom: solid 3px #33b5e5;
+}
+html.android4 div.priceinfoheader {
+  background-color: #202020;
+  box-shadow: 0 1px 6px #000;
+}
+html.android4 div.menu {
+  background-color: #1e1e1e;
+  color: #bbbcbb;
+}
+html.android4 div.menu article > div.nav {
+  padding: 0;
+}
+html.android4 div.price.menu article {
+  background: url("images/fe-mono.png") no-repeat 3px 50%;
+}

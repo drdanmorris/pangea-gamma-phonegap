@@ -1,55 +1,20 @@
 @require('../base/platform.styl');
 
-iosSummaryBannerButtonColor = darken($spxGreenColor, 5%)
-iosSummaryBannerButtonBorderColor = darken($spxGreenColor, 10%)
-mainSectionBgColor = black
-textColor = #303030
 
-tool-bar-grad()
-	linear-gradient-3-stops(#666, #000 50%, #000)
 
 html.ios
-	color textColor
 
 	section#app
 		margin-top 20px  //allow room for status bar
-		section#main
-			background-color mainSectionBgColor
 
 	section#toolbar
-		tool-bar-grad()
+		linear-gradient-3-stops(#666, #000 50%, #000)
 		#toolbar-left-item
 			padding-left 18px
 			background url('images/platform/left-green.svg') no-repeat 5% 50%
-		
-		h1
-			color white
-		
+
 		#toolbar-right-item
 			padding-right 3px
-		
-	
-
-
-
-
-	div#summaryBanner
-		div.inner
-			div#summary
-				#btnViewSearch
-					background iosSummaryBannerButtonColor url('images/search.svg') no-repeat 65% 50%
-					borders(iosSummaryBannerButtonBorderColor)
-				
-			
-			div#search
-				span
-					background-color iosSummaryBannerButtonColor
-					borders(iosSummaryBannerButtonBorderColor)
-				
-			
-		
-	
-
 
 
 	section#tabbar
@@ -60,9 +25,6 @@ html.ios
 		background-color #e0e0e0
 		div.tab
 			div.inner
-				position relative
-				width 100%
-				height $tabBarHeight
 				div.title
 					font-size 0.9em
 					margin-top 15px
@@ -109,7 +71,7 @@ html.ios
 
 
 	div.priceinfoheader
-		tool-bar-grad()
+		linear-gradient-3-stops(#666, #000 50%, #000)
 		color white
 		borders(sides: bottom)
 

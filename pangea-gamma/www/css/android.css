@@ -1,6 +1,6 @@
 html,body,h1,h2,h3,ul,section{padding:0;margin:0}
 section{width:100%}
-html{font-family:arial,helvetica,sans-serif;font-size:12px;color:#303030;background-color:#fff}
+html{font-family:arial,helvetica,sans-serif;font-size:12px;color:#303030;background-color:#000}
 a:link,a:visited,a:hover{text-decoration:none}
 ul > li{list-style-image:none;display:inline-block}
 .hide{visibility:hidden}
@@ -50,7 +50,7 @@ div.price.menu article .priceinfo .price.minus{color:#c83933}
 .numericUpDown{margin-right:5px;}
 .numericUpDown > div{float:left}
 .numericUpDown .title{width:45px;height:20px;text-align:right;font-size:1.2em;padding-right:5px;padding-top:10px}
-.numericUpDown .ctrl{border-top:solid 1px #a0a0a0;border-right:solid 1px #a0a0a0;border-bottom:solid 1px #a0a0a0;border-left:solid 1px #a0a0a0;width:120px;padding:0;white-space:nowrap;}
+.numericUpDown .ctrl{border-top:solid 1px #aaa;border-right:solid 1px #aaa;border-bottom:solid 1px #aaa;border-left:solid 1px #aaa;width:120px;padding:0;white-space:nowrap;}
 .numericUpDown .ctrl > div{margin:0;height:30px;float:left}
 .numericUpDown .ctrl input{width:60px;height:30px;margin:0;padding:0;border:none;background-color:#f0f0f0;font-size:1.5em;text-align:center}
 .numericUpDown .ctrl .up,.numericUpDown .ctrl .down{width:30px;background-color:#a0a0a0;font-size:2em;font-weight:bold;color:#fff;text-align:center;line-height:30px;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
@@ -74,8 +74,8 @@ div.price.menu article .priceinfo .price.minus{color:#c83933}
 .sellBuyBtn .inner .btn.trade.buy{background-color:#00838b;float:right;}
 .sellBuyBtn .inner .btn.trade.buy .btnLabel{left:65px;background-color:#009ba5}
 
-.switch{height:30px;width:50px;border-top:solid 1px #a0a0a0;border-right:solid 1px #a0a0a0;border-bottom:solid 1px #a0a0a0;border-left:solid 1px #a0a0a0;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-.switch .button{height:28px;width:28px;border-top:solid 1px #a0a0a0;border-right:solid 1px #a0a0a0;border-bottom:solid 1px #a0a0a0;border-left:solid 1px #a0a0a0;border-top-left-radius:15px;border-top-right-radius:15px;border-bottom-right-radius:15px;border-bottom-left-radius:15px}
+.switch{height:30px;width:50px;border-top:solid 1px #aaa;border-right:solid 1px #aaa;border-bottom:solid 1px #aaa;border-left:solid 1px #aaa;border-top-left-radius:20px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+.switch .button{height:28px;width:28px;border-top:solid 1px #aaa;border-right:solid 1px #aaa;border-bottom:solid 1px #aaa;border-left:solid 1px #aaa;border-top-left-radius:15px;border-top-right-radius:15px;border-bottom-right-radius:15px;border-bottom-left-radius:15px}
 .switch.on{background-color:#00838b;}
 .switch.on .button{background-color:#fff;float:right}
 .switch.off{background-color:#fff;}
@@ -104,7 +104,7 @@ section#toolbar #toolbar-right-item{-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:
 .trade.icon.icon3{background-position:-88px 0}
 .trade.icon.icon4{background-position:-130px 0}
 
-div#summaryBanner{height:40px;background-color:#00838b;color:#fff;overflow:hidden;position:relative;}
+div#summaryBanner{height:40px;background-color:#00838b;color:#bbbcbb;overflow:hidden;position:relative;}
 div#summaryBanner div.inner{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important;}
 div#summaryBanner div.inner > div{height:40px}
 div#summaryBanner div.inner div#summary{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;}
@@ -114,35 +114,23 @@ div#summaryBanner div.inner div#summary div.flx > div label{display:inline-block
 div#summaryBanner div.inner div#summary div.flx > div label.col1{width:60px}
 div#summaryBanner div.inner div#summary div.flx > div label.col2{width:40px}
 div#summaryBanner div.inner div#summary div.flx > div span{display:inline-block;text-align:right;min-width:65px}
-div#summaryBanner div.inner div#summary #btnViewSearch{height:30px;width:30px;position:relative;top:4px;left:-6px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:#007c84 url("images/search.svg") no-repeat 65% 50%;border-top:solid 1px #00767d;border-right:solid 1px #00767d;border-bottom:solid 1px #00767d;border-left:solid 1px #00767d}
-div#summaryBanner div.inner div#search span{display:inline-block;height:30px;width:60px;line-height:30px;margin:4px 0 0 10px;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;font-size:.9em;background-color:#007c84;border-top:solid 1px #00767d;border-right:solid 1px #00767d;border-bottom:solid 1px #00767d;border-left:solid 1px #00767d}
+div#summaryBanner div.inner div#summary #btnViewSearch{height:30px;width:30px;position:relative;top:4px;left:-6px;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;background:rgba(0,0,0,0.5) url("images/search.svg") no-repeat 65% 50%;border-top:solid 1px #000;border-right:solid 1px #000;border-bottom:solid 1px #000;border-left:solid 1px #000}
+div#summaryBanner div.inner div#search span{display:inline-block;height:30px;width:60px;line-height:30px;margin:4px 0 0 10px;text-align:center;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;font-size:.9em;background-color:rgba(0,0,0,0.5);border-top:solid 1px #000;border-right:solid 1px #000;border-bottom:solid 1px #000;border-left:solid 1px #000}
 div#summaryBanner div.inner div#search input{margin-left:10px;border-top:solid 1px #000;border-right:solid 1px #000;border-bottom:solid 1px #000;border-left:solid 1px #000}
 div#summaryBanner div.inner.summary{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 div#summaryBanner div.inner.search{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}
 
 
-html.ios section#app{margin-top:20px}
-html.ios section#toolbar{background-image:-webkit-linear-gradient(top,#666,#000 50%,#000);background-image:-moz-linear-gradient(top,#666,#000 50%,#000);background-image:-ms-linear-gradient(top,#666,#000 50%,#000);background-image:-o-linear-gradient(top,#666,#000 50%,#000);background-image:linear-gradient(top,#666,#000 50%,#000);}
-html.ios section#toolbar #toolbar-left-item{padding-left:18px;background:url("images/platform/left-green.svg") no-repeat 5% 50%}
-html.ios section#toolbar #toolbar-right-item{padding-right:3px}
-html.ios section#tabbar{position:absolute;bottom:0;left:0;width:100%;background-color:#e0e0e0;}
-html.ios section#tabbar div.tab div.inner div.title{font-size:.9em;margin-top:15px}
-html.ios section#tabbar div.tab div.inner div.notify{top:1px;left:10px;border-top:solid 1px #fff;border-right:solid 1px #fff;border-bottom:solid 1px #fff;border-left:solid 1px #fff;background-color:#f00;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px}
-html.ios section#tabbar div.watchlist{background:url("images/platform/tab-bar-icons2.png") no-repeat 50% 5px}
-html.ios section#tabbar div.watchlist.selected{background:url("images/platform/tab-bar-icons2-sel.png") no-repeat 50% 5px}
-html.ios section#tabbar div.browse{background:url("images/platform/tab-bar-icons2.png") no-repeat 50% -50px}
-html.ios section#tabbar div.browse.selected{background:url("images/platform/tab-bar-icons2-sel.png") no-repeat 50% -50px}
-html.ios section#tabbar div.position{background:url("images/platform/tab-bar-icons2.png") no-repeat 50% -105px}
-html.ios section#tabbar div.position.selected{background:url("images/platform/tab-bar-icons2-sel.png") no-repeat 50% -105px}
-html.ios section#tabbar div.account{background:url("images/platform/tab-bar-icons2.png") no-repeat 50% -160px}
-html.ios section#tabbar div.account.selected{background:url("images/platform/tab-bar-icons2-sel.png") no-repeat 50% -160px}
-html.ios section#tabbar div.help{background:url("images/platform/tab-bar-icons2.png") no-repeat 50% -215px}
-html.ios section#tabbar div.help.selected{background:url("images/platform/tab-bar-icons2-sel.png") no-repeat 50% -215px}
-html.ios section#tabbar div.selected{color:#007aff}
-html.ios div.priceinfoheader{background-image:-webkit-linear-gradient(top,#666,#000 50%,#000);background-image:-moz-linear-gradient(top,#666,#000 50%,#000);background-image:-ms-linear-gradient(top,#666,#000 50%,#000);background-image:-o-linear-gradient(top,#666,#000 50%,#000);background-image:linear-gradient(top,#666,#000 50%,#000);color:#fff;border-bottom:solid 1px #000;}
-html.ios div.menu{background-color:#fff;}
-html.ios div.menu article > div.nav{background:url("images/platform/right.svg") no-repeat right 50%;padding:0}
-html.ios div.price.menu article{background:url("images/fe.png") no-repeat 3px 50%}
-@media only screen and (max-device-width: 480px){html.ios{font-family:-apple-system-font;font-size:17px/21px;}
-html.ios section#main{overflow:scroll;-webkit-overflow-scrolling:touch}
-}
+html.android div#summaryBanner{position:absolute;bottom:0;left:0;width:100%;border-top:solid 1px #000;background-image:-webkit-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-moz-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-ms-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-o-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:linear-gradient(top,#303b43,#0e1417 50%,#0e1417)}
+html.android section#toolbar{background-image:-webkit-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-moz-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-ms-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:-o-linear-gradient(top,#303b43,#0e1417 50%,#0e1417);background-image:linear-gradient(top,#303b43,#0e1417 50%,#0e1417);}
+html.android section#toolbar #toolbar-left-item{background:url("images/platform/hw-back.svg") no-repeat 50% 0}
+html.android section#tabbar{border-bottom:solid 4px #6a696a;}
+html.android section#tabbar div.tab{background-image:-webkit-linear-gradient(top,#5a595a,#202420 50%,#202420);background-image:-moz-linear-gradient(top,#5a595a,#202420 50%,#202420);background-image:-ms-linear-gradient(top,#5a595a,#202420 50%,#202420);background-image:-o-linear-gradient(top,#5a595a,#202420 50%,#202420);background-image:linear-gradient(top,#5a595a,#202420 50%,#202420);border-right:solid 1px #000;}
+html.android section#tabbar div.tab div.inner div.title{margin-top:3px;color:#fff}
+html.android section#tabbar div.tab div.inner div.notify{height:15px;width:15px;top:-3px;left:0;border-top:solid 1px #fff;border-right:solid 1px #fff;border-bottom:solid 1px #fff;border-left:solid 1px #fff;background-color:#606060;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px}
+html.android section#tabbar div.tab last-child{border:none}
+html.android section#tabbar div.tab.selected{background:none;background-color:#6a696a}
+html.android div.priceinfoheader{background-color:#202020;box-shadow:0 1px 6px #000}
+html.android div.menu{background-color:#1e1e1e;color:#bbbcbb;}
+html.android div.menu article > div.nav{padding:0}
+html.android div.price.menu article{background:url("images/fe-mono.png") no-repeat 3px 50%}

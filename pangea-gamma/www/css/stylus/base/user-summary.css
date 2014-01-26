@@ -1,0 +1,97 @@
+div#summaryBanner {
+  height: 40px;
+  background-color: #00838b;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+div#summaryBanner div.inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.25s linear !important;
+  transition: all 0.25s linear !important;
+}
+div#summaryBanner div.inner > div {
+  height: 40px;
+}
+div#summaryBanner div.inner div#summary {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+div#summaryBanner div.inner div#summary div.flx {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+div#summaryBanner div.inner div#summary div.flx > div {
+  padding-top: 3px;
+}
+div#summaryBanner div.inner div#summary div.flx > div label {
+  display: inline-block;
+  text-align: right;
+}
+div#summaryBanner div.inner div#summary div.flx > div label.col1 {
+  width: 60px;
+}
+div#summaryBanner div.inner div#summary div.flx > div label.col2 {
+  width: 40px;
+}
+div#summaryBanner div.inner div#summary div.flx > div span {
+  display: inline-block;
+  text-align: right;
+  min-width: 65px;
+}
+div#summaryBanner div.inner div#summary #btnViewSearch {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  top: 4px;
+  left: -6px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background: #007c84 url("images/search.svg") no-repeat 65% 50%;
+  border-top: solid 1px #00767d;
+  border-right: solid 1px #00767d;
+  border-bottom: solid 1px #00767d;
+  border-left: solid 1px #00767d;
+}
+div#summaryBanner div.inner div#search span {
+  display: inline-block;
+  height: 30px;
+  width: 60px;
+  line-height: 30px;
+  margin: 4px 0 0 10px;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-size: 0.9em;
+  background-color: #007c84;
+  border-top: solid 1px #00767d;
+  border-right: solid 1px #00767d;
+  border-bottom: solid 1px #00767d;
+  border-left: solid 1px #00767d;
+}
+div#summaryBanner div.inner div#search input {
+  margin-left: 10px;
+  border-top: solid 1px #000;
+  border-right: solid 1px #000;
+  border-bottom: solid 1px #000;
+  border-left: solid 1px #000;
+}
+div#summaryBanner div.inner.summary {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+div#summaryBanner div.inner.search {
+  -webkit-transform: translate3d(0, -40%, 0);
+  transform: translate3d(0, -40%, 0);
+}

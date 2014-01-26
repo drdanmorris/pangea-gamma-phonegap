@@ -1,0 +1,46 @@
+div.priceinfoheader {
+  padding: 2px 0 0 40px;
+  height: 18px;
+  background-color: #909090;
+}
+div.priceinfoheader > span {
+  display: inline-block;
+  width: 62px;
+  font-size: 0.9em;
+}
+div.menu article {
+  height: 42px;
+  border-bottom: solid 1px menuRowBottomBorderColor;
+  padding: 4px 0 0 4px;
+}
+div.menu article > div {
+  height: 42px;
+  padding: 0 0 0 5px;
+}
+div.menu article > div.nav {
+  padding: 0;
+}
+div.main.menu article > div {
+  padding: 0 0 0 5px;
+  line-height: 42px;
+}
+div.price.menu article {
+  padding: 4px 0 0 40px;
+}
+div.price.menu article .priceinfo {
+  margin: 4px 0 0 0;
+}
+div.price.menu article .priceinfo .title {
+  font-weight: bold;
+}
+div.price.menu article .priceinfo > span {
+  display: inline-block;
+  width: 62px;
+  font-size: 0.9em;
+}
+div.price.menu article .priceinfo .price.plus {
+  color: #00838b;
+}
+div.price.menu article .priceinfo .price.minus {
+  color: #c83933;
+}

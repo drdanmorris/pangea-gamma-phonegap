@@ -1,22 +1,21 @@
 @require('platform.styl')
 
-$summaryBannerHeight = 40px
 
-div#summaryBanner 
+div#summaryBanner
 	height $summaryBannerHeight
 	background-color $spxGreenColor
-	color white
+	color $summaryBannerTextColor
 	overflow hidden
 	position relative
 
-	div.inner 
+	div.inner
 		transition-container()
-		> div 
+		> div
 			height $summaryBannerHeight
 		
-		div#summary 
+		div#summary
 			flexi()
-			div.flx 
+			div.flx
 				flex-ratio()
 				> div
 					padding-top 3px
@@ -27,18 +26,20 @@ div#summaryBanner
 						width 60px
 					label.col2
 						width 40px
-					span 
+					span
 						display inline-block
 						text-align right
 						min-width 65px
-					
+
 			#btnViewSearch
 				square(30)
 				relative(4, -6)
 				round-corners(4)
-			
-		
-		div#search 
+				background $summaryBannerButtonColor url('images/search.svg') no-repeat 65% 50%
+				borders($summaryBannerButtonBorderColor)
+
+
+		div#search
 			span
 				display inline-block
 				height 30px
@@ -48,19 +49,20 @@ div#summaryBanner
 				text-align center
 				round-corners(4)
 				font-size 0.9em
-			
-			input 
+				background-color $summaryBannerButtonColor
+				borders($summaryBannerButtonBorderColor)
+
+			input
 				margin-left 10px
 				borders()
-			
-		
-	
+
 	div.inner.summary
 		translate-reset()
-	
+
+
 	div.inner.search
-		translate-y(-40)
+		translate-y(-100)
 		
-	
+
 
 

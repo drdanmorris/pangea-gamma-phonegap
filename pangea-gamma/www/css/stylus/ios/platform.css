@@ -1,18 +1,8 @@
-@media only screen and (max-device-width: 480px) {
-  html.ios {
-    font-family: -apple-system-font;
-    font-size: 17px/21px;
-  }
-  html.ios section#main {
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-html.ios {
-  color: $textColor;
-}
 html.ios section#app {
   margin-top: 20px;
+}
+html.ios section#app section#main {
+  background-color: #000;
 }
 html.ios section#toolbar {
   background-image: -webkit-linear-gradient(top, #666, #000 50%, #000);
@@ -125,4 +115,14 @@ html.ios div.menu article > div.nav {
 }
 html.ios div.price.menu article {
   background: url("images/fe.png") no-repeat 3px 50%;
+}
+@media only screen and (max-device-width: 480px) {
+  html.ios {
+    font-family: -apple-system-font;
+    font-size: 17px/21px;
+  }
+  html.ios section#main {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 }

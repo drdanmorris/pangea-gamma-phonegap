@@ -18,14 +18,29 @@ module.exports = function(grunt) {
 
 
 		stylus: {
-			compile: {
+			ios: {
 				options: {
-					paths: ['www/css/stylus'],
-					urlfunc: 'embedurl', // use embedurl('test.png') in our code to trigger Data URI embedding
+					paths: ['www/css/stylus']
 				},
 				files: {
 					'www/css/ios.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/ios/*.styl']
-		}
+				}
+			},
+			android: {
+				options: {
+					paths: ['www/css/stylus']
+				},
+				files: {
+					'www/css/android.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/android/*.styl']
+				}
+			},
+			android4: {
+				options: {
+					paths: ['www/css/stylus']
+				},
+				files: {
+					'www/css/android4.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/android4/*.styl']
+				}
 			}
 		},
 
@@ -38,9 +53,9 @@ module.exports = function(grunt) {
 			},
 			ios: {
 				files: [
-					{expand: true, cwd: 'www', src: ['**', '!**/*.less', '!**/*.styl', '!**/*.bat', '!**/*.psd'], dest: 'platforms/ios/www'},
+					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/ios/www'},
 					{expand: true, cwd: 'merges/ios', src: ['**'], dest: 'platforms/ios/www'},
-					{src: 'platforms/ios/www/css/ios.css', dest: 'platforms/ios/www/css/app.css'}
+					{src: 'www/css/ios.css', dest: 'platforms/ios/www/css/app.css'}
 				]
 			},
 
@@ -51,8 +66,9 @@ module.exports = function(grunt) {
 			},
 			android: {
 				files: [
-					{expand: true, cwd: 'www', src: ['**', '!**/*.less', '!**/*.bat', '!**/*.psd'], dest: 'platforms/android/www'},
-					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/www'}
+					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android/www'},
+					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/www'},
+					{src: 'www/css/android.css', dest: 'platforms/android/www/css/app.css'}
 				]
 			},
 
@@ -63,8 +79,9 @@ module.exports = function(grunt) {
 			},
 			android4: {
 				files: [
-					{expand: true, cwd: 'www', src: ['**', '!**/*.less', '!**/*.bat', '!**/*.psd'], dest: 'platforms/android4/www'},
-					{expand: true, cwd: 'merges/android4', src: ['**'], dest: 'platforms/android4/www'}
+					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android4/www'},
+					{expand: true, cwd: 'merges/android4', src: ['**'], dest: 'platforms/android4/www'},
+					{src: 'www/css/android4.css', dest: 'platforms/android4/www/css/app.css'}
 				]
 			}
 		},
@@ -101,9 +118,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-sync');
 	
 
-	grunt.registerTask('ios', ['clean:ios', 'copy:iosinit', 'stylus', 'copy:ios']);
-	grunt.registerTask('android', ['clean:android', 'copy:androidinit', 'stylus', 'copy:android']);
-	grunt.registerTask('android4', ['clean:android4', 'copy:android4init', 'stylus', 'copy:android4']);
+	grunt.registerTask('ios', ['clean:ios', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
+	grunt.registerTask('android', ['clean:android', 'copy:androidinit', 'stylus:android', 'copy:android']);
+	grunt.registerTask('android4', ['clean:android4', 'copy:android4init', 'stylus:android4', 'copy:android4']);
 	grunt.registerTask('default', ['ios', 'android', 'android4']);
 
 

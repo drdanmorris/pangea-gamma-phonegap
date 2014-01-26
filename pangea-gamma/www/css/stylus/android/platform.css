@@ -1,0 +1,73 @@
+html.android div#summaryBanner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: solid 1px #000;
+  background-image: -webkit-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -moz-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -ms-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -o-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+}
+html.android section#toolbar {
+  background-image: -webkit-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -moz-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -ms-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: -o-linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+  background-image: linear-gradient(top, #303b43, #0e1417 50%, #0e1417);
+}
+html.android section#toolbar #toolbar-left-item {
+  background: url("images/platform/hw-back.svg") no-repeat 50% 0;
+}
+html.android section#tabbar {
+  border-bottom: solid 4px #6a696a;
+}
+html.android section#tabbar div.tab {
+  background-image: -webkit-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -moz-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -ms-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: -o-linear-gradient(top, #5a595a, #202420 50%, #202420);
+  background-image: linear-gradient(top, #5a595a, #202420 50%, #202420);
+  border-right: solid 1px #000;
+}
+html.android section#tabbar div.tab div.inner div.title {
+  margin-top: 3px;
+  color: #fff;
+}
+html.android section#tabbar div.tab div.inner div.notify {
+  height: 15px;
+  width: 15px;
+  top: -3px;
+  left: 0;
+  border-top: solid 1px #fff;
+  border-right: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  border-left: solid 1px #fff;
+  background-color: #606060;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+html.android section#tabbar div.tab last-child {
+  border: none;
+}
+html.android section#tabbar div.tab.selected {
+  background: none;
+  background-color: #6a696a;
+}
+html.android div.priceinfoheader {
+  background-color: #202020;
+  box-shadow: 0 1px 6px #000;
+}
+html.android div.menu {
+  background-color: #1e1e1e;
+  color: #bbbcbb;
+}
+html.android div.menu article > div.nav {
+  padding: 0;
+}
+html.android div.price.menu article {
+  background: url("images/fe-mono.png") no-repeat 3px 50%;
+}
