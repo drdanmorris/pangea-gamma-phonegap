@@ -5,7 +5,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-    <!-- ios -->
+    <!-- ios - TODO: include conditionally / just for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <!-- /ios -->
@@ -17,42 +17,16 @@
 
 </head>
 <body>
+
     <section id="app" class="{{navigation.appClass}}">
         <my-tool-bar></my-tool-bar>
-        <!-- Summary Banner -->
-        <div id="summaryBanner">
-            <div class="inner slide-container {{navigation.bannerClass}}">
-                <div class="slide">
-                    <div id="summary">
-                        <div class="flx col1">
-                            <div>
-                                <label class="col1">Balance:</label><span>{{user.balance}}&nbsp;</span>
-                            </div>
-                            <div>
-                                <label class="col1">Available:</label><span>{{user.available}}</span>
-                            </div>
-                        </div>
-                        <div class="flx col2">
-                            <div>
-                                <label class="col2">P&amp;L:</label><span>{{user.pnl}}</span>
-                            </div>
-                            <div>
-                                <label class="col2">NTR:</label><span>{{user.ntr}}</span>
-                            </div>
-                        </div>
-                        <div id="btnViewSearch" ng-click="showSearch()"></div>
-                    </div>
-                    <div id="search">
-                        <input type="text" model="search" /><span id="btnDoSearch" ng-click="doSearch()">Search</span><span id="btn" ng-click="showSummary()">Cancel</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <my-summary-banner></my-summary-banner>
         <my-tab-bar></my-tab-bar>
         <section id="main" class="slide-container" style="height:{{navigation.mainHeight}}px">
             <div ng-view class="slide"></div>
         </section>
     </section>
+
     <script src="phonegap.js"></script>
     <script src="js/index.js"></script>
     <script src="lib/angular/angular.js"></script>

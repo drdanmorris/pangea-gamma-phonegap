@@ -1,0 +1,28 @@
+<div id="summaryBanner">
+    <div class="inner slide-container {{navigation.bannerClass}}">
+        <div class="slide">
+            <div id="summary">
+                <div class="flx col1">
+                    <div>
+                        <label class="col1">Balance:</label><span>{{user.balance}}&nbsp;</span>
+                    </div>
+                    <div>
+                        <label class="col1">Available:</label><span>{{user.available}}</span>
+                    </div>
+                </div>
+                <div class="flx col2">
+                    <div>
+                        <label class="col2">P&amp;L:</label><span>{{user.pnl}}</span>
+                    </div>
+                    <div>
+                        <label class="col2">NTR:</label><span>{{user.ntr}}</span>
+                    </div>
+                </div>
+                <div id="btnViewSearch" ng-click="showSearch()"></div>
+            </div>
+            <div id="search">
+                <input type="text" model="search" /><span id="btnDoSearch" ng-click="doSearch()">Search</span><span id="btn" ng-click="showSummary()">Cancel</span>
+            </div>
+        </div>
+    </div>
+</div>

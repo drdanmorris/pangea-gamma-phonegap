@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <!-- ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- /ios -->
+
+    <title>Pangea.Gamma.Test</title>
+
+    <style>
+
+        .btn {
+            height:50px; 
+            width:50px; 
+            border: solid 1px black; 
+            background-color:#d0d0d0;
+            cursor:pointer;
+            padding:10px;
+            margin:10px;
+        }
+        .btn2 {
+            height:50px; 
+            width:50px; 
+            border: solid 1px black; 
+            background-color:#d0d0d0;
+            cursor:pointer;
+            padding:10px;
+            margin:10px;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+
+
+    </style>
+
+
+</head>
+<body ng-app="myApp" ng-controller="testController">
+    
+    <label id="lblName">{{name}} = {{count}}</label>
+    <br/>
+    <label id="lblName2">Name2</label>
+
+    <div class='btn2' ng-click='onclick()'>Click Me</div>
+    <div class='btn'onclick='onclick2()' >Click Me2</div>
+
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-animate.js"></script>
+    <script src="lib/angular/angular-touch.js"></script>
+
+
+    <script type="text/javascript">
+        var myApp = angular.module('myApp', ['ngRoute','ngAnimate','ngTouch']);
+        myApp.controller('testController', function ($scope) {
+                $scope.name = 'bob';
+                $scope.count = 1;
+
+                $scope.onclick = function() {
+                    $scope.count += 1;
+                }
+            }
+        );
+
+        var lblName = document.querySelector('#lblName2');
+        var count = 1;
+        function onclick2() {
+            lblName.innerHTML = 'bob' + count++;
+        }
+
+    </script>
+
+</body>
+</html>
