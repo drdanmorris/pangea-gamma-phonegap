@@ -9,60 +9,56 @@ div#summaryBanner
 	position relative
 
 	div.inner
-		transition-container()
-		> div
-			height $summaryBannerHeight
-		
-		div#summary
-			flexi()
-			div.flx
-				flex-ratio()
-				> div
-					padding-top 3px
-					label
-						display inline-block
-						text-align right
-					label.col1
-						width 60px
-					label.col2
-						width 40px
-					span
-						display inline-block
-						text-align right
-						min-width 65px
-
-			#btnViewSearch
-				square(30)
-				relative(4, -6)
-				round-corners(4)
-				background $summaryBannerButtonColor url('images/search.svg') no-repeat 65% 50%
-				borders($summaryBannerButtonBorderColor)
-
-
-		div#search
-			span
-				display inline-block
-				height 30px
-				width 60px
-				line-height 30px
-				margin 4px 0 0 10px
-				text-align center
-				round-corners(4)
-				font-size 0.9em
-				background-color $summaryBannerButtonColor
-				borders($summaryBannerButtonBorderColor)
-
-			input
-				margin-left 10px
-				borders()
+		div.slide
+			> div
+				height $summaryBannerHeight
+			div#summary
+				flexi()
+				div.flx
+					flex-ratio()
+					> div
+						padding-top 3px
+						label
+							display inline-block
+							text-align right
+						label.col1
+							width 60px
+						label.col2
+							width 40px
+						span
+							display inline-block
+							text-align right
+							min-width 65px
+				#btnViewSearch
+					square(30)
+					relative(4, -6)
+					round-corners(4)
+					background $summaryBannerButtonColor url('images/search.svg') no-repeat 65% 50%
+					borders($summaryBannerButtonBorderColor)
+			div#search
+				span
+					display inline-block
+					height 30px
+					width 60px
+					line-height 30px
+					margin 4px 0 0 10px
+					text-align center
+					round-corners(4)
+					font-size 0.9em
+					background-color $summaryBannerButtonColor
+					borders($summaryBannerButtonBorderColor)
+				input
+					margin-left 10px
+					borders()
 
 	div.inner.summary
-		translate-reset()
-
+		div.slide
+			translate-reset()
 
 	div.inner.search
-		translate-y(-100)
-		
+		div.slide
+			translate-y(-100)
+
 
 
 

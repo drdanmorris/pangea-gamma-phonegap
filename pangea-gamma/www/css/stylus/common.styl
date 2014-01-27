@@ -59,7 +59,7 @@ flexi()
 	display -webkit-box
 	display -moz-box
 	display -ms-flexbox
-	display -webkit-flex
+	//display -webkit-flex
 	display flex
 
 // distribution of child elements in a flexibox (dependent on ratio assigned to each element)
@@ -123,7 +123,6 @@ borders(color = black, width = 1px, sides = top right bottom left)
 //--------------------------------------------
 // Gradients
 //--------------------------------------------
-
 linear-gradient-2-stops(stop1, stop2, startPoint = top)
 	background-image -webkit-linear-gradient(startPoint, stop1, stop2)
 	background-image -moz-linear-gradient(startPoint, stop1, stop2)
@@ -143,13 +142,16 @@ linear-gradient-3-stops(stop1, stop2, stop3, startPoint = top)
 //--------------------------------------------
 // Animation
 //--------------------------------------------
-transition-container()
-	position absolute
+.slide-container
+	position relative
 	width 100%
 	height 100%
-	-webkit-transition all 0.25s linear !important
-	transition all 0.25s linear !important
-
+	.slide
+		position absolute
+		width 100%
+		height 100%
+		-webkit-transition all 1s linear !important
+		transition all 1s linear !important
 
 translate-reset()
 	-webkit-transform translate3d(0,0,0)
@@ -164,4 +166,3 @@ translate-x(amount)
 	amount = unit(amount, '%')
 	-webkit-transform translate3d(amount,0,0)
 	transform translate3d(amount,0,0)
-
