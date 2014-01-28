@@ -43,12 +43,12 @@ $ sudo npm install -g grunt-cli
 
 
 ####Download POC Repository
-Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as ROOT.
+Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.
 
 
 
 ####Install POC Node Dependencies
-Open a command prompt, navigate to *\\ROOT\pangea-gamma-phonegap-master\pangea-gamma* and then run the following command:
+Open a command prompt, navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and then run the following command:
 
 
 #####Windows
@@ -65,7 +65,7 @@ $ sudo npm install
 
 
 ####Build the POC Mobile Web App
-Navigate to *\\ROOT\pangea-gamma-phonegap-master\pangea-gamma* and run the following command:
+Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the following command:
 
 
 #####Windows
@@ -82,7 +82,7 @@ c:\grunt
 
 
 ####Launch the Development Web Server
-For convenience a Node.JS-based web server is included with the POC.  Navigate to *\\ROOT\pangea-gamma-phonegap-master\pangea-gamma* and run the **launch web server** batch file.  All going well the following output will appear:
+For convenience a Node.JS-based web server is included with the POC.  Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the **launch web server** batch file.  All going well the following output will appear:
 
 ```
 Http Server running at http://localhost:8000/
@@ -90,7 +90,7 @@ Http Server running at http://localhost:8000/
 
 
 ####Launch the Backend View Broker Service
-For convenience a Node.JS-based dummy backend View Broker service is included with the POC.  Navigate to *\\ROOT\pangea-gamma-phonegap-master\server* and run the **run** batch file.  All going well the following output will appear:
+For convenience a Node.JS-based dummy backend View Broker service is included with the POC.  Navigate to *\\\\root\pangea-gamma-phonegap-master\server* and run the **run** batch file.  All going well the following output will appear:
 
 ```
 WS Server running at 127.0.0.0:8081
