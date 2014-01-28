@@ -111,7 +111,7 @@ WS Server running at 127.0.0.0:8081
 #####iOS Skin
 Launch Chrome and browse to http://localhost:8000/platforms/ios/www/index.html
 
-> You will probably want to open the develop tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.
+> You will probably want to open the Developer Tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.
 
 
 #####Android Skin
