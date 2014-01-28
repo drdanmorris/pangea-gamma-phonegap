@@ -1,7 +1,7 @@
 ##Getting Started
 
 ####Install Node.JS
-Node.JS is a platform built on Chrome's JS runtime for building fast, scalable network applications.  **Phonegap** is built on Node.JS, as is the **Grunt** Task Runner.  We also have a web server and back-end 'View Broker' which are built on Node.JS.
+Node.JS is a platform built on Chrome's JS runtime for building fast, scalable network applications.  **Phonegap** is built on Node.JS, as is the **Grunt** Task Runner.  We also have a web server and back-end View Broker which are built on Node.JS.
 
 To install node visit http://nodejs.org/ and hit the Install button.
 
@@ -25,7 +25,7 @@ c:\sudo npm install -g phonegap
 
 
 ####Install Grunt
-Grunt is Task Runner which is used to create build tooling.  
+Grunt is Task Runner which can be used to create automated build processes.  
 
 #####Windows
 ```
