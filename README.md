@@ -1,6 +1,8 @@
 #Getting Started
 
-The following instructions allow you to create a local development platform to run the POC web app.  You will need to repeat these instruction on both a Windows machine (for primary development and building Android and WP8 apps) and a Mac (for building iOS and optionally Android apps).
+## Step One:  Install Dependencies (Windows & Mac)
+
+The following instructions install the necessary dependencies for running / building the POC app.  You will need to repeat these instruction on both a Windows machine (for primary development and building Android and WP8 apps) and a Mac (for building iOS and optionally Android apps).
 
 
 ####Install Node.JS
@@ -40,37 +42,22 @@ $ npm install -g grunt-cli
 $ sudo npm install -g grunt-cli
 ```
 
+===================================
+
+## Step Two:  Create Master Development Environment (Windows)
+The following steps create a master development environment on your local Windows machine.
 
 
 ####Download POC Repository
 Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.
 
 
-#####Mac Only
-Change ownership of the downloaded files by running the following command in a Terminal window:
-
-```
-root$ sudo chown -R \<local user\> pangea-gamma-phonegap-master
-
-root$ cd pangea-gamma-phonegap-master
-
-pangea-gamma-phonegap-master$ ls -al
-```
-> Confirm that the Owner's permissions on all files is set to rw- / rwx as appropriate
- 
-
-####Install POC Node Dependencies
+####Install Node Dependencies
 Open a command prompt, navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and then run the following command:
 
 
-#####Windows
 ```
 $ npm install
-```
-
-#####Mac
-```
-$ sudo npm install
 ```
 
 > This will install any Node dependencies listed in the package.json file to a local node_modules folder.
@@ -79,13 +66,9 @@ $ sudo npm install
 ####Build the POC Mobile Web App
 Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the following command:
 
-
-#####Windows / Mac
 ```
 $ grunt
 ```
-
-
 
 > The Grunt Task Runner will then execute the build process defined in the local gruntfile.  All going well Grunt will output progress entries for various ios, android and android4 tasks and then exit with the entry 'Done, without errors'.
 
@@ -111,7 +94,7 @@ WS Server running at 127.0.0.0:8081
 #####iOS Skin
 Launch Chrome and browse to http://localhost:8000/platforms/ios/www/index.html
 
-> You will probably want to open the Developer Tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.
+> You will probably want to open the Developer Tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.  Note that the POC is a single page web app with routing handled via hash tags in the URL.  
 
 
 #####Android Skin
@@ -120,6 +103,43 @@ Open a new Chrome Tab (ctrl-T) and browse to http://localhost:8000/platforms/and
 
 #####Alternate Android Skin
 Open a new Chrome Tab (ctrl-T) and browse to http://localhost:8000/platforms/android4/www/index.html
+
+
+==============================
+
+
+## Step Three: Build Native Phonegap Apps
+
+In order to build native phonegap applications you need to create the appropriate native SDK projects.  Phonegap can create these for you.
+
+
+### iOS Phonegap App (Mac)
+To build an iOS app you need a Mac with XCode installed.
+
+#### Copy POC to the Build Mac
+On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC to).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - again referred herein as 'root'
+
+
+
+#### Build iOS Project
+In a Terminal window navigate to *\\\\root\pangea-gamma* and run the following command:
+
+```
+pangea-gamma$ sudo phonegap build ios
+```
+
+#####Mac Only
+Change ownership of the downloaded files by running the following command in a Terminal window:
+
+```
+root$ sudo chown -R \<local user\> pangea-gamma-phonegap-master
+
+root$ cd pangea-gamma-phonegap-master
+
+pangea-gamma-phonegap-master$ ls -al
+```
+> Confirm that the Owner's permissions on all files is set to rw- / rwx as appropriate.  Note, you may wish to enable a MacOS X Preference which allows you to open a Terminal window for the current folder in the Finder. See http://osxdaily.com/2011/12/07/open-a-selected-finder-folder-in-a-new-terminal-window/ for details.
+
 
 
 
