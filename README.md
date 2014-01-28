@@ -25,7 +25,7 @@ c:\sudo npm install -g phonegap
 
 
 ####Install Grunt
-Grunt is Task Runner which can be used to create automated build processes.  
+Grunt is a Task Runner which can be used to create automated build processes.  
 
 #####Windows
 ```
@@ -36,6 +36,30 @@ c:\npm install -g grunt-cli
 ```
 c:\sudo npm install -g grunt-cli
 ```
+
+
+####Download POC Repository
+Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to *c:\development\poc* (or a suitable alternative of your choice).
+
+
+####Install POC Node Dependencies
+Open a command prompt, navigate to *c:\development\poc\pangea-gamma-phonegap-master\pangea-gamma* and then run the following command:
+
+
+#####Windows
+```
+c:\npm install
+```
+
+#####Mac
+```
+c:\sudo npm install
+```
+
+> This will install any Node dependencies listed in the package.json file to a local node_modules folder.
+
+
+
 
 
 
