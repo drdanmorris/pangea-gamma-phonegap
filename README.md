@@ -157,9 +157,7 @@ To address this:
 ```
 pangea-gamma$ sudo chown -R \<local user\> platforms
 
-root$ cd platforms/ios
-
-ios$ ls -al
+pangea-gamma$ ls -al platforms/ios
 ```
 > You should now see that \<local user\> now owns all the files, and you should have permission to open the xcodeproj
 
