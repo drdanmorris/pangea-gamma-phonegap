@@ -24,18 +24,18 @@ $ npm install -g phonegap
 $ sudo npm install -g phonegap
 ```
 
-> The -g option ensures that the package is available globally on your machine (rather than just in the current folder).  On Windows globally installed Node packages are downloaded to *c:\Users\your_user_name\appdata\Roaming\npm\node_modules*
+> The -g option ensures that the package is available globally on your machine (rather than just in the current folder).  On Windows globally installed Node packages are downloaded to *c:\Users\\\<user\>\appdata\Roaming\npm\node_modules*
 
 
 ####Install Grunt
 Grunt is a Task Runner which can be used to create automated build processes.  
 
-#####Windows
+#####Windows (using Command Prompt)
 ```
 $ npm install -g grunt-cli
 ```
 
-#####Mac
+#####Mac (using Terminal)
 ```
 $ sudo npm install -g grunt-cli
 ```
@@ -46,6 +46,18 @@ $ sudo npm install -g grunt-cli
 Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.
 
 
+#####Mac Only
+Change ownership of the downloaded files by running the following command in a Terminal window:
+
+```
+root$ sudo chown -R \<local user\> pangea-gamma-phonegap-master
+
+root$ cd pangea-gamma-phonegap-master
+
+pangea-gamma-phonegap-master$ ls -al
+```
+> Confirm that the Owner's permissions on all files is set to rw- / rwx as appropriate
+ 
 
 ####Install POC Node Dependencies
 Open a command prompt, navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and then run the following command:
@@ -68,17 +80,14 @@ $ sudo npm install
 Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the following command:
 
 
-#####Windows
+#####Windows / Mac
 ```
-c:\grunt
-```
-
-#####Mac
-```
-c:\grunt
+$ grunt
 ```
 
-> The Grunt Task Runner will then execute the build process defined in the local gruntfile.
+
+
+> The Grunt Task Runner will then execute the build process defined in the local gruntfile.  All going well Grunt will output progress entries for various ios, android and android4 tasks and then exit with the entry 'Done, without errors'.
 
 
 ####Launch the Development Web Server
@@ -98,5 +107,6 @@ WS Server running at 127.0.0.0:8081
 
 
 ####Browse the POC Mobile Web App
-Launch Chrome and browse to http://localhost:8000/platform/ios/index.html
+Launch Chrome and browse to http://localhost:8000/platforms/ios/www/index.html
 
+> You will probably want to open the develop tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.
