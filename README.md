@@ -117,7 +117,7 @@ In order to build native phonegap applications you need to create the appropriat
 To build an iOS app you need a Mac with XCode installed.
 
 #### Copy POC to the Build Mac
-On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC to).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - referred herein as 'pocroot'
+On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - referred herein as 'pocroot'
 
 
 #### Open Terminal Window
@@ -165,7 +165,7 @@ ios$ ls -al
 
 
 #### Perform Our Custom POC Build
-We need to peform a custom build in order to compile our .styl scripts to CSS, and take care of a few other misc house-keeping items.  You could also perform Type Script / Coffee Script compilation as part of this custom build process.
+We need to peform a custom build in order to compile our .styl scripts to CSS, and take care of a few other miscellaneous house-keeping items. 
 
 ```
 pangea-gamma$ grunt ios
