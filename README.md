@@ -117,29 +117,62 @@ In order to build native phonegap applications you need to create the appropriat
 To build an iOS app you need a Mac with XCode installed.
 
 #### Copy POC to the Build Mac
-On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC to).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - again referred herein as 'root'
+On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC to).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - referred herein as 'pocroot'
 
+
+#### Open Terminal Window
+In a Terminal window navigate to *\\\\pocroot\pangea-gamma* in preparation for the following steps.
+
+
+#### Kill the current iOS platform files
+Phonegap doesn't like any foreign files in the platforms folder, so we need to empty this folder before invoking any phonegap commands.
+
+
+```
+pangea-gamma$ rm -R platforms
+
+pangea-gamma$ mkdir platforms
+```
 
 
 #### Build iOS Project
-In a Terminal window navigate to *\\\\root\pangea-gamma* and run the following command:
 
 ```
 pangea-gamma$ sudo phonegap build ios
 ```
 
-#####Mac Only
-Change ownership of the downloaded files by running the following command in a Terminal window:
+> Phonegap will then deploy a build to the platforms/ios folder.  In here you will find the pangea-gamma.xcodeproj which you can later open for debugging and building the POC app.  
+
+
+#### Change Phonegap File Ownership
+By default you wont have permissions on the files created by phonegap. To change ownership back to your local user run the following commands:
 
 ```
-root$ sudo chown -R \<local user\> pangea-gamma-phonegap-master
-
-root$ cd pangea-gamma-phonegap-master
-
-pangea-gamma-phonegap-master$ ls -al
+pangea-gamma$ ls -al platforms/ios
 ```
-> Confirm that the Owner's permissions on all files is set to rw- / rwx as appropriate.  Note, you may wish to enable a MacOS X Preference which allows you to open a Terminal window for the current folder in the Finder. See http://osxdaily.com/2011/12/07/open-a-selected-finder-folder-in-a-new-terminal-window/ for details.
+> You should see that root owns all the files
+
+To address this:
+
+```
+pangea-gamma$ sudo chown -R \<local user\> platforms
+
+root$ cd platforms/ios
+
+ios$ ls -al
+```
+> You should now see that \<local user\> now owns all the files, and you should have permission to open the xcodeproj
 
 
+#### Perform Our Custom POC Build
+We need to peform a custom build in order to compile our .styl scripts to CSS, and take care of a few other misc house-keeping items.  You could also perform Type Script / Coffee Script compilation as part of this custom build process.
 
+```
+pangea-gamma$ grunt ios
+```
+
+> Platforms/ios will now contain the appropriate compiled source files.
+
+#### Build Native App with XCode
+You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
 
