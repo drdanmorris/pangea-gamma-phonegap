@@ -105,6 +105,13 @@ Session.prototype.configureRequestProcessors = function() {
 				            codp: '$[double(=cod/sell*100)]'
 				    	};
 						break;
+
+					case 'ss' :
+						schema = {
+				    		dref: '$[string(=id)]*',
+				            title: '$[string({10} {10} {5})]'
+				    	};
+						break;
 				}
 
 				if(schema) {
@@ -167,9 +174,13 @@ Session.prototype.onConnectionClose = function(){
 var viewFactory = {
 
 	getView: function(vref) {
+		console.log('viewFactory::getView(' + vref + ')');
 		vref = new ViewReference(vref);
-		var view = this[vref.type](vref);
-		view.vref = vref.toString();
+		var factory = this[vref.type];
+		var view;
+		if(factory) view = factory(vref);
+		if(view) view.vref = vref.raw;
+		else view = {vref: vref.raw, title: 'Unknown Vref: ' + vref.raw, status: 'unknown'};
 		return view;
 	},
 
@@ -224,6 +235,29 @@ var viewFactory = {
 				]
 			};
 		}
+		else if(vref.subtype === 'sports') {
+			if(vref.id === '0') {
+				var items = [];
+				for(var i = 1000; i < 1100; i++) {
+					items.push({dref: 'ss' + i});
+				}
+				return {
+					title : 'Browse',
+					navigateVref: "menupr/sports/",
+					items: items
+				};
+			}
+			else {
+				var items = [];
+				for(var i = 1000; i < 1100; i++) {
+					items.push({dref: 'si' + i});
+				}
+				return {
+					title : vref.id,
+					items: items
+				};
+			}
+		}
 	},
 
 	menupr: function(vref) {
@@ -248,7 +282,7 @@ var viewFactory = {
 				]
 			};
 		}
-        else if (vref.id == "wi101")
+        else if (vref.id == 'wi101')
         {
         	return {
 				title : 'Top Risers',
@@ -258,6 +292,17 @@ var viewFactory = {
 		            { dref:"si1101" },
 		            { dref:"si1102" }
 				]
+			};
+		}
+		else if (vref.subtype === 'sports')
+        {
+			var items = [];
+			for(var i = 1000; i < 1100; i++) {
+				items.push({dref: 'si' + i});
+			}
+			return {
+				title : vref.id,
+				items: items
 			};
 		}
         else

@@ -40,6 +40,11 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
-        angular.bootstrap(document, ["myApp"]);
+        try {
+            angular.bootstrap(document, ["myApp"]);
+        }
+        catch (err) {
+            console.log('****angular bootstrapping error***\n  (Ignore if running in Ripple)\n  ' + err);
+        }
     }
 };

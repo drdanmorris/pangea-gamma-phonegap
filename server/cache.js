@@ -142,10 +142,10 @@ function camelCase(string) {
 }
 function getStringForCacheProp(cacheprop) {
     var template = cacheprop.schema.template;
-    var src = 'abcdefghijklmnopqrstuvwxyz';
+    var src = 'abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()?-s(ahr1*&y4c6#!epm2l)83zwnoi?%jg^uv70d5b9@$kfxtq-#gji2km415zdoct73&un?)8s6avhy(e*fqb%@$p0l9r!x^w';
     var res = template.replace(/{[^}]+}/g, function (match, number) {
         //console.log('match=' + match);
-        var matchdetails = /(\d+)(?:\:(\w))/.exec(match);
+        var matchdetails = /(\d+)(?:\:(\w))?/.exec(match);
         //console.log('matchdetails=' + matchdetails);
         var length, modifier;
         length = parseInt(matchdetails[1]);

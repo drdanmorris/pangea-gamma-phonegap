@@ -1,1 +1,1 @@
-cmd
+cmd subst R: "%CD%"

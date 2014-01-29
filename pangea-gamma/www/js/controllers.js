@@ -38,7 +38,16 @@ controllers.controller('MenuController', ['$scope', '$routeParams', 'ViewService
 		var vref = 'menu/' + $routeParams.subtype + '/' + $routeParams.id;
 
 		push.subscribe({ vref: vref }).then(function (view) {
-			$scope.menu = view.items;
+			if(view.items) {
+				for(var i = 0; i < view.items.length; i++){
+					var item = view.items[i];
+					if(!item.navigateVref && view.navigateVref) item.navigateVref = view.navigateVref + item.dref;
+				}
+				$scope.menu = view.items;
+			}
+			else {
+				viewsvc.viewClass = 'oops';
+			}
 			viewsvc.title = view.title;
 		});
 
@@ -71,7 +80,7 @@ controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routePa
 		var applyUpdates = function() {
 			$scope.$apply();
 			resetChg();
-			setTimeout(applyUpdates, 1000);
+			setTimeout(applyUpdates, 500);
 		};
 		
 		var resetChg = function() {
@@ -83,16 +92,16 @@ controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routePa
 		push.subscribe({ vref:vref, delegate:onUpdate }).then(function (view) {
 			viewData = view;
 			// create dref index to aid later scope updating
-			for(var i = 0; i < view.items.length; i++){
-				var item = view.items[i];
-				scopeDrefIndex[item.dref] = item;
-				item.chg = 0;
-				// also, apply menu-level navigate vref
-				if(!item.navigateVref)
-					item.navigateVref = view.navigateVref + item.dref;
-			}
+			if(view.items) {
+				for(var i = 0; i < view.items.length; i++){
+					var item = view.items[i];
+					scopeDrefIndex[item.dref] = item;
+					item.chg = 0;
+					if(!item.navigateVref && view.navigateVref) item.navigateVref = view.navigateVref + item.dref;
+				}
 
-			$scope.menu = view.items;
+				$scope.menu = view.items;
+			}
 			viewsvc.title = view.title;
 			$scope.loading = false;
 		});

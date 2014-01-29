@@ -3,6 +3,7 @@
 html,body,h1,h2,h3,ul,section{padding:0;margin:0}
 section{width:100%}
 html{font-family:arial,helvetica,sans-serif;font-size:12px;color:#303030;background-color:#fff}
+.oops{background:url("images/platform/oops.png") no-repeat 50% 50%}
 a:link,a:visited,a:hover{text-decoration:none}
 ul > li{list-style-image:none;display:inline-block}
 .hide{visibility:hidden}

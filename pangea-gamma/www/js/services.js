@@ -240,7 +240,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		tabIndex: 0,
 		tabs: [
 			new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'watchlist', notifyCount: 3 }),
-			new Tab({ id: 1, title: 'Browse', vref: '1/menu/home/0', icon: 'browse', notifyCount: 0 }),
+			new Tab({ id: 1, title: 'Browse', vref: '1/menu/sports/0', icon: 'browse', notifyCount: 0 }),
 			new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'account', notifyCount: 0 }),
 			new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'position', notifyCount: 99 }),
 			new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'help', notifyCount: 0 })
@@ -250,6 +250,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		back: '',
 		appClass: '',
 		bannerClass: 'summary',
+		viewClass: '',
 		platform: '',
 		mainHeight: 0,
 
@@ -318,6 +319,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.doNavigate(vref, 'back');
 		},
 		doNavigate: function (vref, dir) {
+			this.viewClass = '';
 			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex);
 			this.vref = vref;
 			if(dir === 'forward')  {

@@ -6,7 +6,7 @@
         <span>% Change</span>
     </div>
     <article ng-repeat="item in menu" ng-click="navigation.navigate(item.navigateVref);">
-        <div class="nav">
+        <div ng-class="item.navigateVref ? 'nav' : ''">
             <div class="title">{{item.title}}</div>
             <div class="priceinfo">
 	            <span ng-class="item.chg === 0 ? 'price' : item.chg > 0 ? 'plus price' : 'minus price' ">{{item.sell}}</span>
