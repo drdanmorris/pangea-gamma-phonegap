@@ -55,6 +55,7 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/ios/www'},
 					{expand: true, cwd: 'merges/ios', src: ['**'], dest: 'platforms/ios/www'},
+					{expand: true, cwd: 'phonegap_tweaks/platforms/ios', src: ['**'], dest: 'platforms/ios'},
 					{src: 'www/css/ios.css', dest: 'platforms/ios/www/css/app.css'}
 				]
 			},
@@ -68,6 +69,7 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android/www'},
 					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/www'},
+					{expand: true, cwd: 'phonegap_tweaks/platforms/android', src: ['**'], dest: 'platforms/android'},
 					{src: 'www/css/android.css', dest: 'platforms/android/www/css/app.css'}
 				]
 			},
@@ -81,6 +83,7 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android4/www'},
 					{expand: true, cwd: 'merges/android4', src: ['**'], dest: 'platforms/android4/www'},
+					{expand: true, cwd: 'phonegap_tweaks/platforms/android4', src: ['**'], dest: 'platforms/android4'},
 					{src: 'www/css/android4.css', dest: 'platforms/android4/www/css/app.css'}
 				]
 			}
