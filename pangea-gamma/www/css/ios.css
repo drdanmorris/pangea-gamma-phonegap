@@ -42,7 +42,8 @@ input[type="text"].search{background:#fff url("images/search-small.svg") no-repe
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
 section#app{height:100%;overflow:hidden;}
-section#app section#main{overflow-y:auto;overflow-x:hidden;background-color:#fff}
+section#app section#main{background-color:#fff;}
+section#app section#main .slide{overflow-y:auto;overflow-x:hidden;background-color:#fff}
 
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
@@ -180,7 +181,7 @@ html.ios div.menu{background-color:#fff;}
 html.ios div.menu article{border:none;background:repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#a0a0a0' x='0' y='0' width='1' height='0.5'/></svg>");}
 html.ios div.menu article > div.nav{background:url("images/platform/right.svg") no-repeat right 50%;padding:0}
 html.ios div.price.menu article{background:url("images/fe.png") no-repeat 3px 50%}
-html.ios #app.forward #main .slide.ng-enter,html.ios #app.forward #main .slide.ng-enter.ng-enter-active{-webkit-transition:all .2s linear !important;transition:all .2s linear !important}
+html.ios #app.forward #main .slide.ng-enter,html.ios #app.forward #main .slide.ng-enter.ng-enter-active{-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
 html.ios #app.forward #main .slide.ng-leave{-webkit-transition:all .9s linear !important;transition:all .9s linear !important}
 @media only screen and (max-device-width: 480px){html.ios{font-family:-apple-system-font;font-size:17px/21px;}
 html.ios section#main{overflow:scroll;-webkit-overflow-scrolling:touch}
