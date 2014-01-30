@@ -267,7 +267,8 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 				summaryBannerHeight: 40,
 				tabBarHeight: 50,
 				ios: {
-					marginTop: 20,
+					marginTop: 20
+					// ,viewPaddingTop: 90,
 				},
 				android: {
 					margins: 4
@@ -308,7 +309,8 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.tabIndex = idx;
 			this.tab = this.tabs[idx];
 			this.appClass = 'tab';
-			$location.path(this.tab.vref.raw);
+			//$location.path(this.tab.vref.raw);
+			this.doNavigate(this.tab.vref, 'tab');
 		},
 		navigate: function (vref) {
 			this.appClass = 'forward';
@@ -321,9 +323,10 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		},
 		doNavigate: function (vref, dir) {
 			this.viewClass = '';
-			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex, this.title);
+			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex);
 			this.vref = vref;
 			if(dir === 'forward')  {
+				this.tab.vref.title = this.title;
 				this.tab.history.push(this.tab.vref);
 				this.back = this.title; //'Back'
 			}
