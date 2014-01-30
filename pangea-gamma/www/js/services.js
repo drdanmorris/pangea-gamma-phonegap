@@ -263,17 +263,20 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		getDimensions: function() {
 			var dimensionsAll = 0;
 			var dimensions = {
-				toolBarHeight: 50,
-				summaryBannerHeight: 40,
-				tabBarHeight: 50,
 				ios: {
+					tabBarHeight: 50,
 					marginTop: 20
-					// ,viewPaddingTop: 90,
 				},
 				android: {
+					toolBarHeight: 50,
+					summaryBannerHeight: 40,
+					tabBarHeight: 50,
 					margins: 4
 				},
 				android4: {
+					toolBarHeight: 50,
+					summaryBannerHeight: 40,
+					tabBarHeight: 50,
 					margins: 2,
 					tabBarAdjHeight: -6
 				}
