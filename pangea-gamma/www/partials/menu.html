@@ -1,5 +1,5 @@
-﻿<div class="main menu">
-    <article ng-repeat="item in menu" ng-click="navigation.navigate(item.navigateVref);">
+﻿<div class="main menu table-view">
+    <article ng-repeat="item in menu" ng-click="navigation.navigate(item.navigateVref);" class="table-view-row">
         <div ng-class="item.navigateVref ? 'nav' : ''">
             {{item.title}}
         </div>

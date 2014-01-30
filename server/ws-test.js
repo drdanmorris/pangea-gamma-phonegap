@@ -79,14 +79,9 @@ Session.prototype.configureRequestProcessors = function() {
 				isInitial: true,
 				responseId: request.requestId
 			};
-			//this.log('Response', util.inspect(res));
-
-			// TODO...unsubscribe from existing drefs in cache
-
 			this.findDrefsForView(view);
 			my.connection.send(res);
-			this.sendDrefsForView(view, request.requestId);
-			
+			this.sendDrefsForView(view, request.requestId);	
 		}
 		,registerSchema: function(dref) {
 			var prefix = dref.match(/^\D+/)[0];

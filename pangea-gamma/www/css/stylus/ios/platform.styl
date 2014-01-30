@@ -5,13 +5,30 @@
 html.ios
 	
 	> *
-		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-tap-highlight-color rgba(0,0,0,0)
+		font-family -apple-system-font, arial
+
+	input[type="text"].norm
+		borders(#606060, important: true)
+		round-corners(4px)
 
 	section#app
 		margin-top 20px  //allow room for status bar
 
+	section#summaryBanner
+		background $summaryBannerBgColor
+
+		div.inner 
+			div.slide 
+				div#search input
+					margin-top 3px
+
 	section#toolbar
-		linear-gradient-3-stops(#666, #000 50%, #000)
+		// linear-gradient-3-stops(#666, #000 50%, #000)
+		background-color white
+		background repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#000' x='0' y='0' width='1' height='0.5'/></svg>");
+		h1
+			color black
 		#toolbar-left-item
 			padding-left 18px
 			background url('images/platform/left-green.svg') no-repeat 5% 50%
@@ -81,7 +98,10 @@ html.ios
 
 	div.menu
 		background-color #fff
+
 		article
+			border none
+			hairline(#a0a0a0)
 			> div.nav
 				background url('images/platform/right.svg') no-repeat right 50%
 				padding 0
@@ -90,6 +110,19 @@ html.ios
 	div.price.menu
 		article
 			background url('images/fe.png') no-repeat 3px 50%
+
+
+	// ios 7 style transition where leaving view slower than entering view
+	#app.forward
+		#main
+			.slide.ng-enter
+			.slide.ng-enter.ng-enter-active
+				-webkit-transition all 0.20s linear !important
+				transition all 0.20s linear !important
+			.slide.ng-leave
+				-webkit-transition all 0.9s linear !important
+				transition all 0.9s linear !important
+
 
 @media only screen and (max-device-width: 480px)
 	html.ios

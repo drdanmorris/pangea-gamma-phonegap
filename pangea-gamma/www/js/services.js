@@ -205,13 +205,14 @@ services.factory('PushService', ['$q', 'Config', '$rootScope', 'SocketService', 
 
 
 services.service('ViewService', ['$rootScope', '$location', function ($rootScope, $location) {
-	var Vref = function (raw, tabIndex) {
+	var Vref = function (raw, tabIndex, title) {
 		var parts = /(?:([\d]+)\/)?([\w\d]+)\/([\w\d]+)\/([\w\d]+)/.exec(raw);
 		this.raw = raw;
 		this.tab = null;
 		this.type = null;
 		this.subtype = null;
 		this.id = null;
+		this.title = title;
 		if (parts.length == 5) {
 			this.tab = parts[1] || tabIndex;
 			this.type = parts[2];
@@ -225,7 +226,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		this.history = [];
 		this.id = options.id;
 		this.title = options.title;
-		this.vref = new Vref(options.vref);
+		this.vref = new Vref(options.vref, this.id, this.title);
 		this.icon = options.icon;
 		this.notifyCount = options.notifyCount;
 	};
@@ -235,15 +236,15 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 	};
 
 	var viewsvc = {
-		title: 'title from Svc',
+		title: 'Title',
 		vref: null,
 		tabIndex: 0,
 		tabs: [
-			new Tab({ id: 0, title: 'Watchlist', vref: '0/menu/usr/0', icon: 'watchlist', notifyCount: 3 }),
-			new Tab({ id: 1, title: 'Browse', vref: '1/menu/sports/0', icon: 'browse', notifyCount: 0 }),
-			new Tab({ id: 2, title: 'Account', vref: '2/acct/home/0', icon: 'account', notifyCount: 0 }),
-			new Tab({ id: 3, title: 'Position', vref: '3/pos/home/0', icon: 'position', notifyCount: 99 }),
-			new Tab({ id: 4, title: 'Help', vref: '4/help/home/0', icon: 'help', notifyCount: 0 })
+			new Tab({ id: 0, title: 'Watchlist', vref: 'menu/usr/0', icon: 'watchlist', notifyCount: 3 }),
+			new Tab({ id: 1, title: 'Browse', vref: 'menu/sports/0', icon: 'browse', notifyCount: 0 }),
+			new Tab({ id: 2, title: 'Account', vref: 'acct/home/0', icon: 'account', notifyCount: 0 }),
+			new Tab({ id: 3, title: 'Position', vref: 'pos/home/0', icon: 'position', notifyCount: 99 }),
+			new Tab({ id: 4, title: 'Help', vref: 'help/home/0', icon: 'help', notifyCount: 0 })
 		],
 		tab: null,
 		backVref: null,
@@ -320,14 +321,17 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		},
 		doNavigate: function (vref, dir) {
 			this.viewClass = '';
-			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex);
+			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex, this.title);
 			this.vref = vref;
 			if(dir === 'forward')  {
 				this.tab.history.push(this.tab.vref);
-				this.back = 'Back'
+				this.back = this.title; //'Back'
 			}
-			else if(!this.tab.history.length) {
-				this.back = '';
+			else {
+				if(this.tab.history.length) {
+					this.back = this.tab.history[this.tab.history.length-1].title;
+				}
+				else this.back = '';
 			}
 			this.tab.vref = vref;
 			$location.path(vref.raw);

@@ -68,7 +68,7 @@ div.loaded
 
 .viewBody
 	padding 5px
-	borders(sides: right bottom left)
+	borders($borderColor, sides: right bottom left)
 	margin 5px
 	margin-top 0
 	background-color $bgColorViewBody
@@ -84,3 +84,10 @@ div.loaded
 
 .clear
 	clear both
+
+input[type="text"]
+	height 28px
+	padding 1px 3px
+
+input[type="text"].search
+	background #fff url('images/search-small.svg') no-repeat 5% 40%

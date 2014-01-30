@@ -108,16 +108,24 @@ round-corners(radius = 6, corners = top-left top-right bottom-left bottom-right)
 //--------------------------------------------
 // Borders
 //--------------------------------------------
-borders(color = black, width = 1px, sides = top right bottom left) 
+borders(color = black, width = 1px, sides = top right bottom left, important = false) 
 	width = unit(width, 'px')
+	if important
+		important = !important
+	else
+		important = null
 	if top in sides
-		border-top solid width color
+		border-top solid width color important
 	if right in sides
-		border-right solid width color
+		border-right solid width color important
 	if bottom in sides
-		border-bottom solid width color
+		border-bottom solid width color important
 	if left in sides
-		border-left solid width color
+		border-left solid width color important
+
+
+hairline(color = black)
+	background repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='" + color + "' x='0' y='0' width='1' height='0.5'/></svg>");
 
 
 //--------------------------------------------
