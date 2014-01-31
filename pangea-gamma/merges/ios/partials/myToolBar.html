@@ -1,7 +1,9 @@
-<section id="toolbar">
+<section id="toolbar" ng-controller="ToolbarController">
     <div id="toolbar-left-item" 
-    	ng-click="navigation.goBack()" 
-    	ng-class="(navigation.back !== '') ? '' : 'hide'">{{navigation.back}}</div>
-    <h1>{{navigation.title}}</h1>
-    <div id="toolbar-right-item"></div>
+    	ng-click="goBack()" 
+    	ng-class="(back !== '') ? '' : 'hide'">{{back}}</div>
+    <h1>{{title}}</h1>
+    <div id="toolbar-right-item">
+    	<span ng-repeat="toolbarItem in toolbarItems" class="{{toolbarItem.name}}">&nbsp;</span>
+    </div>
 </section>

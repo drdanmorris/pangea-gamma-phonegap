@@ -248,12 +248,13 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		],
 		tab: null,
 		backVref: null,
-		back: '',
 		appClass: '',
+		orientation: 'portrait',
 		bannerClass: 'summary',
 		viewClass: '',
 		platform: '',
 		mainHeight: 0,
+		currentViewController: null,
 
 		setPlatform: function(platform) {
 			this.platform = platform;
@@ -312,7 +313,6 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.tabIndex = idx;
 			this.tab = this.tabs[idx];
 			this.appClass = 'tab';
-			//$location.path(this.tab.vref.raw);
 			this.doNavigate(this.tab.vref, 'tab');
 		},
 		navigate: function (vref) {
@@ -325,23 +325,31 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.doNavigate(vref, 'back');
 		},
 		doNavigate: function (vref, dir) {
+			toolbarController.resetToolbarItems();
 			this.viewClass = '';
 			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex);
 			this.vref = vref;
 			if(dir === 'forward')  {
-				this.tab.vref.title = this.title;
+				var title = toolbarController.getTitleForward(); 
+				this.tab.vref.title = title;
 				this.tab.history.push(this.tab.vref);
-				this.back = this.title; //'Back'
 			}
 			else {
 				if(this.tab.history.length) {
-					this.back = this.tab.history[this.tab.history.length-1].title;
+					toolbarController.setBack(this.tab.history[this.tab.history.length-1].title);
 				}
-				else this.back = '';
+				else toolbarController.setBack('');
 			}
 			this.tab.vref = vref;
 			$location.path(vref.raw);
+		},
+		handleOrientationChange: function(orientation) {
+			//alert(orientation);
+			this.orientation = orientation;
+
+			// todo...ask current view controller for landscape URL
 		}
+	
 	};
 	viewsvc.tab = viewsvc.tabs[0]; 
 	return viewsvc;

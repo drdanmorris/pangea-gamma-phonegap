@@ -17,13 +17,24 @@ section#toolbar
 		color $spxGreenColor
 	
 	h1
-		font-size 1.5em
-		flex-ratio(3)
+		font-size 1.3em
+		flex-ratio()
 		text-align center
 		color $toolBarHeadingColor
+		white-space nowrap
 	
 	#toolbar-right-item
 		toolbar-item()
 		text-align center
 		padding-right 3px
-		visibility hidden
+		> span
+			display inline-block
+			margin-right 5px
+			background url('images/platform/toolbar-icons.svg') no-repeat 0 0
+
+		span.off
+			display none
+
+				
+
+			

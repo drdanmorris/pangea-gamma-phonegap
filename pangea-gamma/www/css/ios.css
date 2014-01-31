@@ -44,6 +44,7 @@ input[type="text"].search{background:#fff url("images/search-small.svg") no-repe
 section#app{height:100%;overflow:hidden;}
 section#app section#main{background-color:#fff;}
 section#app section#main .slide{overflow-y:auto;overflow-x:hidden;background-color:#fff}
+html.landscape section#app section#toolbar,html.landscape section#app section#summaryBanner,html.landscape section#app section#tabbar{display:none}
 
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
@@ -53,12 +54,12 @@ div.menu article{height:42px;border-bottom:solid 1px #aaa;padding:4px 0 0 4px;}
 div.menu article > div{height:42px;padding:0 0 0 5px}
 div.menu article > div.nav{padding:0}
 div.main.menu article > div{padding:0 0 0 5px;line-height:42px}
-div.price.menu article{padding:4px 0 0 40px;}
-div.price.menu article .priceinfo{margin:4px 0 0 0;}
-div.price.menu article .priceinfo .title{font-weight:bold}
-div.price.menu article .priceinfo > span{display:inline-block;width:62px;font-size:.9em}
-div.price.menu article .priceinfo .price.plus{color:#00838b}
-div.price.menu article .priceinfo .price.minus{color:#c83933}
+div.price.menu article div.inner{padding:4px 0 0 40px;}
+div.price.menu article div.inner .priceinfo{margin:4px 0 0 0;}
+div.price.menu article div.inner .priceinfo .title{font-weight:bold}
+div.price.menu article div.inner .priceinfo > span{display:inline-block;width:62px;font-size:.9em}
+div.price.menu article div.inner .priceinfo .price.plus{color:#00838b}
+div.price.menu article div.inner .priceinfo .price.minus{color:#c83933}
 
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
@@ -104,7 +105,7 @@ div.price.menu article .priceinfo .price.minus{color:#c83933}
 
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
-section#tabbar{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;}
+section#tabbar{z-index:1;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;}
 section#tabbar div.tab{-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:1;flex:1;}
 section#tabbar div.tab div.inner,section#tabbar div.tab position relative{width:100%;height:50px;}
 section#tabbar div.tab div.inner div.title,section#tabbar div.tab position relative div.title{font-size:.8em;margin:0;padding:0;text-align:center}
@@ -114,8 +115,10 @@ section#tabbar div.tab div.inner div.notify,section#tabbar div.tab position rela
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
 section#toolbar{height:50px;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;}
 section#toolbar #toolbar-left-item{-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:1;flex:1;height:50px;line-height:50px;white-space:nowrap;color:#00838b}
-section#toolbar h1{font-size:1.5em;-moz-box-flex:3;-webkit-box-flex:3;-ms-flex:3;flex:3;text-align:center;color:#fff}
-section#toolbar #toolbar-right-item{-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:1;flex:1;height:50px;line-height:50px;text-align:center;padding-right:3px;visibility:hidden}
+section#toolbar h1{font-size:1.3em;-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center;color:#fff;white-space:nowrap}
+section#toolbar #toolbar-right-item{-moz-box-flex:1;-webkit-box-flex:1;-ms-flex:1;flex:1;height:50px;line-height:50px;text-align:center;padding-right:3px;}
+section#toolbar #toolbar-right-item > span{display:inline-block;margin-right:5px;background:url("images/platform/toolbar-icons.svg") no-repeat 0 0}
+section#toolbar #toolbar-right-item span.off{display:none}
 
 .slide-container{position:absolute;width:100%;height:100%;}
 .slide-container .slide{position:absolute;width:100%;height:100%;-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
@@ -163,8 +166,11 @@ html.ios section#summaryBanner{background:#909090;position:absolute;background-c
 html.ios section#summaryBanner div.inner div.slide div#search input{margin-top:3px}
 html.ios section#toolbar{position:absolute;top:20px;z-index:1;background:rgba(255,255,255,0.9) repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#000' x='0' y='0' width='1' height='0.5'/></svg>");}
 html.ios section#toolbar h1{color:#000}
-html.ios section#toolbar #toolbar-left-item{padding-left:18px;background:url("images/platform/left-green.svg") no-repeat 5% 50%}
-html.ios section#toolbar #toolbar-right-item{padding-right:3px}
+html.ios section#toolbar #toolbar-left-item{padding-left:18px;background:url("images/platform/left-green.svg") no-repeat 3% 50%}
+html.ios section#toolbar #toolbar-right-item > span{height:24px;width:24px;position:relative;top:12px}
+html.ios section#toolbar #toolbar-right-item span.chart{background-position:-7px -6px}
+html.ios section#toolbar #toolbar-right-item span.edit{background-position:-48px -6px}
+html.ios section#toolbar #toolbar-right-item span.delete{background-position:-89px -6px}
 html.ios section#tabbar{position:absolute;bottom:0;left:0;width:100%;background-color:#e0e0e0;}
 html.ios section#tabbar div.tab div.inner div.title{font-size:.9em;margin-top:15px}
 html.ios section#tabbar div.tab div.inner div.notify{top:1px;left:10px;border-top:solid 1px #fff;border-right:solid 1px #fff;border-bottom:solid 1px #fff;border-left:solid 1px #fff;background-color:#f00;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom-right-radius:6px;border-bottom-left-radius:6px}
@@ -181,9 +187,10 @@ html.ios section#tabbar div.help.selected{background:url("images/platform/tab-ba
 html.ios section#tabbar div.selected{color:#007aff}
 html.ios div.priceinfoheader{background-image:-webkit-linear-gradient(top,#666,#000 50%,#000);background-image:-moz-linear-gradient(top,#666,#000 50%,#000);background-image:-ms-linear-gradient(top,#666,#000 50%,#000);background-image:-o-linear-gradient(top,#666,#000 50%,#000);background-image:linear-gradient(top,#666,#000 50%,#000);color:#fff;border-bottom:solid 1px #000;}
 html.ios div.menu{background-color:#fff;}
-html.ios div.menu article{border:none;background:repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#a0a0a0' x='0' y='0' width='1' height='0.5'/></svg>");}
+html.ios div.menu article{border:none;background:#fff repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#a0a0a0' x='0' y='0' width='1' height='0.5'/></svg>");}
 html.ios div.menu article > div.nav{background:url("images/platform/right.svg") no-repeat right 50%;padding:0}
-html.ios div.price.menu article{background:url("images/fe.png") no-repeat 3px 50%}
+html.ios div.price.menu article{background:#fff repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#a0a0a0' x='0' y='0' width='1' height='0.5'/></svg>");}
+html.ios div.price.menu article div.inner{background:url("images/fe.png") no-repeat 3px 50%}
 html.ios #app.forward #main .slide.ng-enter,html.ios #app.forward #main .slide.ng-enter.ng-enter-active{-webkit-transition:all .25s linear !important;transition:all .25s linear !important}
 html.ios #app.forward #main .slide.ng-leave{-webkit-transition:all .9s linear !important;transition:all .9s linear !important}
 @media only screen and (max-device-width: 480px){html.ios{font-family:-apple-system-font;font-size:17px/21px;}

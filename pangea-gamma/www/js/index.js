@@ -17,34 +17,66 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-        var screenHeight = window.innerHeight;
-        //document.querySelector('#main').style.height = (screenHeight - 162) + 'px';
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        console.log('Received Event: ' + id);
-        try {
-            angular.bootstrap(document, ["myApp"]);
-        }
-        catch (err) {
-            console.log('****angular bootstrapping error***\n  (Ignore if running in Ripple)\n  ' + err);
-        }
-    }
+	// Application Constructor
+	initialize: function() {
+		this.bindEvents();
+		var screenHeight = window.innerHeight;
+		//document.querySelector('#main').style.height = (screenHeight - 162) + 'px';
+	},
+	// Bind Event Listeners
+	//
+	// Bind any events that are required on startup. Common events are:
+	// 'load', 'deviceready', 'offline', and 'online'.
+	bindEvents: function() {
+		document.addEventListener('deviceready', this.onDeviceReady, false);
+	},
+	// deviceready Event Handler
+	//
+	// The scope of 'this' is the event. In order to call the 'receivedEvent'
+	// function, we must explicity call 'app.receivedEvent(...);'
+	onDeviceReady: function() {
+		app.receivedEvent('deviceready');
+	},
+	// Update DOM on a Received Event
+	receivedEvent: function(id) {
+		console.log('Received Event: ' + id);
+		try {
+			angular.bootstrap(document, ["myApp"]);
+		}
+		catch (err) {
+			console.log('****angular bootstrapping error***\n  (Ignore if running in Ripple)\n  ' + err);
+		}
+	}
 };
+
+var appController;  // master application controller
+
+// 1 = UIInterfaceOrientationPortrait
+// 2 = UIInterfaceOrientationPortraitUpsideDown
+// 3 = UIInterfaceOrientationLandscapeLeft
+// 4 = UIInterfaceOrientationLandscapeRight
+
+function shouldRotateToOrientation(interfaceOrientation) {
+	return (1 === interfaceOrientation); // support portrait only
+}
+
+function doOnOrientationChange()
+{
+	// if we got this far then we assume that shouldRotateToOrientation() indicated that rotation was valid
+	// for the current view.
+
+	switch(window.orientation) 
+	{  
+		case -90:
+		case 90:
+			appController.handleOrientationChange('landscape');
+			break;
+
+		default:
+			appController.handleOrientationChange('portrait');
+			break; 
+	}
+}
+
+window.addEventListener('orientationchange', doOnOrientationChange);
+

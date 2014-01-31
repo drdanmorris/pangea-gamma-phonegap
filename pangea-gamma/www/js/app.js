@@ -13,10 +13,6 @@ var myApp = angular.module('myApp', [
   'myApp.userControls'
 ]);
 
-//myApp.run(['$rootScope', '$location', function ($rootScope, $location) {
-
-//}]);
-
 
 myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -24,6 +20,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         .when('/:tab/menupr/:subtype/:id', { templateUrl: 'partials/menupr.html', controller: 'PriceMenuController' })
         .when('/:tab/acct/:subtype/:id', { templateUrl: 'partials/picklist.html', controller: 'AccountController' })
         .when('/:tab/price/trade/:dref', { templateUrl: 'partials/priceTrade.html', controller: 'PriceTradeController' })
+        .when('/:tab/price/chart/:dref', { templateUrl: 'partials/priceChart.html', controller: 'PriceChartController' })
         .otherwise({ redirectTo: '0/menu/usr/0' })
     ;
 }]);

@@ -36,22 +36,34 @@ html.ios
 					margin-top 3px
 
 	section#toolbar
-		// linear-gradient-3-stops(#666, #000 50%, #000)
 		position absolute
 		top 20px
-		// background-color rgba(1, 1, 1, 0.7)
 		z-index 1
-		background rgba(255, 255, 255, 0.9) repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#000' x='0' y='0' width='1' height='0.5'/></svg>");
-		
+		hairline(black, rgba(255, 255, 255, 0.9))
+
 		h1
 			color black
 
 		#toolbar-left-item
 			padding-left 18px
-			background url('images/platform/left-green.svg') no-repeat 5% 50%
+			background url('images/platform/left-green.svg') no-repeat 3% 50%
 
 		#toolbar-right-item
-			padding-right 3px
+			
+			> span
+				square(24)
+				position relative
+				top 12px
+
+			span.chart
+				background-position -7px -6px
+
+			span.edit
+				background-position -48px -6px
+
+			span.delete
+				background-position -89px -6px
+				
 
 
 	section#tabbar
@@ -119,15 +131,17 @@ html.ios
 
 		article
 			border none
-			hairline(#a0a0a0)
+			hairline(#a0a0a0, rgba(255, 255, 255, 1))
 			> div.nav
 				background url('images/platform/right.svg') no-repeat right 50%
 				padding 0
 
 
 	div.price.menu
-		article
-			background url('images/fe.png') no-repeat 3px 50%
+		article	
+			hairline(#a0a0a0, rgba(255, 255, 255, 1))
+			div.inner
+				background url('images/fe.png') no-repeat 3px 50%
 
 
 	// ios 7 style transition where leaving view slower than entering view

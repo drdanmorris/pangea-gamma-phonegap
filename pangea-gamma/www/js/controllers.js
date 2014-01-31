@@ -26,7 +26,16 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
 		$scope.platform = function(platform) {
 			viewsvc.setPlatform(platform);
 		}
+		window.appController = this;
+		this.viewsvc = viewsvc;
 		viewsvc.setMainHeight();
+		window.appController = this;
+
+		this.handleOrientationChange = function(orientation) {
+			//alert(orientation);
+			viewsvc.handleOrientationChange(orientation);
+			$scope.$apply()
+		}
 	}
 
 ]);
@@ -48,8 +57,10 @@ controllers.controller('MenuController', ['$scope', '$routeParams', 'ViewService
 			else {
 				viewsvc.viewClass = 'oops';
 			}
-			viewsvc.title = view.title;
+			toolbarController.setTitle(view.title);
 		});
+
+		viewsvc.currentViewController = this;
 
 	}
 ]);
@@ -102,9 +113,11 @@ controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routePa
 
 				$scope.menu = view.items;
 			}
-			viewsvc.title = view.title;
+			toolbarController.setTitle(view.title);
 			$scope.loading = false;
 		});
+
+		viewsvc.currentViewController = this;
 
 	}
 ]);
@@ -113,6 +126,71 @@ controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routePa
 controllers.controller('AccountController', ['$scope',
 	function ($scope) {
 		// todo...
+	}
+]);
+
+
+controllers.controller('ChartController', ['$scope',
+	function ($scope) {
+		// todo...
+	}
+]);
+
+var toolbarController;
+controllers.controller('ToolbarController', ['$scope', 'ViewService',
+	function ($scope, viewsvc) {
+		
+		$scope.back = '';
+		$scope.title = 'title';
+
+		var ToolbarItem = function(options) {
+			options = angular.extend({
+				name: 'off'
+			}, options);
+			this.name = options.name;
+		};
+
+		var toolbarItems = [];
+		for(var i = 0; i < 5; i++) {
+			toolbarItems.push(new ToolbarItem());
+		}
+
+		$scope.toolbarItems = toolbarItems;
+
+		$scope.goBack = function () {
+			viewsvc.goBack();
+		};
+
+		this.setBack = function(back) {
+			$scope.back = back;
+		};
+		this.setTitle = function(title) {
+			$scope.title = title;
+		};
+		this.getTitle = function(title) {
+			return $scope.title;
+		};
+		this.getTitleForward = function(title) {
+			$scope.back = $scope.title;
+			return $scope.title;
+		};
+		this.setToolbarItems = function(items) {
+			for(var i = 0; i < items.length; i++) {
+				toolbarItems[i].name = items[i].name;
+			}
+		}
+		this.resetToolbarItems = function(items) {
+			for(var i = 0; i < toolbarItems.length; i++) {
+				toolbarItems[i].name = 'off';
+			}
+		}
+		this.setTitleAndToolbarItems = function(title, items) {
+			this.setTitle(title);
+			this.setToolbarItems(items);
+		};
+		
+		this.setTitle('toolbar');
+		toolbarController = this;
 	}
 ]);
 
@@ -129,8 +207,8 @@ controllers.controller('PriceTradeController', ['$scope', '$rootScope', '$routeP
 			if(!first) return;  // stop applying subsequent updates
 			$scope.buy = splitPriceMajorMinor(msg.buy);
 			$scope.sell = splitPriceMajorMinor(msg.sell);
-			//updateStopInfo();
-			//updateLimitInfo();
+			updateStopInfo();
+			updateLimitInfo();
 			if(!first) $scope.$apply();
 			first = false;
 		};
@@ -201,13 +279,12 @@ controllers.controller('PriceTradeController', ['$scope', '$rootScope', '$routeP
 			$scope.title = view.item.title;
 			$scope.icon1 = view.icon1;
 			$scope.icon2 = view.icon2;
-			viewsvc.title = "Trade";
+			toolbarController.setTitleAndToolbarItems('Trade', [{name:'chart'}]);
 			$scope.loading = false;
 		});
 
+		viewsvc.currentViewController = this;
 
-
-		
 	}
 ]);
 
