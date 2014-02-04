@@ -49,7 +49,7 @@ The following steps create a master development environment on your local Window
 
 
 ####Download POC Repository
-Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.
+Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.  Alternatively (recommended) you can click the **Clone in Desktop** button and follow the instructions for setting up the Git Client (if not installed already).  This approach will make it easier to later resync your local repository with the master server repository.
 
 
 ####Install Node Dependencies
@@ -72,13 +72,18 @@ $ grunt
 
 > The Grunt Task Runner will then execute the build process defined in the local gruntfile.  All going well Grunt will output progress entries for various ios, android and android4 tasks and then exit with the entry 'Done, without errors'.
 
+###Test the Installation
+The POC can be viewed as a standard Mobile Web Application by hosting the pangea-gamma folder in a web server and browsing to the various platform index.html pages using a web browser.  However, as the bootstrapping of the AngularJS application is triggered by the document.deviceready event a phonegap-aware browser must be used.  The Chrome Ripple Emulator extension is currently the best (and in fact only) choice for this.  To install this extension point your Google Chrome browser to the <a href="https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc?hl=en">Google Web Store</a> and click the Add To Chrome button.  Once done you can enable Ripple on a per-page basis by clicking the Ripple icon to the right of the address bar.
+
 
 ####Launch the Development Web Server
-For convenience a Node.JS-based web server is included with the POC.  Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the **launch web server** batch file.  All going well the following output will appear:
+For convenience a Node.JS-based web server is included with the POC.  Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the **launch web server** batch file.  If installed correctly the following output will appear:
 
 ```
 Http Server running at http://localhost:8000/
 ```
+
+Note:  you could technically create a new IIS virtual directory pointing to the pangea-gamma folder. However, please be advised that the above dev web server has helpful logic to exlude certain JS files which would break the web app in a desktop environment.  NodeJS way cooler than IIS too.
 
 
 ####Launch the Backend View Broker Service
@@ -91,14 +96,16 @@ WS Server running at 127.0.0.0:8081
 
 ####Browse the POC Mobile Web App
 
-#####iOS Skin
-Launch Chrome and browse to http://localhost:8000/platforms/ios/www/index.html
 
-> You will probably want to open the Developer Tools window (F12) docked to the right-hand side of the browser, and reduce the window height in order to approximate the size of an iPhone screen.  Note that the POC is a single page web app with routing handled via hash tags in the URL.  
+
+#####iOS Skin
+Launch Chrome, browse to http://localhost:8000/platforms/ios/www/index.html (or alternatively, browse to http://localhost:8000 and then drill-down to platforms > ios > www > index.html) and (first time only) click the Ripple icon and subsequent Enable button.
+
+> If you like you can still use the (F12) Developer Tools for debugging, etc.  Just be aware of the boiler-plate Ripple content surrounding the actual emulated application content.
 
 
 #####Android Skin
-Open a new Chrome Tab (ctrl-T) and browse to http://localhost:8000/platforms/android/www/index.html
+As above, but navigate to browse to http://localhost:8000/platforms/android/assets/www/index.html, noting the extra assets folder for android.
 
 
 #####Alternate Android Skin
@@ -129,13 +136,11 @@ Phonegap doesn't like any foreign files in the platforms folder, so we need to e
 
 
 ```
-pangea-gamma$ rm -R platforms
-
-pangea-gamma$ mkdir platforms
+pangea-gamma$ rm -R platforms\ios
 ```
 
 
-#### Build iOS Project
+#### Build iOS Project (Cordova)
 
 ```
 pangea-gamma$ sudo phonegap build ios
@@ -162,7 +167,7 @@ pangea-gamma$ ls -al platforms/ios
 > You should now see that \<local user\> now owns all the files, and you should have permission to open the xcodeproj
 
 
-#### Perform Our Custom POC Build
+#### Build iOS Project (Grunt)
 We need to peform a custom build in order to compile our .styl scripts to CSS, and take care of a few other miscellaneous house-keeping items. 
 
 ```
@@ -173,4 +178,65 @@ pangea-gamma$ grunt ios
 
 #### Build Native App with XCode
 You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
+
+
+### Android Phonegap App (PC)
+To build an android app you need a Mac or PC with the Android SDK installed.  Presumably you would use a PC.
+
+
+#### Open Command Prompt
+Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
+
+
+#### Build Android Project (Cordova)
+
+```
+R:\>rmdir platforms\android
+R:\>phonegap build android
+```
+
+> This will create an Android platform in the platforms folder.
+
+
+#### Build Android Project (Grunt)
+We also need to perform a custom build to handle css compilation and custom plugin installation.
+
+```
+R:\>grunt android
+```
+
+> This will tweak the contents of the platforms\android folder. 
+
+Alternatively, to use the alternate 'android 4' skin you can run the following instead.
+
+```
+R:\>grunt android4
+```
+
+#### Create Eclipse Project
+To install the POC app on either an Android emulator or device you need to launch the android build from Eclipse.
+
+- Launch the Eclipse version from the Android SDK installation.
+- Select File > New Project
+- Select the Android | Android Project from Existing Code option
+- Browse to the pangea-gamma\platforms\android folder
+
+
+#### Run POC on Emulator
+Android emulators are painfully slow. Your best bet is to deploy and test the POC on an actual device. However, if you do require the use of an android emulator I would stronly recommend against using the AVD Manager (installed as part of the Android Tools).  Instead try the <a href="http://www.genymotion.com/">Genymotion</a> Android Emulator which is considerably faster (but still fairly sluggish compared to the iOS simulator).  You need to create an account in order to use the free version of Genymotion.
+
+
+#####Create Genymotion Emulator
+Android uses *emulators* rather than simulators.  An emulator runs slower and requires a bit more configuration effort compared to a simulator.  Unlike the iOS simulator - which you launch from scratch every time you start a new run/debug session - an android emulator is launched independently (by you) and should remain running.  You tend not to stop and start an android emulator very often.  The android SDK will attach to the emulator at the beginning of a run/debug session and detach at the conclusion of the session.
+
+To create an Emulator (virtual device) launch Genymotion and click the Add button.  Follow the instructions to select your desired handset dimensions and android platform version / API level.  Currently the latest android version is 4.4.2 (API level 19).  Once create double-click the appropriate virtual device row to start/play it.
+
+Once the virtual device has started you can unlock it and then run the app on the device by selecting the pangeagamma folder in the Eclipse Project Explorer and then hitting Run (ctrl-F11).
+
+In the Android Device Chooser dialog select your Genymotion device from the Choose a Running Android Device.
+
+
+
+#### Run POC on Device
+As above, but select your physical device from the Choose a Running Android Device.
 
