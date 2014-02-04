@@ -236,7 +236,7 @@ Android emulators are painfully slow. Your best bet is to deploy and test the PO
 #####Create Genymotion Emulator
 Android uses *emulators* rather than simulators.  An emulator runs slower and requires a bit more configuration effort compared to a simulator.  Unlike the iOS simulator - which you launch from scratch every time you start a new run/debug session - an android emulator is launched independently (by you) and should remain running.  You tend not to stop and start an android emulator very often.  The android SDK will attach to the emulator at the beginning of a run/debug session and detach at the conclusion of the session.
 
-To create an Emulator (virtual device) launch Genymotion and click the Add button.  Follow the instructions to select your desired handset dimensions and android platform version / API level.  Currently the latest android version is 4.4.2 (API level 19).  Once create double-click the appropriate virtual device row to start/play it.
+To create an Emulator (virtual device) launch Genymotion and click the Add button.  Follow the instructions to select your desired handset dimensions and android platform version / API level.  Currently the latest android version is 4.4.2 (API level 19).  Once created double-click the virtual device to start/play it.
 
 Once the virtual device has started you can unlock it and then run the app on the device by selecting the pangeagamma folder in the Eclipse Project Explorer and then hitting Run (ctrl-F11).
 
