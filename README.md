@@ -49,7 +49,9 @@ The following steps create a master development environment on your local Window
 
 
 ####Download POC Repository
-Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.  Alternatively (recommended) you can click the **Clone in Desktop** button and follow the instructions for setting up the Git Client (if not installed already).  This approach will make it easier to later resync your local repository with the master server repository.
+Click the **Download Zip** button to grab a local copy of the POC repository.  Unpack the archive to a location of your choice (e.g., *c:\development\poc\*), abbreviated herein as 'root'.  
+
+Alternatively (recommended) you can click the **Clone in Desktop** button and follow the instructions for setting up the Git Client (if not installed already).  This approach will make it easier to later resync your local repository with the master server repository.
 
 
 ####Install Node Dependencies
@@ -105,11 +107,16 @@ Launch Chrome, browse to http://localhost:8000/platforms/ios/www/index.html (or 
 
 
 #####Android Skin
-As above, but navigate to browse to http://localhost:8000/platforms/android/assets/www/index.html, noting the extra assets folder for android.
+As above, but browse to http://localhost:8000/platforms/android/assets/www/index.html, noting the extra assets folder for android.
 
 
 #####Alternate Android Skin
-Open a new Chrome Tab (ctrl-T) and browse to http://localhost:8000/platforms/android4/www/index.html
+An alternative 'android 4' skin can be enabled by running the following command in the **pangea-gamma** folder:
+
+```
+$ grunt android4
+```
+
 
 
 ==============================
