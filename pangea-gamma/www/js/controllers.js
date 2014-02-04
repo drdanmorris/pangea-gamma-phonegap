@@ -42,6 +42,16 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
 
 ]);
 
+controllers.controller('DeviceController', ['$scope', 
+	function ($scope) {
+		$scope.name = device.name;
+		$scope.phonegap = device.phonegap;
+		$scope.platform = device.platform;
+		$scope.uuid = device.uuid;
+		$scope.version = device.version;
+	}
+]);
+
 
 controllers.controller('MenuController', ['$scope', '$routeParams', 'ViewService', 'PushService',
 	function ($scope, $routeParams, viewsvc, push) {

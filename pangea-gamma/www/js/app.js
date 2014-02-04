@@ -19,6 +19,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         .when('/:tab/menu/:subtype/:id', { templateUrl: 'partials/menu.html', controller: 'MenuController' })
         .when('/:tab/menupr/:subtype/:id', { templateUrl: 'partials/menupr.html', controller: 'PriceMenuController' })
         .when('/:tab/acct/:subtype/:id', { templateUrl: 'partials/picklist.html', controller: 'AccountController' })
+        .when('/:tab/device/:subtype/:id', { templateUrl: 'partials/device.html', controller: 'DeviceController' })
         .when('/:tab/price/trade/:dref', { templateUrl: 'partials/priceTrade.html', controller: 'PriceTradeController' })
         .when('/:tab/price/chart/:dref', { templateUrl: 'partials/priceChart.html', controller: 'PriceChartController' })
         .otherwise({ redirectTo: '0/menu/usr/0' })

@@ -244,7 +244,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			new Tab({ id: 0, title: 'Watchlist', vref: 'menu/usr/0', icon: 'watchlist', notifyCount: 3 }),
 			new Tab({ id: 1, title: 'Browse', vref: 'menu/sports/0', icon: 'browse', notifyCount: 0 }),
 			new Tab({ id: 2, title: 'Account', vref: 'acct/home/0', icon: 'account', notifyCount: 0 }),
-			new Tab({ id: 3, title: 'Position', vref: 'pos/home/0', icon: 'position', notifyCount: 99 }),
+			new Tab({ id: 3, title: 'Device', vref: 'device/info/0', icon: 'position', notifyCount: 99 }),
 			new Tab({ id: 4, title: 'Help', vref: 'help/home/0', icon: 'help', notifyCount: 0 })
 		],
 		tab: null,
