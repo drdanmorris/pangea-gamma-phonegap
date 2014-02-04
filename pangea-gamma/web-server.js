@@ -85,14 +85,33 @@ StaticServlet.MimeMap = {
   'svg': 'image/svg+xml'
 };
 
+StaticServlet.BlackList = {
+  'js' : ['cordova']
+};
+
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
   var path = ('./' + req.url.pathname).replace('//','/').replace(/%(..)/g, function(match, hex){
     return String.fromCharCode(parseInt(hex, 16));
   });
-  var parts = path.split('/');
-  if (parts[parts.length-1].charAt(0) === '.')
+  var parts = path.split('/'),
+      file = parts[parts.length-1];
+  if (file.charAt(0) === '.')
     return self.sendForbidden_(req, res, path);
+
+  var fileparts = file.split('.'),
+      ext = fileparts[1],
+      name = fileparts[0];
+
+  if(StaticServlet.BlackList.hasOwnProperty(ext)) {
+    var dontSend = StaticServlet.BlackList[ext];
+    for(var i = 0; i < dontSend.length; i++) {
+      if(dontSend[i] === name) {
+        return self.sendMissing_(req, res, path);
+      }
+    }
+  }
+
   fs.stat(path, function(err, stat) {
     if (err)
       return self.sendMissing_(req, res, path);

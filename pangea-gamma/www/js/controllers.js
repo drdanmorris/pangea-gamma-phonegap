@@ -4,15 +4,17 @@ var controllers = angular.module('myApp.controllers', []);
 
 controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', '$location',
 	function ($scope, $rootScope, viewsvc, $location) {
+		
+		if(window.platformSpecific) window.platformSpecific.init(viewsvc);
+
 		$scope.navigation = viewsvc;
 		$scope.user = {
-			balance: 3463.81,
+			balance: 44444.44,
 			available: 98246.48,
 			pnl:-3925.99,
 			ntr:-1291.34
 		};
 
-		if(window.platformSpecific) window.platformSpecific.init(viewsvc);
 
 		$scope.onTabSelected = function (idx) {
 			viewsvc.navigateTab(idx);
@@ -57,7 +59,8 @@ controllers.controller('MenuController', ['$scope', '$routeParams', 'ViewService
 			else {
 				viewsvc.viewClass = 'oops';
 			}
-			toolbarController.setTitle(view.title);
+			if(toolbarController)
+				toolbarController.setTitle(view.title);
 		});
 
 		viewsvc.currentViewController = this;
@@ -91,7 +94,7 @@ controllers.controller('PriceMenuController', ['$scope', '$rootScope', '$routePa
 		var applyUpdates = function() {
 			$scope.$apply();
 			resetChg();
-			setTimeout(applyUpdates, 500);
+			setTimeout(applyUpdates, 1000);
 		};
 		
 		var resetChg = function() {
@@ -140,6 +143,8 @@ var toolbarController;
 controllers.controller('ToolbarController', ['$scope', 'ViewService',
 	function ($scope, viewsvc) {
 		
+		console.log('ToolbarController ctor');
+
 		$scope.back = '';
 		$scope.title = 'title';
 

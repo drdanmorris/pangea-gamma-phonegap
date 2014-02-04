@@ -17,37 +17,22 @@
  * under the License.
  */
 var app = {
-	// Application Constructor
 	initialize: function() {
+		console.log('app.initialize');
 		this.bindEvents();
-		var screenHeight = window.innerHeight;
-		//document.querySelector('#main').style.height = (screenHeight - 162) + 'px';
 	},
-	// Bind Event Listeners
-	//
-	// Bind any events that are required on startup. Common events are:
-	// 'load', 'deviceready', 'offline', and 'online'.
 	bindEvents: function() {
-		document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener('deviceready', function() {
+			app.deviceReady();
+		}, false);
 	},
-	// deviceready Event Handler
-	//
-	// The scope of 'this' is the event. In order to call the 'receivedEvent'
-	// function, we must explicity call 'app.receivedEvent(...);'
-	onDeviceReady: function() {
-		app.receivedEvent('deviceready');
-	},
-	// Update DOM on a Received Event
-	receivedEvent: function(id) {
-		console.log('Received Event: ' + id);
-		try {
-			angular.bootstrap(document, ["myApp"]);
-		}
-		catch (err) {
-			console.log('****angular bootstrapping error***\n  (Ignore if running in Ripple)\n  ' + err);
-		}
+	deviceReady: function() {
+		console.log('Device Ready');
+		angular.bootstrap(document, ["myApp"]);
 	}
+	
 };
+
 
 var appController;  // master application controller
 
@@ -64,17 +49,18 @@ function doOnOrientationChange()
 {
 	// if we got this far then we assume that shouldRotateToOrientation() indicated that rotation was valid
 	// for the current view.
+	if(appController) {
+		switch(window.orientation) 
+		{  
+			case -90:
+			case 90:
+				appController.handleOrientationChange('landscape');
+				break;
 
-	switch(window.orientation) 
-	{  
-		case -90:
-		case 90:
-			appController.handleOrientationChange('landscape');
-			break;
-
-		default:
-			appController.handleOrientationChange('portrait');
-			break; 
+			default:
+				appController.handleOrientationChange('portrait');
+				break; 
+		}
 	}
 }
 

@@ -1,0 +1,68 @@
+@require('../base/platform.styl')
+
+
+html.android
+
+	section#summaryBanner
+		position absolute
+		bottom 0
+		left 0
+		width 100%
+		borders(black, sides:"top")
+		//linear-gradient-3-stops(#303b43, #0e1417 50%, #0e1417)
+		linear-gradient-3-stops(#5a595a, #202420 50%, #202420)
+
+	section#toolbar
+		//linear-gradient-3-stops(#303b43, #0e1417 50%, #0e1417)
+		linear-gradient-3-stops(#5a595a, #202420 50%, #202420)
+		#toolbar-left-item
+			background url('images/platform/hw-back.svg') no-repeat 50% 0
+		#toolbar-right-item
+			toolbar-item()
+			> span
+				background none
+
+	section#tabbar
+		borders(#6a696a, 4px, "bottom")
+		div.tab
+			linear-gradient-3-stops(#5a595a, #202420 50%, #202420)
+			borders(#000, sides:"right")
+			div.inner
+				div.title
+					margin-top 3px
+					color white
+				
+				div.notify
+					square(15)
+					top -3px
+					left 0
+					borders(#fff)
+					background-color #606060
+					round-corners(4px)
+
+		div.tab last-child
+			border none
+		
+		div.tab.selected
+			background none
+			background-color #6a696a
+
+	div.priceinfoheader
+		background-color #202020
+		box-shadow 0 1px 6px #000
+	
+	div.menu
+		background-color #1e1e1e
+		color #bbbcbb
+		article
+			borderrs(#333734, sides:"bottom")
+			> div.nav
+				padding 0
+
+	div.price.menu
+		article
+			background url('images/fe-mono.png') no-repeat 3px 50%
+
+
+
+

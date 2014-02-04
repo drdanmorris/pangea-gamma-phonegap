@@ -7,10 +7,10 @@ module.exports = function(grunt) {
 				src: 'platforms/ios/www'
 			},
 			android : {
-				src: 'platforms/android/www'
+				src: 'platforms/android/assets/www'
 			},
-			android4 : {
-				src: 'platforms/android4/www'
+			staging : {
+				src: 'stylus/staging'
 			}
 		},
 
@@ -18,73 +18,73 @@ module.exports = function(grunt) {
 
 
 		stylus: {
+
 			ios: {
 				options: {
-					paths: ['www/css/stylus']
+					paths: ['stylus']
 				},
 				files: {
-					'www/css/ios.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/ios/*.styl']
+					'platforms/ios/www/css/app.css': ['stylus/staging/*.styl', 'stylus/ios/platform.styl']
 				}
 			},
+
 			android: {
 				options: {
-					paths: ['www/css/stylus']
+					paths: ['stylus']
 				},
 				files: {
-					'www/css/android.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/android/*.styl']
+					'platforms/android/assets/www/css/app.css': ['stylus/staging/*.styl', 'stylus/android/platform.styl']
 				}
 			},
+
 			android4: {
 				options: {
-					paths: ['www/css/stylus']
+					paths: ['stylus']
 				},
 				files: {
-					'www/css/android4.css': ['www/css/stylus/base/*.styl', 'www/css/stylus/android4/*.styl']
+					'platforms/android/assets/www/css/app.css': ['stylus/staging/*.styl', 'stylus/android4/platform.styl']
 				}
 			}
+
 		},
 
 
 		copy: {
+			commoninit: {
+				files: [
+					{expand: true, cwd: 'stylus/base', src: ['**/*.styl'], dest: 'stylus/staging'}
+				]
+			},
+
 			iosinit: {
 				files: [
-					{src: 'www/css/stylus/ios/platform-overrides.styl', dest: 'www/css/stylus/base/platform-overrides.styl'}
+					{src: 'stylus/ios/platform-overrides.styl', dest: 'stylus/staging/platform-overrides.styl'}
 				]
 			},
 			ios: {
 				files: [
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/ios/www'},
 					{expand: true, cwd: 'merges/ios', src: ['**'], dest: 'platforms/ios/www'},
-					{expand: true, cwd: 'phonegap_tweaks/platforms/ios', src: ['**'], dest: 'platforms/ios'},
-					{src: 'www/css/ios.css', dest: 'platforms/ios/www/css/app.css'}
+					{expand: true, cwd: 'phonegap_tweaks/platform/ios', src: ['**'], dest: 'platforms/ios'}
 				]
 			},
 
 			androidinit: {
 				files: [
-					{src: 'www/css/stylus/android/platform-overrides.styl', dest: 'www/css/stylus/base/platform-overrides.styl'}
+					{src: 'stylus/android/platform-overrides.styl', dest: 'stylus/staging/platform-overrides.styl'}
 				]
 			},
 			android: {
 				files: [
-					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android/www'},
-					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/www'},
-					{expand: true, cwd: 'phonegap_tweaks/platforms/android', src: ['**'], dest: 'platforms/android'},
-					{src: 'www/css/android.css', dest: 'platforms/android/www/css/app.css'}
+					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android/assets/www'},
+					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/assets/www'},
+					{expand: true, cwd: 'phonegap_tweaks/platform/android', src: ['**'], dest: 'platforms/android'}
 				]
 			},
 
 			android4init: {
 				files: [
-					{src: 'www/css/stylus/android4/platform-overrides.styl', dest: 'www/css/stylus/base/platform-overrides.styl'}
-				]
-			},
-			android4: {
-				files: [
-					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.js','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android4/www'},
-					{expand: true, cwd: 'merges/android4', src: ['**'], dest: 'platforms/android4/www'},
-					{expand: true, cwd: 'phonegap_tweaks/platforms/android4', src: ['**'], dest: 'platforms/android4'},
-					{src: 'www/css/android4.css', dest: 'platforms/android4/www/css/app.css'}
+					{src: 'stylus/android4/platform-overrides.styl', dest: 'stylus/staging/platform-overrides.styl'}
 				]
 			}
 		},
@@ -102,12 +102,6 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'www', src: ['**', '!**/*.less', '!**/*.bat', '!**/*.psd'], dest: 'platforms/android/www'},
 					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/www'}
 				]
-			},
-			android4: {
-				files: [
-					{expand: true, cwd: 'www', src: ['**', '!**/*.less', '!**/*.bat', '!**/*.psd'], dest: 'platforms/android4/www'},
-					{expand: true, cwd: 'merges/android4', src: ['**'], dest: 'platforms/android4/www'}
-				]
 			}
 		}
 
@@ -121,10 +115,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-sync');
 	
 
-	grunt.registerTask('ios', ['clean:ios', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
-	grunt.registerTask('android', ['clean:android', 'copy:androidinit', 'stylus:android', 'copy:android']);
-	grunt.registerTask('android4', ['clean:android4', 'copy:android4init', 'stylus:android4', 'copy:android4']);
-	grunt.registerTask('default', ['ios', 'android', 'android4']);
+	grunt.registerTask('ios', ['clean:staging', 'copy:commoninit', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
+	grunt.registerTask('android', ['clean:staging', 'copy:commoninit', 'copy:androidinit', 'stylus:android', 'copy:android']);
+	grunt.registerTask('android4', ['clean:staging', 'copy:commoninit', 'copy:android4init', 'stylus:android4', 'copy:android']);
+	grunt.registerTask('default', ['ios', 'android']);
 
 
 

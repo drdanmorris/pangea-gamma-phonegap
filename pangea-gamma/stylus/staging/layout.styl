@@ -1,0 +1,22 @@
+@require('platform.styl')
+
+section#app
+	height 100%
+	overflow hidden
+
+	section#main
+		//overflow-y auto
+		//overflow-x hidden
+		background-color $mainBgColor
+		.slide
+			overflow-y auto
+			overflow-x hidden
+			background-color $slideBgColor
+
+html.landscape
+	section#app
+		section#toolbar
+		section#summaryBanner
+		section#tabbar
+			display none
+			

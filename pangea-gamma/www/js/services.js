@@ -50,6 +50,7 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 		}
 		, connect: function () {
 			this.connecting = true;
+
 			var my = this,
 				defer = $q.defer(),
 				connection = new WebSocket(config.websocket.url);
@@ -257,6 +258,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		currentViewController: null,
 
 		setPlatform: function(platform) {
+			console.log('setPlatform:' + platform);
 			this.platform = platform;
 			this.setMainHeight();
 		},

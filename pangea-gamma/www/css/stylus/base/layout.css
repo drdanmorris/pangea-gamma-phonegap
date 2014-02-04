@@ -1,8 +1,0 @@
-section#app {
-  height: 100%;
-  overflow: hidden;
-}
-section#app section#main {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
