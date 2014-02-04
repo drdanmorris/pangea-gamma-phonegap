@@ -198,8 +198,8 @@ Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
 #### Build Android Project (Cordova)
 
 ```
-R:\>rmdir platforms\android
-R:\>phonegap build android
+$ rmdir platforms\android
+$ phonegap build android
 ```
 
 > This will create an Android platform in the platforms folder.
@@ -209,7 +209,7 @@ R:\>phonegap build android
 We also need to perform a custom build to handle css compilation and custom plugin installation.
 
 ```
-R:\>grunt android
+$ grunt android
 ```
 
 > This will tweak the contents of the platforms\android folder. 
@@ -217,7 +217,7 @@ R:\>grunt android
 Alternatively, to use the alternate 'android 4' skin you can run the following instead.
 
 ```
-R:\>grunt android4
+$ grunt android4
 ```
 
 #### Create Eclipse Project
