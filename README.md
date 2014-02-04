@@ -221,7 +221,7 @@ R:\>grunt android4
 ```
 
 #### Create Eclipse Project
-To install the POC app on either an Android emulator or device you need to launch the android build from Eclipse.
+To install the POC on either an Android emulator or device you need to launch the android build from Eclipse.
 
 - Launch the version of Eclipse that was installed as part of the Android SDK.
 - Select File > New Project
