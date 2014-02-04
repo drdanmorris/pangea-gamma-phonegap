@@ -4,6 +4,7 @@
 platforms/
 *.css
 *.psd
+staging/
 
 
 #################
