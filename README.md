@@ -66,7 +66,7 @@ $ npm install
 
 
 ####Tweak your Local Configuration 
-Open the following *root\pangea-gamma\www\js\services.js* file and update the url property of the websocket configuration to the IP address of your local server.
+Open the following *\\\\root\pangea-gamma-phonegap-master\pangea-gamma\www\js\services.js* file and update the **url** property of the websocket configuration to the IP address of your local server.
 
 
 
