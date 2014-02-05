@@ -164,6 +164,7 @@ module.exports = function(grunt) {
 
 		grunt.log.writeln(this.target + ': ' + this.data);
 
+		done(true);
 
 	});
 
