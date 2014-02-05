@@ -65,6 +65,11 @@ $ npm install
 > This will install any Node dependencies listed in the package.json file to a local node_modules folder.
 
 
+####Tweak your Local Configuration 
+Open the following *root\pangea-gamma\www\js\services.js* file and update the url property of the websocket configuration to the IP address of your local server.
+
+
+
 ####Build the POC Mobile Web App
 Navigate to *\\\\root\pangea-gamma-phonegap-master\pangea-gamma* and run the following command:
 
@@ -73,6 +78,7 @@ $ grunt
 ```
 
 > The Grunt Task Runner will then execute the build process defined in the local gruntfile.  All going well Grunt will output progress entries for various ios, android and android4 tasks and then exit with the entry 'Done, without errors'.
+
 
 ###Test the Installation
 The POC can be viewed as a standard Mobile Web Application by hosting the pangea-gamma folder in a web server and browsing to the various platform index.html pages using a web browser.  However, as the bootstrapping of the AngularJS application is triggered by the document.deviceready event a phonegap-aware browser must be used.  The Chrome Ripple Emulator extension is currently the best (and in fact only) choice for this.  To install this extension point your Google Chrome browser to the <a href="https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc?hl=en">Google Web Store</a> and click the Add To Chrome button.  Once done you can enable Ripple on a per-page basis by clicking the Ripple icon to the right of the address bar.
