@@ -147,7 +147,7 @@ $ grunt clean:reset
 
 
 ```
-$ grunt platform-android
+$ grunt platform-ios
 ```
 > This will create a new ios platform in the platform folder, and install the required plugins.
 
