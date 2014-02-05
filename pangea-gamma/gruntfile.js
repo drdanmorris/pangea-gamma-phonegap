@@ -77,6 +77,12 @@ module.exports = function(grunt) {
 				]
 			},
 
+			fix_ios_plugins: {
+				files: [
+					{expand: true, cwd: 'plugins/org.apache.cordova.device/src/ios', src: ['**'], dest: 'platforms/ios/pangea-gamma/Plugins/org.apache.cordova.device'}
+				]
+			},
+
 			androidinit: {
 				files: [
 					{src: 'stylus/android/platform-overrides.styl', dest: 'stylus/staging/platform-overrides.styl'}
@@ -127,11 +133,42 @@ module.exports = function(grunt) {
 			add_plugin_websocket : {
 				command: 'phonegap local plugin add https://github.com/drdanmorris/phonegap-websocket'
 			}
+		},
+
+		edit_config_feature: {
+			ios_device: {
+				src: 'platforms/ios/pangea-gamma/config.xml',
+				feature: '<feature name="Device"><param name="ios-package" value="CDVDevice" /></feature>'
+			},
+			android_device: {
+				src: 'platforms/android/res/xml/config.xml',
+				feature: '<feature name="Device"><param name="android-package" value="org.apache.cordova.device.Device" /></feature>'
+			}
 		}
 
  
 	});
  
+	grunt.task.registerMultiTask('edit_config_feature', 'Add a feature to config.xml', function() {
+		var done = this.async();
+		var fs = require('fs');
+		var file = this.files[0].src[0];
+		var feature = this.files[0].feature;
+
+		fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
+			grunt.log.writeln('editing file ' + file);
+			var updated = data.replace('</widget>', '\t' + feature + '\n</widget>')
+			//grunt.log.writeln(updated);
+			fs.writeFileSync(file, updated);
+		});
+
+		grunt.log.writeln(this.target + ': ' + this.data);
+
+
+	});
+
+
+	grunt.registerTask('fix_ios_plugins', ['edit_config_feature:ios_device', 'copy:fix_ios_plugins']);
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-stylus');
@@ -144,7 +181,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('android4', ['clean:staging', 'copy:commoninit', 'copy:android4init', 'stylus:android4', 'copy:android']);
 	grunt.registerTask('default', ['ios', 'android']);
 
-	grunt.registerTask('platform-ios', ['exec:prepare_ios', 'exec:add_plugin_device']);
+	grunt.registerTask('platform-ios', ['clean:ios_all', 'exec:prepare_ios', 'exec:add_plugin_device']);
 	grunt.registerTask('platform-android', ['clean:android_all', 'exec:prepare_android', 'exec:add_plugin_device', 'exec:add_plugin_websocket']);  // ]);// 
 	
 
