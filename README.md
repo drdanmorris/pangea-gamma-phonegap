@@ -138,50 +138,25 @@ On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url fo
 In a Terminal window navigate to *\\\\pocroot\pangea-gamma* in preparation for the following steps.
 
 
-#### Kill the current iOS platform files
-Phonegap doesn't like any foreign files in the platforms folder, so we need to empty this folder before invoking any phonegap commands.
-
-
-```
-pangea-gamma$ rm -R platforms\ios
-```
-
-
-#### Build iOS Project (Cordova)
-
-```
-pangea-gamma$ sudo phonegap build ios
-```
-
-> Phonegap will then deploy a build to the platforms/ios folder.  In here you will find the pangea-gamma.xcodeproj which you can later open for debugging and building the POC app.  
-
-
-#### Change Phonegap File Ownership
-By default you wont have permissions on the files created by phonegap. To change ownership back to your local user run the following commands:
-
-```
-pangea-gamma$ ls -al platforms/ios
-```
-> You should see that root owns all the files
-
-To address this:
-
-```
-pangea-gamma$ sudo chown -R \<local user\> platforms
-
-pangea-gamma$ ls -al platforms/ios
-```
-> You should now see that \<local user\> now owns all the files, and you should have permission to open the xcodeproj
-
-
 #### Build iOS Project (Grunt)
-We need to peform a custom build in order to compile our .styl scripts to CSS, and take care of a few other miscellaneous house-keeping items. 
 
 ```
-pangea-gamma$ grunt ios
+$ grunt clean:reset
 ```
+> This will blow-away any previous phonegap code
 
-> Platforms/ios will now contain the appropriate compiled source files.
+
+```
+$ grunt platform-android
+```
+> This will create a new ios platform in the platform folder, and install the required plugins.
+
+
+```
+$ grunt ios
+```
+> This will update the platform/ios/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
+
 
 #### Build Native App with XCode
 You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
@@ -195,30 +170,26 @@ To build an android app you need a Mac or PC with the Android SDK installed.  Pr
 Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
 
 
-#### Build Android Project (Cordova)
-
-```
-$ rmdir platforms\android
-$ phonegap build android
-```
-
-> This will create an Android platform in the platforms folder.
-
-
 #### Build Android Project (Grunt)
-We also need to perform a custom build to handle css compilation and custom plugin installation.
+
+```
+$ grunt clean:reset
+```
+> This will blow-away any previous phonegap code
+
+
+```
+$ grunt platform-android
+```
+> This will create a new android platform in the platform folder, and install the required plugins.
+
 
 ```
 $ grunt android
 ```
+> This will update the platform/android/assets/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
 
-> This will tweak the contents of the platforms\android folder. 
 
-Alternatively, to use the alternate 'android 4' skin you can run the following instead.
-
-```
-$ grunt android4
-```
 
 #### Create Eclipse Project
 To install the POC on either an Android emulator or device you need to launch the android build from Eclipse.
