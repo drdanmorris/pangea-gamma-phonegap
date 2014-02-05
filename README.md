@@ -179,6 +179,15 @@ $ grunt ios
 > This will update the platform/ios/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
 
 
+#### Fix iOS Project (Grunt)
+If you encounter a build issue with your XCode project due to missing Plugin files and configuration, then you should be able to fix these issues by running:
+
+```
+$ grunt fix_ios_plugins
+```
+> This will copy the missing .h and .m plugin files to the Plugin folder, and insert the correct plugin configuration entry in the root config.xml.
+
+
 #### Build Native App with XCode
 You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
 
