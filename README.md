@@ -130,9 +130,30 @@ In order to build native phonegap applications you need to create the appropriat
 ### iOS Phonegap App (Mac)
 To build an iOS app you need a Mac with XCode installed.
 
-#### Copy POC to the Build Mac
-On the Mac use the Finder to Connect To Server (cmd-K) and enter the smb: url for your local Windows machine (or alternatively a network share where you have deployed the POC).  Once connected copy the POC pangea-gamma directory to a local directory on the Mac (e.g., Home\Documents\Development\POC) - referred herein as 'pocroot'
 
+#### Retrieve Repository
+The preferred option is to retrieve the repo via git:
+
+```
+git clone https://github.com/drdanmorris/pangea-gamma-phonegap
+```
+> If git isn't installed you can find the MacOS git installer <a ref="http://git-scm.com/download/mac">here</a>
+
+Once cloned you can update your local repo via:
+
+```
+git fetch --all
+git reset --hard origin/master
+```
+> This will resync your local repo with the remote repo, blowing away any local changes you may have made.  
+
+
+**Note:** If you encounter any access denied errors you can run the following to change ownership to you:
+
+```
+cd ..
+sudo chown -R <username> pangea-gamma
+```
 
 #### Open Terminal Window
 In a Terminal window navigate to *\\\\pocroot\pangea-gamma* in preparation for the following steps.
