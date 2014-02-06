@@ -21,6 +21,15 @@ var app = {
 		console.log('app.initialize');
 		this.bindEvents();
 	},
+	initOrientation: function() {
+
+		if(screenOrientation) {
+			//alert('screenOrientation defined')
+			console.log('locking orientation to portrait');
+			screenOrientation.set('portrait');
+		}
+
+	},
 	bindEvents: function() {
 		document.addEventListener('deviceready', function() {
 			app.deviceReady();
@@ -29,6 +38,7 @@ var app = {
 	deviceReady: function() {
 		console.log('Device Ready');
 		angular.bootstrap(document, ["myApp"]);
+		this.initOrientation();
 	}
 	
 };
@@ -36,15 +46,16 @@ var app = {
 
 var appController;  // master application controller
 
+
+// Orientation support (iOS)
 // 1 = UIInterfaceOrientationPortrait
 // 2 = UIInterfaceOrientationPortraitUpsideDown
 // 3 = UIInterfaceOrientationLandscapeLeft
 // 4 = UIInterfaceOrientationLandscapeRight
-
 function shouldRotateToOrientation(interfaceOrientation) {
+	console.log('shouldRotateToOrientation ' +  interfaceOrientation);
 	return (1 === interfaceOrientation); // support portrait only
 }
-
 function doOnOrientationChange()
 {
 	// if we got this far then we assume that shouldRotateToOrientation() indicated that rotation was valid
@@ -63,6 +74,5 @@ function doOnOrientationChange()
 		}
 	}
 }
-
 window.addEventListener('orientationchange', doOnOrientationChange);
 

@@ -7,10 +7,18 @@ module.exports = function(grunt) {
 		//==============================================
 		clean: {
 			ios_www : {
-				src: ['platforms/ios/www/css', 'platforms/ios/www/img', 'platforms/ios/www/js','platforms/ios/www/lib']
+				src: [
+					'platforms/ios/www/css', 
+					'platforms/ios/www/img', 
+					'platforms/ios/www/js',
+					'platforms/ios/www/lib']
 			},
 			android_www : {
-				src: ['platforms/android/assets/www/css', 'platforms/android/assets/www/img', 'platforms/android/assets/www/js','platforms/android/assets/www/lib']
+				src: [
+					'platforms/android/assets/www/css', 
+					'platforms/android/assets/www/img', 
+					'platforms/android/assets/www/js',
+					'platforms/android/assets/www/lib']
 			},
 			ios_all : {
 				src: 'platforms/ios'
@@ -139,6 +147,9 @@ module.exports = function(grunt) {
 			},
 			add_plugin_websocket : {
 				command: 'phonegap local plugin add https://github.com/drdanmorris/phonegap-websocket'
+			},
+			add_plugin_orientation : {
+				command: 'phonegap local plugin add https://github.com/drdanmorris/pg-plugin-screen-orientation'
 			}
 		},
 
@@ -150,10 +161,6 @@ module.exports = function(grunt) {
 			ios_device: {
 				src: 'platforms/ios/pangea-gamma/config.xml',
 				feature: '<feature name="Device"><param name="ios-package" value="CDVDevice" /></feature>'
-			},
-			android_device: {
-				src: 'platforms/android/res/xml/config.xml',
-				feature: '<feature name="Device"><param name="android-package" value="org.apache.cordova.device.Device" /></feature>'
 			}
 		},
 
@@ -171,6 +178,9 @@ module.exports = function(grunt) {
 		},
 
 
+		//==============================================
+		// uglify
+		//==============================================
 		uglify: {
 			android: {
 				files: {
@@ -299,7 +309,7 @@ module.exports = function(grunt) {
 	
 	
 	grunt.registerTask('platform-ios', ['clean:ios_all', 'exec:prepare_ios', 'exec:add_plugin_device']);
-	grunt.registerTask('platform-android', ['clean:android_all', 'exec:prepare_android', 'exec:add_plugin_device', 'exec:add_plugin_websocket']);  // ]);// 
+	grunt.registerTask('platform-android', ['clean:android_all', 'exec:prepare_android', 'exec:add_plugin_device', 'exec:add_plugin_websocket', 'exec:add_plugin_orientation']);  // ]);// 
 	
 
 	grunt.registerTask('fix_ios_plugins', ['edit_config_feature:ios_device', 'copy:fix_ios_plugins']);
