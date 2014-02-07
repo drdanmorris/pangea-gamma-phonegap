@@ -26,7 +26,7 @@ $ npm install -g phonegap
 $ sudo npm install -g phonegap
 ```
 
-> The -g option ensures that the package is available globally on your machine (rather than just in the current folder).  On Windows globally installed Node packages are downloaded to *c:\Users\\\<user\>\appdata\Roaming\npm\node_modules*
+> The -g option ensures that the package is available globally on your machine (rather than just in the current folder).  On Windows globally installed Node packages are downloaded to *c:\Users\\\<user\>\appdata\Roaming\npm\node_modules*.    On MacOS Node packages are installed to *usr/local/lib/npm/node_packages*.
 
 
 ####Install Grunt
