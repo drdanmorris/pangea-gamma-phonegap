@@ -143,7 +143,7 @@ module.exports = function(grunt) {
 				command: 'phonegap build android'
 			},
 			add_plugin_device : {
-				command: 'phonegap local plugin add org.apache.cordova.device'
+				command: 'phonegap local plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git'
 			},
 			add_plugin_websocket : {
 				command: 'phonegap local plugin add https://github.com/drdanmorris/phonegap-websocket'
