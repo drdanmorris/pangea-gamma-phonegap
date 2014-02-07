@@ -209,8 +209,8 @@ $ grunt fix_ios_plugins
 You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
 
 
-### Android Phonegap App (PC)
-To build an android app you need a Mac or PC with the Android SDK installed.  Presumably you would use a PC.
+### Android/WP8 Phonegap Apps (PC)
+To build an android app you need a Mac or PC with the Android SDK installed.  Presumably you would use a PC.  For WP8 you need a PC with the WP8 SDK (Visual Studio add-on).
 
 
 #### Open Command Prompt
