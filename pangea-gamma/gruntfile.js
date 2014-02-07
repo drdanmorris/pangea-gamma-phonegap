@@ -311,7 +311,8 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask('add-ios', ['clean:ios_all', 'exec:prepare_ios']);
 	grunt.registerTask('add-android', ['clean:android_all', 'exec:prepare_android']); 
-	grunt.registerTask('add-plugins', ['exec:add_plugin_device', 'exec:add_plugin_websocket', 'exec:add_plugin_orientation']);  
+	grunt.registerTask('add-plugins', ['exec:add_plugin_device']);
+	grunt.registerTask('add-plugins-android', ['exec:add_plugin_websocket', 'exec:add_plugin_orientation']);
 
 
 	grunt.registerTask('fix_ios_plugins', ['edit_config_feature:ios_device', 'copy:fix_ios_plugins']);
