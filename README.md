@@ -243,13 +243,20 @@ Install the common plugins:
 $ grunt add-plugins
 ```
 
+Install the android-specific plugins:
+
+```
+$ grunt add-plugins-android
+```
+
+
 Install the www content:
 
 ```
 $ grunt android
 ```
 
-> Note that we will eventually employ the use of a **watch** task to automatically call **grunt** when the local master www content changes.  Thr **grunt** command (no args) will invoke the **grunt android**, **grunt ios** and (when available) the **grunt wp8** tasks.  This means your platform www content should always stay synchronised with your master www.
+> Note that we will eventually employ the use of a **watch** task to automatically call **grunt** when the local master www content changes.  The **grunt** command (no args) will invoke the **grunt android**, **grunt ios** and (when available) the **grunt wp8** tasks.  This means your platform www content should always stay synchronised with your master www.
 
 
 
