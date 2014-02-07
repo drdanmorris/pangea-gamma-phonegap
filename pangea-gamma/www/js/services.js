@@ -14,6 +14,8 @@ services.factory('Config', function () {
 	};
 });
 
+
+
 services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, config, $rootScope) {
 	var socket = {
 		isConnected: false
@@ -256,11 +258,16 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		platform: '',
 		mainHeight: 0,
 		currentViewController: null,
+		alternateVref: null,
+
+		init: function() {
+			this.setMainHeight();
+			this.resetView();
+		},
 
 		setPlatform: function(platform) {
 			console.log('setPlatform:' + platform);
 			this.platform = platform;
-			this.setMainHeight();
 		},
 
 		getDimensions: function() {
@@ -327,6 +334,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.doNavigate(vref, 'back');
 		},
 		doNavigate: function (vref, dir) {
+			this.resetView();
 			toolbarController.resetToolbarItems();
 			this.viewClass = '';
 			if (angular.isString(vref)) vref = new Vref(vref, this.tabIndex);
@@ -345,11 +353,25 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.tab.vref = vref;
 			$location.path(vref.raw);
 		},
+		resetView: function() {
+			this.alternateVref = null;
+			this.lockOrientation();
+		}, 
+		setAlternateVref: function(vref) {
+			this.alternateVref = vref;
+		},
+		lockOrientation: function(orientation) {
+			platformSpecific.support.orientation.lock(orientation || 'portrait');
+		},
+		unlockOrientation: function() {
+			platformSpecific.support.orientation.unlock();
+		},
 		handleOrientationChange: function(orientation) {
-			//alert(orientation);
 			this.orientation = orientation;
-
-			// todo...ask current view controller for landscape URL
+			$rootScope.$apply()
+			if(this.alternateVref) {
+				this.doNavigate(this.alternateVref, 'orientation');
+			}
 		}
 	
 	};

@@ -297,7 +297,7 @@ module.exports = function(grunt) {
 	});
 
 
-
+	grunt.registerTask('reset', ['clean:reset']);
 
 	grunt.registerTask('common', ['clean:staging', 'concat', 'copy:commoninit']);
 	grunt.registerTask('default', ['ios', 'android']);
@@ -306,11 +306,13 @@ module.exports = function(grunt) {
 	grunt.registerTask('ios', ['common', 'clean:ios_www', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
 	grunt.registerTask('android', ['common', 'clean:android_www', 'copy:androidinit', 'stylus:android', 'copy:android']);
 	grunt.registerTask('android4', ['common', 'clean:android_www', 'copy:android4init', 'stylus:android4', 'copy:android']);
+	grunt.registerTask('windows', ['android']);
+
 	
-	
-	grunt.registerTask('platform-ios', ['clean:ios_all', 'exec:prepare_ios', 'exec:add_plugin_device']);
-	grunt.registerTask('platform-android', ['clean:android_all', 'exec:prepare_android', 'exec:add_plugin_device', 'exec:add_plugin_websocket', 'exec:add_plugin_orientation']);  // ]);// 
-	
+	grunt.registerTask('add-ios', ['clean:ios_all', 'exec:prepare_ios']);
+	grunt.registerTask('add-android', ['clean:android_all', 'exec:prepare_android']); 
+	grunt.registerTask('add-plugins', ['exec:add_plugin_device', 'exec:add_plugin_websocket', 'exec:add_plugin_orientation']);  
+
 
 	grunt.registerTask('fix_ios_plugins', ['edit_config_feature:ios_device', 'copy:fix_ios_plugins']);
 

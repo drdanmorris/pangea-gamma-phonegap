@@ -25,30 +25,38 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
 		$scope.showSummary = function() {
 			viewsvc.bannerClass = 'summary';
 		};
-		$scope.platform = function(platform) {
-			viewsvc.setPlatform(platform);
-		}
+		
 		window.appController = this;
 		this.viewsvc = viewsvc;
-		viewsvc.setMainHeight();
-		window.appController = this;
+		viewsvc.init();
 
 		this.handleOrientationChange = function(orientation) {
-			//alert(orientation);
 			viewsvc.handleOrientationChange(orientation);
-			$scope.$apply()
 		}
 	}
 
 ]);
 
-controllers.controller('DeviceController', ['$scope', 
-	function ($scope) {
-		$scope.name = device.name;
-		$scope.phonegap = device.phonegap;
-		$scope.platform = device.platform;
-		$scope.uuid = device.uuid;
-		$scope.version = device.version;
+controllers.controller('DeviceController', ['$scope', 'ViewService',
+	function ($scope, viewsvc) {
+		viewsvc.unlockOrientation();
+
+		if(typeof device != 'undefined') {
+			$scope.name = device.name;
+			$scope.phonegap = device.phonegap;
+			$scope.platform = device.platform;
+			$scope.uuid = device.uuid;
+			$scope.version = device.version;
+		}
+
+		var vref = viewsvc.vref;
+		if(vref.subtype === 'info') {
+
+		}
+		else {
+
+		}
+
 	}
 ]);
 
