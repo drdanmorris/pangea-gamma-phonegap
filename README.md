@@ -173,8 +173,7 @@ To start from a clean slate run:
 $ grunt reset
 ```
 
-> Note:  when you do a **grunt reset** you will need to re-install all platforms in your local phonegap installation. For iOS/Mac this is ok as iOS should be the only platform present.  
-
+Install the iOS platform:
 
 ```
 $ grunt add-ios
@@ -182,12 +181,14 @@ $ grunt add-ios
 > This will create a new iOS platform in the platforms folder.
 
 
+Install common plugins:
 ```
 $ grunt add-plugins
 ```
 > This will install the required plugins.
 
 
+Install www content: 
 
 ```
 $ grunt ios
@@ -209,8 +210,8 @@ $ grunt fix_ios_plugins
 You should now be ready to build your phonegap iOS application. Open the pangea-gamma.xcodceproj file in XCode, Build (cmd-B) and then Run (cmd-R) on either the simulator or your provisioned iOS device.
 
 
-### Android/WP8 Phonegap Apps (PC)
-To build an android app you need a Mac or PC with the Android SDK installed.  Presumably you would use a PC.  For WP8 you need a PC with the WP8 SDK (Visual Studio add-on).
+### Android Phonegap Apps (PC)
+To build an android app you need a Mac or PC with the Android SDK installed.  Presumably you would use a PC. 
 
 
 #### Open Command Prompt
@@ -225,6 +226,10 @@ To start from a clean slate run:
 ```
 $ grunt reset
 ```
+> Note: you will need to re-install both android and wp8 (when available) after doing a **grunt reset** (assuming they are both installed on the same build machine).
+
+
+Install the android platform:
 
 ```
 $ grunt add-android
@@ -232,39 +237,19 @@ $ grunt add-android
 > This will create a new android platform in the platforms folder.
 
 
-When the wp8 platform becomes available:
-
-```
-$ grunt add-wp8
-```
-> This will create a new wp8 platform in the platforms folder.
-
-
-Then to add the universal plugins:
+Install the common plugins:
 
 ```
 $ grunt add-plugins
 ```
 
-Finally to install the www content:
+Install the www content:
 
 ```
 $ grunt android
 ```
 
-And (when wp8 becomes available):
-
-```
-$ grunt wp8
-```
-
-Alternatively, to install www content for both android and wp8 you can run:
-
-```
-$ grunt windows
-```
-
-> Note that we will eventually employ the use of a **watch** task to automatically call **grunt windows** when the local master www content changes.  This means your platform www content should always stay synchronised with your master www.
+> Note that we will eventually employ the use of a **watch** task to automatically call **grunt** when the local master www content changes.  Thr **grunt** command (no args) will invoke the **grunt android**, **grunt ios** and (when available) the **grunt wp8** tasks.  This means your platform www content should always stay synchronised with your master www.
 
 
 
