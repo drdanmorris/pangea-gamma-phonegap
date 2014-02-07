@@ -222,7 +222,7 @@ To build an android app you need a Mac or PC with the Android SDK installed.  Pr
 Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
 
 
-#### Build Android / WP8 Projects (Grunt)
+#### Build Android Projects (Grunt)
 
 
 To start from a clean slate run:
