@@ -173,6 +173,15 @@ To start from a clean slate run:
 $ grunt reset
 ```
 
+
+Install common plugins (yes, we install plugins *before* we install the platform):
+```
+$ grunt add-plugins
+```
+> This will install the required plugins.
+
+
+
 Install the iOS platform:
 
 ```
@@ -181,11 +190,6 @@ $ grunt add-ios
 > This will create a new iOS platform in the platforms folder.
 
 
-Install common plugins:
-```
-$ grunt add-plugins
-```
-> This will install the required plugins.
 
 
 Install www content: 
@@ -229,14 +233,6 @@ $ grunt reset
 > Note: you will need to re-install both android and wp8 (when available) after doing a **grunt reset** (assuming they are both installed on the same build machine).
 
 
-Install the android platform:
-
-```
-$ grunt add-android
-```
-> This will create a new android platform in the platforms folder.
-
-
 Install the common plugins:
 
 ```
@@ -248,6 +244,13 @@ Install the android-specific plugins:
 ```
 $ grunt add-plugins-android
 ```
+
+Install the android platform:
+
+```
+$ grunt add-android
+```
+> This will create a new android platform in the platforms folder.
 
 
 Install the www content:
