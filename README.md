@@ -165,24 +165,35 @@ sudo chown -R <username> pangea-gamma
 In a Terminal window navigate to *\\\\pocroot\pangea-gamma* in preparation for the following steps.
 
 
-#### Build iOS Project (Grunt)
+#### Build iOS Project (Grunt) NEW
+
+To start from a clean slate run:
 
 ```
-$ grunt clean:reset
+$ grunt reset
 ```
-> This will blow-away any previous phonegap code
+
+> Note:  when you do a **grunt reset** you will need to re-install all platforms in your local phonegap installation. For iOS/Mac this is ok as iOS should be the only platform present.  
 
 
 ```
-$ grunt platform-ios
+$ grunt add-ios
 ```
-> This will create a new ios platform in the platform folder, and install the required plugins.
+> This will create a new iOS platform in the platforms folder.
+
+
+```
+$ grunt add-plugins
+```
+> This will install the required plugins.
+
 
 
 ```
 $ grunt ios
 ```
 > This will update the platform/ios/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
+
 
 
 #### Fix iOS Project (Grunt)
@@ -206,24 +217,54 @@ To build an android app you need a Mac or PC with the Android SDK installed.  Pr
 Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
 
 
-#### Build Android Project (Grunt)
-
-```
-$ grunt clean:reset
-```
-> This will blow-away any previous phonegap code
+#### Build Android / WP8 Projects (Grunt)
 
 
-```
-$ grunt platform-android
-```
-> This will create a new android platform in the platform folder, and install the required plugins.
+To start from a clean slate run:
 
+```
+$ grunt reset
+```
+
+```
+$ grunt add-android
+```
+> This will create a new android platform in the platforms folder.
+
+
+When the wp8 platform becomes available:
+
+```
+$ grunt add-wp8
+```
+> This will create a new wp8 platform in the platforms folder.
+
+
+Then to add the universal plugins:
+
+```
+$ grunt add-plugins
+```
+
+Finally to install the www content:
 
 ```
 $ grunt android
 ```
-> This will update the platform/android/assets/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
+
+And (when wp8 becomes available):
+
+```
+$ grunt wp8
+```
+
+Alternatively, to install www content for both android and wp8 you can run:
+
+```
+$ grunt windows
+```
+
+> Note that we will eventually employ the use of a **watch** task to automatically call **grunt windows** when the local master www content changes.  This means your platform www content should always stay synchronised with your master www.
 
 
 
