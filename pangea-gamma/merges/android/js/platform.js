@@ -1,20 +1,20 @@
 var platformSpecific = {
 	support: {},
 	init: function(viewsvc) {
+		this.viewsvc = viewsvc;
 		console.log('Platform-specific init:  android');
 		viewsvc.setPlatform('android');
 
 		for(var prop in this.support)
 			if(this.support.hasOwnProperty(prop))
-				this.support[prop].init();
+				this.support[prop].init(this);
 	}
 };
 
 var screenOrientation = null;
 
 platformSpecific.support.hardwareBackButton = {
-	init: function() {
-		var my = this;
+	init: function(my) {
 		document.addEventListener("backbutton", function(e){
 			console.log('backbutton event fired');
 			my.viewsvc.goBack();

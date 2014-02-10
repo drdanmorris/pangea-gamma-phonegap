@@ -2,10 +2,50 @@
 
 var controllers = angular.module('myApp.controllers', []);
 
-controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', '$location',
-	function ($scope, $rootScope, viewsvc, $location) {
+(function(){
+
+function platformComplianceCheck($animate, $scope) {
+
+	var feedback = null,  
+		platform = device.platform.toLowerCase(), 
+		version = new Version(device.version);
+
+		// **********************TEST***********************
+		//platform = 'android';
+		//version = new Version('2.2.5');
+		// **********************TEST***********************
+
+
+	if(platform === 'android') {
+		if(version.isLessThan('2.3.0')) {
+			feedback = 'Minumum Android version 2.3.0 (Gingerbread)';
+		}
+		else if(version.isLessThan('3')) {
+			console.log('disabling animation for android < 3');
+			alert('disabling animation for android < 3');
+			$animate.enabled(false);
+		}
+	}
+
+	if(feedback) {
+		$scope.platformErrorMessage = feedback;
+		$scope.platformErrorClass = 'platformError';
+		return false;
+	}
+
+
+	return true;  // all ok
+
+};
+
+controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', '$location', '$animate',
+	function ($scope, $rootScope, viewsvc, $location, $animate) {
 		
 		if(window.platformSpecific) window.platformSpecific.init(viewsvc);
+
+		if(!platformComplianceCheck($animate, $scope)) {
+			return;
+		}
 
 		$scope.navigation = viewsvc;
 		$scope.user = {
@@ -36,6 +76,8 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
 	}
 
 ]);
+
+})();  //closure
 
 controllers.controller('DeviceController', ['$scope', 'ViewService',
 	function ($scope, viewsvc) {

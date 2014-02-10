@@ -19,13 +19,17 @@
 </head>
 <body>
 
-    <section id="app" class="{{navigation.appClass}}">
+    <section id="app" class="{{navigation.appClass}} {{platformErrorClass}}">
         <my-tool-bar></my-tool-bar>
         <my-summary-banner></my-summary-banner>
         <my-tab-bar></my-tab-bar>
         <section id="main" class="slide-container" style="height:{{navigation.mainHeight}}px">
             <div ng-view class="slide {{navigation.viewClass}} view-wrapper"></div>
         </section>
+    </section>
+
+    <section id="platformError" class="{{platformErrorClass}}">
+        {{platformErrorMessage}}
     </section>
 
     <script src="cordova.js"></script><!-- use instead of phonegap.js -->

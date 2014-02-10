@@ -213,6 +213,8 @@ module.exports = function(grunt) {
 			},
 			app: {
 				src: [
+					'www/js/types.js', 
+					'www/js/polyfills.js', 
 					'www/js/index.js', 
 					'www/js/app.js', 
 					'www/js/services.js', 

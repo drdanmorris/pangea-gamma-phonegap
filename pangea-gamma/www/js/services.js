@@ -208,23 +208,7 @@ services.factory('PushService', ['$q', 'Config', '$rootScope', 'SocketService', 
 
 
 services.service('ViewService', ['$rootScope', '$location', function ($rootScope, $location) {
-	var Vref = function (raw, tabIndex, title) {
-		var parts = /(?:([\d]+)\/)?([\w\d]+)\/([\w\d]+)\/([\w\d]+)/.exec(raw);
-		this.raw = raw;
-		this.tab = null;
-		this.type = null;
-		this.subtype = null;
-		this.id = null;
-		this.title = title;
-		if (parts.length == 5) {
-			this.tab = parts[1] || tabIndex;
-			this.type = parts[2];
-			this.subtype = parts[3];
-			this.id = parts[4];
-			this.raw = this.tab + '/' + this.type + '/' + this.subtype + '/' + this.id;
-		}
-	};
-
+	
 	var Tab = function (options) {
 		this.history = [];
 		this.id = options.id;

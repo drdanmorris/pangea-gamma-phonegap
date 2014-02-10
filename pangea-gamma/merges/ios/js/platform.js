@@ -21,18 +21,18 @@ var platformSpecific = {
 
 		for(var prop in this.support)
 			if(this.support.hasOwnProperty(prop))
-				this.support[prop].init();
+				this.support[prop].init(this);
 	}
 };
 
 platformSpecific.support.orientation = {
-	init: function() {}
+	init: function(my) {}
 	, canRotate: false
 	, lock: function(orientation) {
-		this.canRotate = false;
+		my.canRotate = false;
 	}
 	, unlock: function() {
-		this.canRotate = true;
+		my.canRotate = true;
 	}
 
 }
