@@ -53,13 +53,28 @@ section#summaryBanner
 					margin-left 10px
 					borders()
 
+
+section#summaryBanner
 	div.inner.summary
 		div.slide
-			translate-reset()
+			top 0
 
 	div.inner.search
 		div.slide
-			translate-y(-100)
+			top $summaryBannerHeight * -1
+
+
+html.css3
+	section#summaryBanner
+		div.inner.summary
+			div.slide
+				translate-reset()
+
+		div.inner.search
+			div.slide
+				top 0
+				translate-y(-100)
+
 
 
 

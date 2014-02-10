@@ -22,7 +22,6 @@ function platformComplianceCheck($animate, $scope) {
 		}
 		else if(version.isLessThan('3')) {
 			console.log('disabling animation for android < 3');
-			alert('disabling animation for android < 3');
 			$animate.enabled(false);
 		}
 	}

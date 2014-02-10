@@ -240,6 +240,8 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		bannerClass: 'summary',
 		viewClass: '',
 		platform: '',
+		platformVersion: 'v' + device.version,
+		platformSupport: '',
 		mainHeight: 0,
 		currentViewController: null,
 		alternateVref: null,
@@ -247,6 +249,26 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 		init: function() {
 			this.setMainHeight();
 			this.resetView();
+			this.setPlatformSupport();
+		},
+
+		setPlatformSupport: function() {
+			var support = {
+				css3: true
+			};
+			if(this.platform === 'android') {
+				var version = new Version(device.version);
+				if(version.isLessThan('3')) {
+					support.css3 = false;
+				}
+			}
+
+			var ps = '';
+			for(prop in support) {
+				if(support[prop])
+					ps += prop + ' ';
+			}
+			this.platformSupport = ps;
 		},
 
 		setPlatform: function(platform) {
