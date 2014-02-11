@@ -26,13 +26,13 @@ var platformSpecific = {
 };
 
 platformSpecific.support.orientation = {
-	init: function(my) {}
+	init: function() {} 
 	, canRotate: false
 	, lock: function(orientation) {
-		my.canRotate = false;
+		this.canRotate = false;
 	}
 	, unlock: function() {
-		my.canRotate = true;
+		this.canRotate = true;
 	}
 
 }

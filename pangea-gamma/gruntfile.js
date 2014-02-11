@@ -264,21 +264,19 @@ module.exports = function(grunt) {
 	// custom tasks
 	//==============================================
 	grunt.task.registerMultiTask('edit_config_feature', 'Add a feature to config.xml', function() {
-		var done = this.async();
 		var fs = require('fs');
 		var file = this.files[0].src[0];
 		var feature = this.files[0].feature;
 
-		fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
+		if(fs.existsSync(file)) {
+			var data = fs.readFile(file, {encoding: 'utf8'});
 			grunt.log.writeln('editing file ' + file);
 			var updated = data.replace('</widget>', '\t' + feature + '\n</widget>')
 			fs.writeFileSync(file, updated);
-		});
-
-		grunt.log.writeln(this.target + ': ' + this.data);
-
-		done(true);
-
+		} 
+		else {
+			grunt.log.writeln('****' + file + ' does not exist****');
+		}
 	});
 
 

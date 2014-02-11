@@ -170,36 +170,16 @@ In a Terminal window navigate to *\\\\pocroot\pangea-gamma* in preparation for t
 To start from a clean slate run:
 
 ```
-$ grunt reset
+$ grunt install-ios
 ```
+> This is a one-off step to prepare the iOS platform in the *platforms/ios* folder.
 
 
-Install common plugins (yes, we install plugins *before* we install the platform):
-```
-$ grunt add-plugins
-```
-> This will install the required plugins.
-
-
-
-Install the iOS platform:
-
-```
-$ grunt add-ios
-```
-> This will create a new iOS platform in the platforms folder.
-
-
-
-
-Install www content: 
+Note:  if you ever need to resync the platform www with the master www (i.e., if you have made changes to the master www content) you can run:
 
 ```
 $ grunt ios
 ```
-> This will update the platform/ios/www folder from the master www.  This command can be re-run whenever you require a platform resync from the master www.
-
-
 
 #### Fix iOS Project (Grunt)
 If you encounter a build issue with your XCode project due to missing Plugin files and configuration, then you should be able to fix these issues by running:
@@ -224,36 +204,13 @@ Explore to *\\\\pocroot\pangea-gamma* and run the opencmd batch script.
 
 #### Build Android Projects (Grunt)
 
-
-To start from a clean slate run:
-
 ```
-$ grunt reset
+$ grunt install-android
 ```
-> Note: you will need to re-install both android and wp8 (when available) after doing a **grunt reset** (assuming they are both installed on the same build machine).
+> This is a one-off step to prepare the Android platform in the *platforms/android* folder.
 
 
-Install the common plugins:
-
-```
-$ grunt add-plugins
-```
-
-Install the android-specific plugins:
-
-```
-$ grunt add-plugins-android
-```
-
-Install the android platform:
-
-```
-$ grunt add-android
-```
-> This will create a new android platform in the platforms folder.
-
-
-Install the www content:
+Note:  if you ever need to resync the platform www with the master www (i.e., if you have made changes to the master www content) you can run:
 
 ```
 $ grunt android
