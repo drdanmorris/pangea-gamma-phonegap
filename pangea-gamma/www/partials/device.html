@@ -1,6 +1,6 @@
 
 <my-panel>
-	<div class="device form">
+	<div class="device form" ng-show="isPortrait">
 		<h1>Device Info</h1>
 		<div>
 			<label>Name</label>
@@ -23,7 +23,7 @@
 			<span>{{version}}</span>
 		</div>
 	</div>
-	<div class="device chart">
+	<div class="device chart" ng-show="isLandscape">
 		<h1>Full-screen Device Chart</h1>
 	</div>
 </my-panel>

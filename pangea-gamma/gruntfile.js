@@ -97,7 +97,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/ios/www'},
 					{expand: true, cwd: 'merges/ios', src: ['**'], dest: 'platforms/ios/www'},
 					{expand: true, cwd: 'phonegap_tweaks/platform/ios', src: ['**'], dest: 'platforms/ios'},
-					{expand: true, cwd: 'www/js/staging', src: ['*.js'], dest: 'platforms/ios/www/js'},
+					{expand: true, cwd: 'www/js/staging', src: ['angular.js', 'app.js'], dest: 'platforms/ios/www/js'},
 					{src: 'www/lib/underscore.js', dest: 'platforms/ios/www/js/underscore.js'}
 				]
 			},
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'www', src: ['**/*.xml','**/*.html','**/*.json','**/*.map','**/*.png','**/*.jpg','**/*.svg'], dest: 'platforms/android/assets/www'},
 					{expand: true, cwd: 'merges/android', src: ['**'], dest: 'platforms/android/assets/www'},
 					{expand: true, cwd: 'phonegap_tweaks/platform/android', src: ['**'], dest: 'platforms/android'},
-					{expand: true, cwd: 'www/js/staging', src: ['*.js'], dest: 'platforms/android/assets/www/js'},
+					{expand: true, cwd: 'www/js/staging', src: ['angular.js', 'app.js'], dest: 'platforms/android/assets/www/js'},
 					{src: 'www/lib/underscore.js', dest: 'platforms/android/assets/www/js/underscore.js'}
 				]
 			},
@@ -211,15 +211,25 @@ module.exports = function(grunt) {
 			options: {
 				separator: ';\n',
 			},
+			services: {
+				src: 'www/js/services/*.js',
+				dest: 'www/js/staging/services.js'
+			},
+			controllers: {
+				src: 'www/js/controllers/*.js',
+				dest: 'www/js/staging/controllers.js'
+			},
 			app: {
 				src: [
 					'www/js/types.js', 
 					'www/js/polyfills.js', 
 					'www/js/index.js', 
 					'www/js/app.js', 
-					'www/js/services.js', 
+					'www/js/services.js',
+					'www/js/staging/services.js',
 					'www/js/userControls.js', 
 					'www/js/controllers.js', 
+					'www/js/staging/controllers.js', 
 					'www/js/filters.js', 
 					'www/js/directives.js', 
 					'www/js/index.js'],
@@ -299,32 +309,45 @@ module.exports = function(grunt) {
 	});
 
 
+	// Common
 	grunt.registerTask('reset', ['clean:reset']);
-
 	grunt.registerTask('common', ['clean:staging', 'concat', 'copy:commoninit']);
-	grunt.registerTask('default', ['ios', 'android']);
+	grunt.registerTask('add-plugins', ['exec:add_plugin_device']);
 
 
-	grunt.registerTask('ios', ['common', 'clean:ios_www', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
+	// Android
 	grunt.registerTask('android', ['common', 'clean:android_www', 'copy:androidinit', 'stylus:android', 'copy:android']);
 	grunt.registerTask('android4', ['common', 'clean:android_www', 'copy:android4init', 'stylus:android4', 'copy:android']);
-	grunt.registerTask('windows', ['android']);
-
-	
-	grunt.registerTask('add-ios', ['clean:ios_all', 'exec:prepare_ios']);
 	grunt.registerTask('add-android', ['clean:android_all', 'exec:prepare_android']); 
-	grunt.registerTask('add-plugins', ['exec:add_plugin_device']);
 	grunt.registerTask('add-plugins-android', ['exec:add_plugin_websocket', 'exec:add_plugin_orientation']);
 
 
+	// iOS
+	grunt.registerTask('ios', ['common', 'clean:ios_www', 'copy:iosinit', 'stylus:ios', 'copy:ios']);
+	grunt.registerTask('add-ios', ['clean:ios_all', 'exec:prepare_ios']);
+
+
+	// Windows (android + WP8)
+	grunt.registerTask('windows', ['android']);	
+
+
+
+	// 1) Master installation tasks
+	grunt.registerTask('install-android', ['reset', 'add-android', 'add-plugins', 'add-plugins-android', 'exec:prepare_android', 'android']);
+	grunt.registerTask('install-ios', ['reset', 'add-ios', 'add-plugins', 'exec:prepare_ios', 'ios']);
+
+
+	// 2) iOS Fix (optional - check if still required)
 	grunt.registerTask('fix_ios_plugins', ['edit_config_feature:ios_device', 'copy:fix_ios_plugins']);
 
 
-	grunt.registerTask('prod-ios', ['uglify:ios', 'clean:ios_js', 'edit_index_html:ios']);
+	// 3) Default www update
+	grunt.registerTask('default', ['ios', 'android']);
+
+
+	// 4) Production-ready
+	grunt.registerTask('prod-ios', ['uglify:ios', 'clean:ios_js', 'edit_index_html:ios']);	
 	grunt.registerTask('prod-android', ['uglify:android', 'clean:android_js', 'edit_index_html:android']);
-
-	//grunt.registerTask('tmp', ['edit_index_html:android']);
-
 
 
 };
