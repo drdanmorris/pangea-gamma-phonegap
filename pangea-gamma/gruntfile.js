@@ -269,7 +269,7 @@ module.exports = function(grunt) {
 		var feature = this.files[0].feature;
 
 		if(fs.existsSync(file)) {
-			var data = fs.readFile(file, {encoding: 'utf8'});
+			var data = fs.readFileSync(file, {encoding: 'utf8'});
 			grunt.log.writeln('editing file ' + file);
 			var updated = data.replace('</widget>', '\t' + feature + '\n</widget>')
 			fs.writeFileSync(file, updated);
@@ -281,12 +281,12 @@ module.exports = function(grunt) {
 
 
 	grunt.task.registerMultiTask('edit_index_html', 'Tweak JS scripts in index.html', function() {
-		var done = this.async();
 		var fs = require('fs');
 		var file = this.files[0].src[0];
 		var feature = this.files[0].feature;
 
-		fs.readFile(file, {encoding: 'utf8'}, function(err, data) {
+		if(fs.existsSync(file)) {
+			var data = fs.readFileSync(file, {encoding: 'utf8'});
 			grunt.log.writeln('editing file ' + file);
 			var startmatch = '<!--app js start',
 				startpos = data.indexOf(startmatch), 
@@ -297,12 +297,10 @@ module.exports = function(grunt) {
 				var outfile = data.substring(0,startpos) + '\n\t<script src="js/all.js.min"></script>' + data.substring(endpos + endmatch.length);
 				fs.writeFileSync(file, outfile);
 			}
-
-		});
-
-		grunt.log.writeln(this.target + ': ' + this.data);
-
-		done(true);
+		} 
+		else {
+			grunt.log.writeln('****' + file + ' does not exist****');
+		}
 
 	});
 
