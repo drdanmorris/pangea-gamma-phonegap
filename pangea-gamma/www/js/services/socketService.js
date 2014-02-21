@@ -1,4 +1,5 @@
-services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, config, $rootScope) {
+services.factory('SocketService', ['$q', 'Config', '$rootScope', 'EventService',  function ($q, config, $rootScope, eventSvc) {
+	
 	var socket = {
 		isConnected: false
 		, wasConnected: false
@@ -8,8 +9,32 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 		, reconnectCount: 0  // number of concurrent reconnection attempts
 		, sendQueue: []
 		, incomingMsgCallback: null
+		, doReconnect: true
 		, start: function (incomingMsgCallback) {
 			this.incomingMsgCallback = incomingMsgCallback;
+			this.init();
+			this.reconnect();
+		}
+		, init: function() {
+
+			var my = this;
+
+			eventSvc.onPause(function() {
+				console.log('socket pausing');
+				my.pause();
+			});
+
+			eventSvc.onResume(function() {
+				console.log('socket resuming');
+				my.resume();
+			});
+		}
+		, pause: function() {
+			this.doReconnect = false;
+			this.disconnect();
+		}
+		, resume: function() {
+			this.doReconnect = true;
 			this.reconnect();
 		}
 		, send: function (msg) {
@@ -21,6 +46,8 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 			else this.sendQueue.push(msg);
 		}
 		, reconnect: function (delayMs) {
+			if(!this.doReconnect) return;
+			console.log('reconnecting');
 			delayMs = delayMs || 0;
 			var my = this;
 			this.reconnectCount += 1;
@@ -31,6 +58,9 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 					}
 				});
 			}, delayMs)
+		}
+		, disconnect: function () {
+			this._connection.close(1000, 'Application entering background');
 		}
 		, connect: function () {
 			this.connecting = true;
@@ -52,6 +82,13 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 				my.onSocketError(e);
 			};
 
+			connection.addEventListener("close", function(event) {
+			  var code = event.code;
+			  var reason = event.reason;
+			  var wasClean = event.wasClean;
+			  console.log('websocket closed: ' + code + ', ' + reason + ', ' + (wasClean ? 'clean' : 'not clean'));
+			});
+
 			return defer.promise;
 		}
 		, onSocketMessage: function (msg) {
@@ -68,19 +105,17 @@ services.factory('SocketService', ['$q', 'Config', '$rootScope',  function ($q, 
 			//connection.send('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqabcdefghijklmnopqrstuvwxyzhhhhhh');
 			defer.resolve(this._connection);
 		}
-		, onSocketClose: function () {
+		, onSocketClose: function (e) {
 			this.isConnected = false;
-			console.log('socket closed');  // verbose
+			this._connection = null;
+			console.log('socket closed'); 
 			var my = this;
 			setTimeout(function () {
 				my.reconnect(config.websocket.reconnectDelayMs);
 			}, 0);
 		}
 		, onSocketError: function () {
-			this.isConnected = false;
-			this._connection = null;
-			console.log('socket error');  // verbose
-			//if (!this.wasConnected) this.reconnect();
+			console.log('socket error'); 
 		}
 		, processIncomingMessage: function (msg) {
 			this.incomingMsgCallback(msg);

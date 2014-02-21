@@ -62,10 +62,10 @@ Session.prototype.configureRequestProcessors = function() {
 			impl.cancelPreviousView();
 			var view = viewFactory.getView(request.vref);
 			impl.sendView(view, request);
-		},
-		registerSchema: function(dref) {
-			impl.registerSchema(dref);
 		}
+		// registerSchema: function(dref) {
+		// 	impl.registerSchema(dref);
+		// }
 	};
 
 	var impl = {
@@ -84,6 +84,7 @@ Session.prototype.configureRequestProcessors = function() {
 			this.sendDrefsForView(view, request.requestId);	
 		}
 		,registerSchema: function(dref) {
+			console.log('registerSchema:' + dref);
 			var prefix = dref.match(/^\D+/)[0];
 			if(!impl.registeredPrefixes) impl.registeredPrefixes = {};
 			if(!impl.registeredPrefixes[prefix]) {
@@ -105,6 +106,16 @@ Session.prototype.configureRequestProcessors = function() {
 						schema = {
 				    		dref: '$[string(=id)]*',
 				            title: '$[string({10} {10} {5})]'
+				    	};
+						break;
+
+					case 'up' :
+						schema = {
+							dref: '$[string(=id)]*',
+				    		balance: '[double(7:2{+}>2:0{+-})]',
+				    		available: '[double(7:2{+}>2:0{+-})]',
+				    		pnl: '[double(7:2{+}>2:0{+-})]',
+				    		ntr: '[double(7:2{+}>2:0{+-})]'
 				    	};
 						break;
 				}
@@ -139,9 +150,9 @@ Session.prototype.configureRequestProcessors = function() {
 				else if(prop === 'dref') drefs.push(obj[prop]);
 			}
 		}
-		,subscribeToDref: function(dref, requestId) {
+		,subscribeToDref: function(dref, requestId, options) {
 			this.registerSchema(dref);
-			my.cache.subscribe(dref, requestId);
+			my.cache.subscribe(dref, requestId, options);
 		}
 	};
 
@@ -179,6 +190,14 @@ var viewFactory = {
 		return view;
 	},
 
+	user: function(vref) {
+		if(vref.subtype === 'position') {
+			return {
+				item: { dref:vref.id }
+			};
+		}
+	},
+
 	price: function(vref) {
 		if(vref.subtype === 'trade') {
 			var icon1 = 'icon1', icon2 = 'icon2';
@@ -202,9 +221,7 @@ var viewFactory = {
 		}
 		else if(vref.subtype === 'info') {
 			return {
-				items: [
-					{ dref:vref.id }
-				]
+				item: { dref:vref.id }
 			};
 		}
 	},

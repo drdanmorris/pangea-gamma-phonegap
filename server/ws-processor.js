@@ -281,7 +281,8 @@ HybiWsProcessor.prototype.processPongFrame = function(buffer, offset, total) {
 
 };
 HybiWsProcessor.prototype.processCloseFrame = function(buffer, offset, total) {
-
+	this.log('close frame received');
+	this.connection.close();
 };
 
 

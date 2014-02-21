@@ -219,6 +219,10 @@ module.exports = function(grunt) {
 				src: 'www/js/controllers/*.js',
 				dest: 'www/js/staging/controllers.js'
 			},
+			directives: {
+				src: 'www/js/directives/*.js',
+				dest: 'www/js/staging/directives.js'
+			},
 			app: {
 				src: [
 					'www/js/types.js', 
@@ -232,6 +236,7 @@ module.exports = function(grunt) {
 					'www/js/staging/controllers.js', 
 					'www/js/filters.js', 
 					'www/js/directives.js', 
+					'www/js/staging/directives.js', 
 					'www/js/index.js'],
 
 				dest: 'www/js/staging/app.js'

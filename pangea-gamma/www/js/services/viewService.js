@@ -1,18 +1,6 @@
-services.service('ViewService', ['$rootScope', '$location', function ($rootScope, $location) {
-	
-	var Tab = function (options) {
-		this.history = [];
-		this.id = options.id;
-		this.title = options.title;
-		this.vref = new Vref(options.vref, this.id, this.title);
-		this.icon = options.icon;
-		this.notifyCount = options.notifyCount;
-	};
-	Tab.prototype.getVref = function() {
-		if (this.history.length > 0) return this.history[this.history.length - 1];
-		return this.vref;
-	};
 
+
+services.factory('ViewService', ['$rootScope', '$location', 'EventService', function ($rootScope, $location, eventSvc) {
 	var viewsvc = {
 		title: 'Title',
 		vref: null,
@@ -41,8 +29,23 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 			this.setMainHeight();
 			this.resetView();
 			this.setPlatformSupport();
+			this.subscribeToEventService();
 		},
-
+		subscribeToEventService: function() {
+			var my = this;
+			eventSvc.onPause(function() {
+				var controller = my.currentViewController;
+				if(controller.hasOwnProperty('pause')) {
+					controller.pause();
+				}
+			});
+			eventSvc.onResume(function() {
+				var controller = my.currentViewController;
+				if(controller.hasOwnProperty('resume')) {
+					controller.resume();
+				}
+			});
+		},
 		setPlatformSupport: function() {
 			var support = {
 				css3: true
@@ -148,6 +151,7 @@ services.service('ViewService', ['$rootScope', '$location', function ($rootScope
 				else toolbarController.setBack('');
 			}
 			this.tab.vref = vref;
+			console.log('loading location ' + vref.raw);
 			$location.path(vref.raw);
 		},
 		resetView: function() {

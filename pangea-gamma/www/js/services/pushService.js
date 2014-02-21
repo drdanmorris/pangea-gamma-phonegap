@@ -3,6 +3,9 @@ services.factory('PushService', ['$q', 'Config', '$rootScope', 'SocketService', 
 		initialised: false
 		, requestId: 1
 		, delegate: null
+		, registerPrefix: null
+		, registerDelegate: null
+
 		, init: function () {
 			if (!this.initialised) {
 				socket.start(this.handleIncomingMsg.bind(this));
@@ -19,10 +22,8 @@ services.factory('PushService', ['$q', 'Config', '$rootScope', 'SocketService', 
 			}
 			else {
 				if(this.delegate) this.delegate(msg.data);
+				if(this.registerDelegate && (msg.data.dref.substring(0,2) === this.registerPrefix)) this.registerDelegate(msg.data);
 			}
-			// $rootScope.$apply(function () {  // do we need to apply ?
-			//     $rootScope.$broadcast('pushIncomingMessage', msg);
-			// });
 		}
 		, fulfilRequest: function(view, responseId) {
 			this.pending['view' + responseId].defer.resolve(view);
@@ -88,8 +89,16 @@ services.factory('PushService', ['$q', 'Config', '$rootScope', 'SocketService', 
 				request = angular.extend({ cmd: 'subscribe', requestId: requestId }, options);
 			this.pending['view' + requestId] = { defer: defer };
 			this.delegate = options.delegate;
+			console.log('push::subscribing to ' + options.vref);
 			socket.send(request);
 			return defer.promise;
+		}
+		, register: function (options) {
+			var vref = new Vref(options.vref);
+			this.registerPrefix = vref.id.substring(0,2);
+			this.registerDelegate = options.delegate;
+			options.delegate = null;
+			return this.subscribe(options);
 		}
 	};
 	push.init();

@@ -22,15 +22,12 @@ var app = {
 		this.bindEvents();
 	},
 	bindEvents: function() {
-		document.addEventListener('deviceready', function() {
-			app.deviceReady();
-		}, false);
+		document.addEventListener('deviceready', app.deviceReady, false);
 	},
 	deviceReady: function() {
 		console.log('Device Ready');
 		angular.bootstrap(document, ["myApp"]);
 	}
-	
 };
 
 var appController;  // master application controller

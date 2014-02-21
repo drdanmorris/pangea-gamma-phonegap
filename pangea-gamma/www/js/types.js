@@ -68,3 +68,16 @@ Version.prototype.toString = function() {
 		'[' + chksum + ']';
 };
 
+
+var Tab = function (options) {
+		this.history = [];
+		this.id = options.id;
+		this.title = options.title;
+		this.vref = new Vref(options.vref, this.id, this.title);
+		this.icon = options.icon;
+		this.notifyCount = options.notifyCount;
+	};
+	Tab.prototype.getVref = function() {
+		if (this.history.length > 0) return this.history[this.history.length - 1];
+		return this.vref;
+	};

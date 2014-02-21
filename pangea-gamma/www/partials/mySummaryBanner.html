@@ -1,21 +1,21 @@
-<section id="summaryBanner">
-    <div class="inner slide-container {{navigation.bannerClass}}">
+<section id="summaryBanner" ng-controller="UserSummaryController">
+    <div class="inner slide-container {{bannerClass}}">
         <div class="slide">
             <div id="summary">
                 <div class="flx col1">
                     <div>
-                        <label class="col1">Balance:</label><span>{{user.balance}}&nbsp;</span>
+                        <label class="col1">Balance:</label><span ng-bind="user.balance">-</span>
                     </div>
                     <div>
-                        <label class="col1">Available:</label><span>{{user.available}}</span>
+                        <label class="col1">Available:</label><span ng-bind="user.available">-</span>
                     </div>
                 </div>
                 <div class="flx col2">
                     <div>
-                        <label class="col2">P&amp;L:</label><span>{{user.pnl}}</span>
+                        <label class="col2">P&amp;L:</label><span ng-bind="user.pnl">-</span>
                     </div>
                     <div>
-                        <label class="col2">NTR:</label><span>{{user.ntr}}</span>
+                        <label class="col2">NTR:</label><span ng-bind="user.ntr">-</span>
                     </div>
                 </div>
                 <div id="btnViewSearch" ng-click="showSearch()"></div>

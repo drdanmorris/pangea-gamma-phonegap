@@ -43,22 +43,10 @@ controllers.controller('AppController', ['$scope', '$rootScope', 'ViewService', 
 		}
 
 		$scope.navigation = viewsvc;
-		$scope.user = {
-			balance: 44444.44,
-			available: 98246.48,
-			pnl:-3925.99,
-			ntr:-1291.34
-		};
-
+	
 
 		$scope.onTabSelected = function (idx) {
 			viewsvc.navigateTab(idx);
-		};
-		$scope.showSearch = function() {
-			viewsvc.bannerClass = 'search';
-		};
-		$scope.showSummary = function() {
-			viewsvc.bannerClass = 'summary';
 		};
 		
 		window.appController = this;
